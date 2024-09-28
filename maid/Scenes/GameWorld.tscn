@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://ktnnncnv3xab"]
+
+[ext_resource type="PackedScene" uid="uid://ej07vkvm2xbb" path="res://Scenes/Serafina.tscn" id="1_40ut1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5x2n"]
+size = Vector2(1152, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fkf3"]
+size = Vector2(50, 669)
+
+[node name="GameWorld" type="Node2D"]
+
+[node name="Serafina" parent="." instance=ExtResource("1_40ut1")]
+position = Vector2(109, 364)
+
+[node name="WorldBounds" type="Node2D" parent="."]
+
+[node name="North" type="StaticBody2D" parent="WorldBounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/North"]
+position = Vector2(576, -16.5)
+shape = SubResource("RectangleShape2D_e5x2n")
+
+[node name="South" type="StaticBody2D" parent="WorldBounds"]
+position = Vector2(0, 681)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/South"]
+position = Vector2(576, -16.5)
+shape = SubResource("RectangleShape2D_e5x2n")
+
+[node name="East" type="StaticBody2D" parent="WorldBounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/East"]
+position = Vector2(1177, 325)
+shape = SubResource("RectangleShape2D_7fkf3")
+
+[node name="West" type="StaticBody2D" parent="WorldBounds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/West"]
+position = Vector2(-25, 325)
+shape = SubResource("RectangleShape2D_7fkf3")
