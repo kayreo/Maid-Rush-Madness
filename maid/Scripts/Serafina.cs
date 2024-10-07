@@ -3,10 +3,12 @@ using System;
 
 public partial class Serafina : CharacterBody2D
 {
-	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
+	public const float Speed = 800.0f;
+
+	public int health = 4;
 
 	public AnimatedSprite2D AnimatedSprite;
+
 
     public override void _Ready()
     {
@@ -20,19 +22,27 @@ public partial class Serafina : CharacterBody2D
 		Vector2 velocity = Velocity;
 
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
+		// Movement
 		if (Input.IsActionPressed("left"))
 		{
 			velocity.X = -1 * Speed;
+			AnimatedSprite.FlipH = true;
 		}
 		else if (Input.IsActionPressed("right"))
 		{
 			velocity.X = 1 * Speed;
+			AnimatedSprite.FlipH = false;
 		}
 
+		// Friction
 		velocity.X *= (float)0.95;
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	// Converts health (4-0) to respective frame number (0-4)
+	public int convertToFrame() {
+		int convertedFrame = 4 - health;
+		return convertedFrame;
 	}
 }

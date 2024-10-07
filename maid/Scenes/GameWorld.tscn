@@ -1,41 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://ktnnncnv3xab"]
+[gd_scene load_steps=6 format=3 uid="uid://ktnnncnv3xab"]
 
 [ext_resource type="PackedScene" uid="uid://ej07vkvm2xbb" path="res://Scenes/Serafina.tscn" id="1_40ut1"]
+[ext_resource type="PackedScene" uid="uid://1u7rfdwivbu2" path="res://Scenes/Table.tscn" id="2_0xnwv"]
+[ext_resource type="PackedScene" uid="uid://c8hd6iinmplop" path="res://Scenes/FoodSpawner.tscn" id="3_pd8vf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5x2n"]
-size = Vector2(1152, 33)
+size = Vector2(1920, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fkf3"]
-size = Vector2(50, 669)
+size = Vector2(50, 1135.5)
 
 [node name="GameWorld" type="Node2D"]
 
 [node name="Serafina" parent="." instance=ExtResource("1_40ut1")]
-position = Vector2(109, 364)
+position = Vector2(276, 816)
 
 [node name="WorldBounds" type="Node2D" parent="."]
 
 [node name="North" type="StaticBody2D" parent="WorldBounds"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/North"]
-position = Vector2(576, -16.5)
+position = Vector2(959, -35)
 shape = SubResource("RectangleShape2D_e5x2n")
 
 [node name="South" type="StaticBody2D" parent="WorldBounds"]
 position = Vector2(0, 681)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/South"]
-position = Vector2(576, -16.5)
+position = Vector2(960, 423)
 shape = SubResource("RectangleShape2D_e5x2n")
 
 [node name="East" type="StaticBody2D" parent="WorldBounds"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/East"]
-position = Vector2(1177, 325)
+position = Vector2(1945, 552)
 shape = SubResource("RectangleShape2D_7fkf3")
 
 [node name="West" type="StaticBody2D" parent="WorldBounds"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/West"]
-position = Vector2(-25, 325)
+position = Vector2(-25, 552.25)
 shape = SubResource("RectangleShape2D_7fkf3")
+
+[node name="Table" parent="." instance=ExtResource("2_0xnwv")]
+position = Vector2(899, 1020)
+
+[node name="FoodSpawnPoints" type="Node2D" parent="."]
+
+[node name="FoodSpawner" parent="FoodSpawnPoints" instance=ExtResource("3_pd8vf")]
+position = Vector2(204, 7)
+
+[node name="FoodSpawner2" parent="FoodSpawnPoints" instance=ExtResource("3_pd8vf")]
+position = Vector2(601, 5)
+
+[node name="FoodSpawner4" parent="FoodSpawnPoints" instance=ExtResource("3_pd8vf")]
+position = Vector2(998, 0)
+
+[node name="FoodSpawner7" parent="FoodSpawnPoints" instance=ExtResource("3_pd8vf")]
+position = Vector2(1343, 8)
+
+[node name="FoodSpawner8" parent="FoodSpawnPoints" instance=ExtResource("3_pd8vf")]
+position = Vector2(1724, 2)

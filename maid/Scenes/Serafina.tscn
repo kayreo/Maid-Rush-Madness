@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ej07vkvm2xbb"]
+[gd_scene load_steps=10 format=3 uid="uid://ej07vkvm2xbb"]
 
 [ext_resource type="Script" path="res://Scripts/Serafina.cs" id="1_0xagd"]
 [ext_resource type="Texture2D" uid="uid://bfmopogtw3y1u" path="res://Assets/Serafina/seraHealth0.png" id="2_bmkwb"]
 [ext_resource type="Texture2D" uid="uid://dqbheyu20g610" path="res://Assets/Serafina/seraHealth3.png" id="3_7n7ct"]
+[ext_resource type="Texture2D" uid="uid://cnucapayfsjgn" path="res://Assets/Serafina/seraHealth2.png" id="3_q0j2c"]
+[ext_resource type="Texture2D" uid="uid://e3c5m5f5hi4w" path="res://Assets/Serafina/seraHealth1.png" id="4_8hqjf"]
 [ext_resource type="Texture2D" uid="uid://dikedgqi8f33l" path="res://Assets/Serafina/seraNewOrder.png" id="4_auh4w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1j4ji"]
@@ -12,9 +14,15 @@ animations = [{
 "texture": ExtResource("3_7n7ct")
 }, {
 "duration": 1.0,
+"texture": ExtResource("3_q0j2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8hqjf")
+}, {
+"duration": 1.0,
 "texture": ExtResource("2_bmkwb")
 }],
-"loop": true,
+"loop": false,
 "name": &"health",
 "speed": 0.0
 }, {
@@ -28,15 +36,26 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v12i4"]
-size = Vector2(217, 260)
+size = Vector2(536.625, 655.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osnpx"]
+size = Vector2(254, 52)
 
 [node name="Serafina" type="CharacterBody2D"]
 script = ExtResource("1_0xagd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.560837, -171.56)
+scale = Vector2(0.61579, 0.61579)
 sprite_frames = SubResource("SpriteFrames_1j4ji")
 animation = &"health"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(0.6875, -179)
 shape = SubResource("RectangleShape2D_v12i4")
+
+[node name="Plate" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plate"]
+position = Vector2(-9, -29)
+shape = SubResource("RectangleShape2D_osnpx")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://1u7rfdwivbu2"]
+
+[ext_resource type="Texture2D" uid="uid://c0ke2fvp7xm8a" path="res://Assets/conveyorBelt.png" id="2_u78pa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_my28q"]
+
+[node name="Table" type="Node2D"]
+
+[node name="ConveyorBelt" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_my28q")
+position = Vector2(1, -0.224794)
+scale = Vector2(1.24644, 0.526925)
+texture = ExtResource("2_u78pa")
