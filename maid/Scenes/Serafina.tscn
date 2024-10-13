@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ej07vkvm2xbb"]
+[gd_scene load_steps=14 format=3 uid="uid://ej07vkvm2xbb"]
 
 [ext_resource type="Script" path="res://Scripts/Serafina.cs" id="1_0xagd"]
 [ext_resource type="Texture2D" uid="uid://bfmopogtw3y1u" path="res://Assets/Serafina/seraHealth0.png" id="2_bmkwb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cnucapayfsjgn" path="res://Assets/Serafina/seraHealth2.png" id="3_q0j2c"]
 [ext_resource type="Texture2D" uid="uid://e3c5m5f5hi4w" path="res://Assets/Serafina/seraHealth1.png" id="4_8hqjf"]
 [ext_resource type="Texture2D" uid="uid://dikedgqi8f33l" path="res://Assets/Serafina/seraNewOrder.png" id="4_auh4w"]
+[ext_resource type="SpriteFrames" uid="uid://c3ow31ia64vbh" path="res://Assets/Food.tres" id="7_i1aee"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1j4ji"]
 animations = [{
@@ -39,7 +40,16 @@ animations = [{
 size = Vector2(536.625, 655.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osnpx"]
-size = Vector2(254, 52)
+size = Vector2(342, 52)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7im0"]
+radius = 29.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7vus"]
+size = Vector2(341, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5ag0"]
+size = Vector2(9, 108)
 
 [node name="Serafina" type="CharacterBody2D"]
 script = ExtResource("1_0xagd")
@@ -57,5 +67,62 @@ shape = SubResource("RectangleShape2D_v12i4")
 [node name="Plate" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plate"]
-position = Vector2(-9, -29)
+position = Vector2(-12, -29)
 shape = SubResource("RectangleShape2D_osnpx")
+
+[node name="Food0" type="RigidBody2D" parent="Plate"]
+position = Vector2(-117, -41)
+collision_layer = 4
+collision_mask = 4
+
+[node name="FoodSprite" type="AnimatedSprite2D" parent="Plate/Food0"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("7_i1aee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plate/Food0"]
+shape = SubResource("CircleShape2D_n7im0")
+
+[node name="Food1" type="RigidBody2D" parent="Plate"]
+position = Vector2(-8, -43)
+collision_layer = 4
+collision_mask = 4
+
+[node name="FoodSprite" type="AnimatedSprite2D" parent="Plate/Food1"]
+position = Vector2(1.78814e-07, 3.8147e-06)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("7_i1aee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plate/Food1"]
+shape = SubResource("CircleShape2D_n7im0")
+
+[node name="Food2" type="RigidBody2D" parent="Plate"]
+position = Vector2(107, -41)
+collision_layer = 4
+collision_mask = 4
+
+[node name="FoodSprite" type="AnimatedSprite2D" parent="Plate/Food2"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("7_i1aee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plate/Food2"]
+shape = SubResource("CircleShape2D_n7im0")
+
+[node name="ContainPlate" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ContainPlate"]
+position = Vector2(-12, -96)
+shape = SubResource("RectangleShape2D_o7vus")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ContainPlate"]
+position = Vector2(163.5, -46.5)
+shape = SubResource("RectangleShape2D_g5ag0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContainPlate"]
+position = Vector2(-12.5, 2)
+shape = SubResource("RectangleShape2D_o7vus")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ContainPlate"]
+position = Vector2(-188.5, -47)
+shape = SubResource("RectangleShape2D_g5ag0")

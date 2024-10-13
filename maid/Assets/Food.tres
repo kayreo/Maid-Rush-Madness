@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://c3ow31ia64vbh"]
+
+[ext_resource type="Texture2D" uid="uid://ttyvtcj2k3hd" path="res://Assets/items/cupcake.png" id="1_fbsxd"]
+[ext_resource type="Texture2D" uid="uid://cftyttkaeml3v" path="res://Assets/items/flower1.png" id="2_lshxa"]
+[ext_resource type="Texture2D" uid="uid://b3f4l3x2qj67t" path="res://Assets/items/flower2.png" id="3_a3eya"]
+[ext_resource type="Texture2D" uid="uid://ddefijfusbu0n" path="res://Assets/items/flower3.png" id="4_ybtna"]
+[ext_resource type="Texture2D" uid="uid://b2k8twg18v4vw" path="res://Assets/items/flower4.png" id="5_cgaja"]
+[ext_resource type="Texture2D" uid="uid://bcbv6weljts0r" path="res://Assets/items/soda.png" id="6_a2ucu"]
+[ext_resource type="Texture2D" uid="uid://dddgwf8gbm44r" path="res://Assets/items/potion.png" id="7_20rh5"]
+[ext_resource type="Texture2D" uid="uid://biusltpme6x3j" path="res://Assets/items/plush_doll.png" id="8_u5gvm"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fbsxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lshxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a3eya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ybtna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cgaja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a2ucu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_20rh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u5gvm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

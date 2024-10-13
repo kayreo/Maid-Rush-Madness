@@ -1,51 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpdj2qkynsyug"]
+[gd_scene load_steps=5 format=3 uid="uid://bpdj2qkynsyug"]
 
 [ext_resource type="Script" path="res://Scripts/Food.cs" id="1_frnvt"]
-[ext_resource type="Texture2D" uid="uid://ttyvtcj2k3hd" path="res://Assets/items/cupcake.png" id="1_k1gxs"]
-[ext_resource type="Texture2D" uid="uid://cftyttkaeml3v" path="res://Assets/items/flower1.png" id="2_xqc36"]
-[ext_resource type="Texture2D" uid="uid://b3f4l3x2qj67t" path="res://Assets/items/flower2.png" id="3_yjpha"]
-[ext_resource type="Texture2D" uid="uid://ddefijfusbu0n" path="res://Assets/items/flower3.png" id="4_i5kpb"]
-[ext_resource type="Texture2D" uid="uid://b2k8twg18v4vw" path="res://Assets/items/flower4.png" id="5_b72f7"]
-[ext_resource type="Texture2D" uid="uid://bcbv6weljts0r" path="res://Assets/items/soda.png" id="6_0yd0b"]
-[ext_resource type="Texture2D" uid="uid://dddgwf8gbm44r" path="res://Assets/items/potion.png" id="7_s6oct"]
-[ext_resource type="Texture2D" uid="uid://biusltpme6x3j" path="res://Assets/items/plush_doll.png" id="8_7t7kl"]
+[ext_resource type="SpriteFrames" uid="uid://c3ow31ia64vbh" path="res://Assets/Food.tres" id="2_kwhgc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u45sl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u72nk"]
 size = Vector2(192, 174)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_x528b"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_k1gxs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_xqc36")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_yjpha")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_i5kpb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_b72f7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_0yd0b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_s6oct")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_7t7kl")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="Food" type="RigidBody2D"]
 collision_layer = 2
@@ -62,6 +23,6 @@ shape = SubResource("RectangleShape2D_u45sl")
 shape = SubResource("RectangleShape2D_u72nk")
 
 [node name="Visual" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_x528b")
+sprite_frames = ExtResource("2_kwhgc")
 
 [connection signal="area_entered" from="Area2D" to="." method="_OnArea2DEntered"]

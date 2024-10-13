@@ -35,4 +35,5 @@ public partial class FoodSpawner : Node2D
 		AddChild(newFood);
 		SpawnTimer.WaitTime = Random.RandiRange(5, 20);
 	}
+
 }

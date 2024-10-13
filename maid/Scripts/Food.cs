@@ -15,6 +15,17 @@ public partial class Food : RigidBody2D
 		Emet
 	}
 
+	public Godot.Collections.Array FoodTypes = new Godot.Collections.Array{
+		"Cupcake",
+		"BFlower",
+		"YFlower",
+		"PFlower",
+		"RFlower",
+		"Soda",
+		"Potion",
+		"Emet"
+	};
+
 
 	[Export]
 	public int ID { get; set; }
@@ -22,7 +33,7 @@ public partial class Food : RigidBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GD.Print("My id is: ", (FOOD_TYPES)ID);
+		GD.Print("My id is: ", FoodTypes[ID]);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,6 +44,8 @@ public partial class Food : RigidBody2D
 	public void _OnArea2DEntered(Area2D area) {
 		if (area.Name == "Plate") {
 			GD.Print("Hit sera");
+			Serafina parent = (Serafina)area.GetParent();
+			parent.EmitSignal(Serafina.SignalName.FoodObtained, FoodTypes[ID], ID);
 		}
 	}
 }

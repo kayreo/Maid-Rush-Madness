@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ktnnncnv3xab"]
+[gd_scene load_steps=7 format=3 uid="uid://ktnnncnv3xab"]
 
 [ext_resource type="PackedScene" uid="uid://ej07vkvm2xbb" path="res://Scenes/Serafina.tscn" id="1_40ut1"]
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_pk06s"]
 [ext_resource type="PackedScene" uid="uid://1u7rfdwivbu2" path="res://Scenes/Table.tscn" id="2_0xnwv"]
 [ext_resource type="PackedScene" uid="uid://c8hd6iinmplop" path="res://Scenes/FoodSpawner.tscn" id="3_pd8vf"]
 
@@ -11,6 +12,7 @@ size = Vector2(1920, 33)
 size = Vector2(50, 1135.5)
 
 [node name="GameWorld" type="Node2D"]
+script = ExtResource("1_pk06s")
 
 [node name="Serafina" parent="." instance=ExtResource("1_40ut1")]
 position = Vector2(276, 816)
