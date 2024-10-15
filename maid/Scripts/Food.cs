@@ -4,17 +4,6 @@ using System;
 public partial class Food : RigidBody2D
 {
 
-	public enum FOOD_TYPES {
-		Cupcake,
-		BFlower,
-		YFlower,
-		PFlower,
-		RFlower,
-		Soda,
-		Potion,
-		Emet
-	}
-
 	public Godot.Collections.Array FoodTypes = new Godot.Collections.Array{
 		"Cupcake",
 		"BFlower",
@@ -33,7 +22,6 @@ public partial class Food : RigidBody2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GD.Print("My id is: ", FoodTypes[ID]);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

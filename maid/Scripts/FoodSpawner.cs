@@ -29,7 +29,7 @@ public partial class FoodSpawner : Node2D
 	protected void _OnTimerTimeout() {
 		Food newFood = (Food)Food.Instantiate();
 		AnimatedSprite2D newFoodVis = (AnimatedSprite2D)newFood.GetNode("Visual");
-		int randFood = Random.RandiRange(0, 7);
+		int randFood = Random.RandiRange(0, 2);
 		newFoodVis.Frame = randFood;
 		newFood.ID = randFood;
 		AddChild(newFood);
