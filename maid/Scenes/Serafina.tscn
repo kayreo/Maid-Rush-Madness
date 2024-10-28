@@ -82,28 +82,42 @@ shape = SubResource("RectangleShape2D_v12i4")
 position = Vector2(-12, -29)
 shape = SubResource("RectangleShape2D_osnpx")
 
-[node name="Dish" type="RigidBody2D" parent="Plate"]
-position = Vector2(107, -41)
-collision_layer = 4
-collision_mask = 4
-
-[node name="DishSprite" type="AnimatedSprite2D" parent="Plate/Dish"]
-position = Vector2(-66, -4.00001)
+[node name="DishSprite" type="AnimatedSprite2D" parent="Plate"]
+visible = false
+position = Vector2(39, -45)
 scale = Vector2(0.445, 0.445)
 sprite_frames = SubResource("SpriteFrames_01cto")
 
+[node name="FoodSprite0" type="AnimatedSprite2D" parent="Plate"]
+visible = false
+position = Vector2(-117, -41)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("7_i1aee")
+
+[node name="FoodSprite1" type="AnimatedSprite2D" parent="Plate"]
+visible = false
+position = Vector2(-36, -43)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("7_i1aee")
+
+[node name="FoodSprite2" type="AnimatedSprite2D" parent="Plate"]
+visible = false
+position = Vector2(107, -41)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("7_i1aee")
+
+[node name="Dish" type="RigidBody2D" parent="Plate"]
+position = Vector2(38, -41)
+collision_layer = 4
+collision_mask = 4
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plate/Dish"]
-position = Vector2(-67, 0)
 shape = SubResource("CircleShape2D_n7im0")
 
 [node name="Food0" type="RigidBody2D" parent="Plate"]
 position = Vector2(-117, -41)
 collision_layer = 4
 collision_mask = 4
-
-[node name="FoodSprite" type="AnimatedSprite2D" parent="Plate/Food0"]
-scale = Vector2(0.5, 0.5)
-sprite_frames = ExtResource("7_i1aee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plate/Food0"]
 shape = SubResource("CircleShape2D_n7im0")
@@ -113,11 +127,6 @@ position = Vector2(-36, -43)
 collision_layer = 4
 collision_mask = 4
 
-[node name="FoodSprite" type="AnimatedSprite2D" parent="Plate/Food1"]
-position = Vector2(1.78814e-07, 3.8147e-06)
-scale = Vector2(0.5, 0.5)
-sprite_frames = ExtResource("7_i1aee")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plate/Food1"]
 shape = SubResource("CircleShape2D_n7im0")
 
@@ -125,10 +134,6 @@ shape = SubResource("CircleShape2D_n7im0")
 position = Vector2(107, -41)
 collision_layer = 4
 collision_mask = 4
-
-[node name="FoodSprite" type="AnimatedSprite2D" parent="Plate/Food2"]
-scale = Vector2(0.5, 0.5)
-sprite_frames = ExtResource("7_i1aee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plate/Food2"]
 shape = SubResource("CircleShape2D_n7im0")

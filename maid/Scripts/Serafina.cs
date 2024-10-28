@@ -7,7 +7,11 @@ public partial class Serafina : CharacterBody2D
 
 	public int health = 4;
 
+	private bool madeDish = false;
+
 	public AnimatedSprite2D AnimatedSprite;
+
+	private GameManager parent;
 
 	public Area2D Plate;
 
@@ -16,6 +20,8 @@ public partial class Serafina : CharacterBody2D
 
 	[Signal]
 	public delegate void DishMergedEventHandler(string dish, int dishIndex);
+
+	public string heldDish;
 
 	public Godot.Collections.Array HeldFood = new Godot.Collections.Array{
 
@@ -26,9 +32,9 @@ public partial class Serafina : CharacterBody2D
         base._Ready();
 		AnimatedSprite = (AnimatedSprite2D)GetNode("AnimatedSprite2D");
 		Plate = (Area2D)GetNode("Plate");
-
-		RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
-		AnimatedSprite2D dishSprite = (AnimatedSprite2D)dishBody.GetNode("DishSprite");
+	 	parent = (GameManager)GetParent();
+		//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
+		AnimatedSprite2D dishSprite = (AnimatedSprite2D)Plate.GetNode("DishSprite");
 		dishSprite.Hide();
 
 		AnimatedSprite.Animation = "health";
@@ -53,6 +59,20 @@ public partial class Serafina : CharacterBody2D
 			AnimatedSprite.FlipH = false;
 		}
 
+		if (Input.IsActionPressed("place")) {
+			if (madeDish) {
+				GD.Print("Can place on thing");
+				madeDish = false;
+				//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
+				AnimatedSprite2D dishSprite = (AnimatedSprite2D)Plate.GetNode("DishSprite");
+				dishSprite.Hide();
+				//dishCollision.Disabled = true;
+				parent.EmitSignal(GameManager.SignalName.PlaceDish, heldDish);
+			} else {
+				GD.Print("Can't place on thing");
+			}
+		}
+
 		// Friction
 		velocity.X *= (float)0.95;
 		Velocity = velocity;
@@ -72,11 +92,13 @@ public partial class Serafina : CharacterBody2D
 			HeldFood.Add(food);
 			int newLen = HeldFood.Count;
 			int newInd = newLen - 1;
-			string placePos = "Food" + newInd;
-			RigidBody2D foodBody = (RigidBody2D)Plate.GetNode(placePos);
-			AnimatedSprite2D foodSprite = (AnimatedSprite2D)foodBody.GetNode("FoodSprite");
+			string placePos = "FoodSprite" + newInd;
+			GD.Print("Getting: ", placePos);
+			AnimatedSprite2D foodSprite = (AnimatedSprite2D)Plate.GetNode(placePos);
+			//AnimatedSprite2D foodSprite = (AnimatedSprite2D)foodBody.GetNode("FoodSprite");
 			foodSprite.Frame = foodIndex;
-			foodBody.Visible = true;
+			foodSprite.Visible = true;
+			//foodBody.Visible = true;
 			mergeFood();
 		}
 	}
@@ -84,22 +106,27 @@ public partial class Serafina : CharacterBody2D
 	private void GetDish(string dish, int dishIndex) {
 		GD.Print("Found dish!");
 		for (int i = 0; i < 3; i++) {
-			string placePos = "Food" + i;
-			RigidBody2D foodBody = (RigidBody2D)Plate.GetNode(placePos);
-			AnimatedSprite2D foodSprite = (AnimatedSprite2D)foodBody.GetNode("FoodSprite");
+			string placePos = "FoodSprite" + i;
+			//RigidBody2D foodBody = (RigidBody2D)Plate.GetNode(placePos);
+			AnimatedSprite2D foodSprite = (AnimatedSprite2D)Plate.GetNode(placePos);
+			//CollisionShape2D foodCollision = (CollisionShape2D)foodBody.GetNode("CollisionShape2D");
 			foodSprite.Hide();
+			//foodCollision.Disabled = true;
 		}
-		RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
-		AnimatedSprite2D dishSprite = (AnimatedSprite2D)dishBody.GetNode("DishSprite");
+		//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
+		AnimatedSprite2D dishSprite = (AnimatedSprite2D)Plate.GetNode("DishSprite");
+		//CollisionShape2D dishCollision = (CollisionShape2D)dishBody.GetNode("CollisionShape2D");
 		dishSprite.Show();
+		//dishCollision.Disabled = false;
 		dishSprite.Frame = dishIndex;
+		heldDish = dish;
+		madeDish = true;
 	}
 
 	// Check if any ingredients can be merged
 	private void mergeFood() {
 		if (HeldFood.Count >= 2) {
 			GD.Print(GetParent().Name);
-			GameManager parent = (GameManager)GetParent();
 			parent.EmitSignal(GameManager.SignalName.FoodObtained, HeldFood);
 		}
 	}
