@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpdj2qkynsyug"]
+[gd_scene load_steps=4 format=3 uid="uid://bpdj2qkynsyug"]
 
 [ext_resource type="Script" path="res://Scripts/Food.cs" id="1_frnvt"]
-[ext_resource type="SpriteFrames" uid="uid://c3ow31ia64vbh" path="res://Assets/Food.tres" id="2_kwhgc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u45sl"]
 
@@ -22,7 +21,6 @@ shape = SubResource("RectangleShape2D_u45sl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_u72nk")
 
-[node name="Visual" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("2_kwhgc")
+[node name="Visual" type="Sprite2D" parent="."]
 
 [connection signal="area_entered" from="Area2D" to="." method="_OnArea2DEntered"]

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.IO;
 using System.Linq;
@@ -10,9 +11,12 @@ using System.Runtime.Serialization;
 
 public partial class GameManager : Node2D
 {
+
 	private FoodTree foodTree;
 
 	private Godot.Collections.Dictionary Recipes;
+
+	private Godot.Collections.Dictionary Sprites = new Godot.Collections.Dictionary();
 
 	private Serafina player;
 
@@ -28,6 +32,8 @@ public partial class GameManager : Node2D
 
 	};
 
+	private string spriteFilePath = "res://Assets/items/";
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -35,12 +41,25 @@ public partial class GameManager : Node2D
 		FoodObtained += MergeFood;
 		PlaceDish += OnPlaceDish;
 		jsonLoader = new Json();
-		var file = File.ReadAllText("Data/FoodData.json");
-		jsonLoader.Parse(file);
+		var dataFile = File.ReadAllText("Data/FoodData.json");
+		jsonLoader.Parse(dataFile);
 		Recipes = (Godot.Collections.Dictionary)jsonLoader.Data;
 		foodTree = new FoodTree(Recipes);
+
+		var spriteFile = File.ReadAllText("Data/SpriteData.json");
+		jsonLoader.Parse(spriteFile);
+		GD.Print(jsonLoader.Data);
+		Godot.Collections.Dictionary tempDict = (Godot.Collections.Dictionary)jsonLoader.Data;
+		foreach (string line in tempDict.Keys) {
+			GD.Print("Loading: ", line);
+			Texture2D newText = (Texture2D)GD.Load(spriteFilePath + tempDict[line]);
+			Sprites[line] = newText;
+		}
+
+		GD.Print("Sprites now: ", Sprites);
+
 		player = (Serafina)GetNode("Serafina");
-		GD.Print("I got: " + player.Name);
+		//GD.Print("I got: " + player.Name);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,43 +70,16 @@ public partial class GameManager : Node2D
 
 	// Check if any ingredients can be merged
 	private void MergeFood(Godot.Collections.Array FoodToMerge) {
-		GD.Print("Moved to manager");
-		string whichRecipe = "";
-		bool foundRecipe = false;
-		foreach (string recipe in Recipes.Keys) {
-			GD.Print(Recipes[recipe]);
-			foundRecipe = false;
-			Godot.Collections.Array recipeToCheck = (Godot.Collections.Array)Recipes[recipe];
-			if (recipeToCheck.Count == FoodToMerge.Count) {
-				for (int ingredient = 0; ingredient < recipeToCheck.Count; ingredient++) {
-					GD.Print("Checking list: " + FoodToMerge);
-					GD.Print("Checking ingredient: " + (string)recipeToCheck[ingredient]);
-					if (!FoodToMerge.Contains((string)recipeToCheck[ingredient])) {
-						GD.Print("Not this recipe");
-						foundRecipe = false;
-						break;
-					}
-					foundRecipe = true;
-				}
-			}
-			if (foundRecipe) {
-				GD.Print("This recipe");
-				whichRecipe = recipe;
-				break;
-			}
-		}
+		string recipe = foodTree.findRecipe(FoodToMerge);
 		// Did not find a recipe and hit max number of ingredients
-		if (!foundRecipe && FoodToMerge.Count >= 3) {
-			whichRecipe = "slop";
-			player.EmitSignal(Serafina.SignalName.DishMerged, whichRecipe, 0);
-		} else {
-			GD.Print("Merging into: " + whichRecipe);
-			player.EmitSignal(Serafina.SignalName.DishMerged, whichRecipe, 0);
+		if (recipe == null) {
+			recipe = "slop";
 		}
+		player.EmitSignal(Serafina.SignalName.DishMerged, recipe, 0);
 	}
+
 	private void OnPlaceDish(string dish) {
 		GD.Print("Placing dish");
-
 	}
 }
 
@@ -117,15 +109,9 @@ public class FoodTree {
 			string recipeName = recipe;
 			Godot.Collections.Array recipeToCheck = (Godot.Collections.Array)Recipes[recipe];
 			recipeToCheck.Sort();
-			GD.Print("Adding ing: ", recipeToCheck, " recipe: ", recipeName);
+			//GD.Print("Adding ing: ", recipeToCheck, " recipe: ", recipeName);
 			insert(root, recipeToCheck, recipeName, 0);
 		}
-		Godot.Collections.Array testRecipe = new Godot.Collections.Array();
-		testRecipe.Add("Emet");
-		testRecipe.Add("YFlower");
-		testRecipe.Add("Cupcake");
-		GD.Print("Ingredients: ", testRecipe);
-		findRecipe(testRecipe);
 	}
 
 	public void insert(FoodNode root, Godot.Collections.Array foods, string recipeName, int start) {
@@ -137,7 +123,7 @@ public class FoodTree {
 		string foodToAdd = (string)foods[start];
 		foreach (FoodNode child in root.children){
 			if (child.ingredient == foodToAdd) {
-				GD.Print("Ingredient already exists in children");
+				//GD.Print("Ingredient already exists in children");
 				insert(child, foods, recipeName, start + 1);
 				return;
 			}
@@ -167,7 +153,7 @@ public class FoodTree {
 			}
 		}
 		//GD.Print("Recipe not found");
-		return "slop";
+		return null;
 	}
 
 	/*

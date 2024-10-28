@@ -16,10 +16,10 @@ public partial class Serafina : CharacterBody2D
 	public Area2D Plate;
 
 	[Signal]
-	public delegate void FoodObtainedEventHandler(string food, int foodIndex);
+	public delegate void FoodObtainedEventHandler(string food, string spritePath);
 
 	[Signal]
-	public delegate void DishMergedEventHandler(string dish, int dishIndex);
+	public delegate void DishMergedEventHandler(string dish, string spritePath);
 
 	public string heldDish;
 
@@ -34,7 +34,7 @@ public partial class Serafina : CharacterBody2D
 		Plate = (Area2D)GetNode("Plate");
 	 	parent = (GameManager)GetParent();
 		//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
-		AnimatedSprite2D dishSprite = (AnimatedSprite2D)Plate.GetNode("DishSprite");
+		Sprite2D dishSprite = (Sprite2D)Plate.GetNode("DishSprite");
 		dishSprite.Hide();
 
 		AnimatedSprite.Animation = "health";
@@ -64,7 +64,8 @@ public partial class Serafina : CharacterBody2D
 				GD.Print("Can place on thing");
 				madeDish = false;
 				//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
-				AnimatedSprite2D dishSprite = (AnimatedSprite2D)Plate.GetNode("DishSprite");
+				Sprite2D dishSprite = (Sprite2D)Plate.GetNode("DishSprite");
+				dishSprite.Texture = null;
 				dishSprite.Hide();
 				//dishCollision.Disabled = true;
 				parent.EmitSignal(GameManager.SignalName.PlaceDish, heldDish);
@@ -86,7 +87,7 @@ public partial class Serafina : CharacterBody2D
 	}
 
 	// Add food to held
-	public void GetFood(string food, int foodIndex) {
+	public void GetFood(string food, string spritePath) {
 		// Check if food can be added
 		if (HeldFood.Count < 3) {
 			HeldFood.Add(food);
@@ -94,31 +95,32 @@ public partial class Serafina : CharacterBody2D
 			int newInd = newLen - 1;
 			string placePos = "FoodSprite" + newInd;
 			GD.Print("Getting: ", placePos);
-			AnimatedSprite2D foodSprite = (AnimatedSprite2D)Plate.GetNode(placePos);
+			Sprite2D foodSprite = (Sprite2D)Plate.GetNode(placePos);
 			//AnimatedSprite2D foodSprite = (AnimatedSprite2D)foodBody.GetNode("FoodSprite");
-			foodSprite.Frame = foodIndex;
+			foodSprite.Texture = (Texture2D)GD.Load(spritePath); 
 			foodSprite.Visible = true;
 			//foodBody.Visible = true;
 			mergeFood();
 		}
 	}
 
-	private void GetDish(string dish, int dishIndex) {
+	private void GetDish(string dish, string spritePath) {
 		GD.Print("Found dish!");
 		for (int i = 0; i < 3; i++) {
 			string placePos = "FoodSprite" + i;
 			//RigidBody2D foodBody = (RigidBody2D)Plate.GetNode(placePos);
-			AnimatedSprite2D foodSprite = (AnimatedSprite2D)Plate.GetNode(placePos);
+			Sprite2D foodSprite = (Sprite2D)Plate.GetNode(placePos);
+			foodSprite.Texture = null;
 			//CollisionShape2D foodCollision = (CollisionShape2D)foodBody.GetNode("CollisionShape2D");
 			foodSprite.Hide();
 			//foodCollision.Disabled = true;
 		}
 		//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
-		AnimatedSprite2D dishSprite = (AnimatedSprite2D)Plate.GetNode("DishSprite");
+		Sprite2D dishSprite = (Sprite2D)Plate.GetNode("DishSprite");
 		//CollisionShape2D dishCollision = (CollisionShape2D)dishBody.GetNode("CollisionShape2D");
 		dishSprite.Show();
 		//dishCollision.Disabled = false;
-		dishSprite.Frame = dishIndex;
+		dishSprite.Texture = (Texture2D)GD.Load(spritePath);
 		heldDish = dish;
 		madeDish = true;
 	}

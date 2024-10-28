@@ -4,20 +4,7 @@ using System;
 public partial class Food : RigidBody2D
 {
 
-	public Godot.Collections.Array FoodTypes = new Godot.Collections.Array{
-		"Cupcake",
-		"BFlower",
-		"YFlower",
-		"PFlower",
-		"RFlower",
-		"Soda",
-		"Potion",
-		"Emet"
-	};
-
-
-	[Export]
-	public int ID { get; set; }
+	public string name;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -33,7 +20,7 @@ public partial class Food : RigidBody2D
 		if (area.Name == "Plate") {
 			GD.Print("Hit sera");
 			Serafina parent = (Serafina)area.GetParent();
-			parent.EmitSignal(Serafina.SignalName.FoodObtained, FoodTypes[ID], ID);
+			//parent.EmitSignal(Serafina.SignalName.FoodObtained, FoodTypes[ID], ID);
 		}
 	}
 }
