@@ -1,9 +1,11 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 
 
 public partial class GameManager : Node2D
@@ -36,6 +38,7 @@ public partial class GameManager : Node2D
 		var file = File.ReadAllText("Data/FoodData.json");
 		jsonLoader.Parse(file);
 		Recipes = (Godot.Collections.Dictionary)jsonLoader.Data;
+		foodTree = new FoodTree(Recipes);
 		player = (Serafina)GetNode("Serafina");
 		GD.Print("I got: " + player.Name);
 	}
@@ -93,11 +96,18 @@ public class FoodNode {
 	public string ingredient;
 	public string recipe;
 
-	public FoodNode[] children;
+	public List<FoodNode> children;
+
 	public FoodNode(string ingredientName) {
 		ingredient = ingredientName;
+		children = new List<FoodNode>();
+	}
+
+	public void setRecipe(string recipeName) {
+		recipe = recipeName;
 	}
 }
+
 
 public class FoodTree {
 	public FoodNode root = new FoodNode(null);
@@ -106,19 +116,58 @@ public class FoodTree {
 		foreach (string recipe in Recipes.Keys) {
 			string recipeName = recipe;
 			Godot.Collections.Array recipeToCheck = (Godot.Collections.Array)Recipes[recipe];
-			GD.Print("Adding: ", recipeToCheck, recipeName);
-			insert(root, )
+			recipeToCheck.Sort();
+			GD.Print("Adding ing: ", recipeToCheck, " recipe: ", recipeName);
+			insert(root, recipeToCheck, recipeName, 0);
 		}
+		Godot.Collections.Array testRecipe = new Godot.Collections.Array();
+		testRecipe.Add("Emet");
+		testRecipe.Add("YFlower");
+		testRecipe.Add("Cupcake");
+		GD.Print("Ingredients: ", testRecipe);
+		findRecipe(testRecipe);
 	}
 
 	public void insert(FoodNode root, Godot.Collections.Array foods, string recipeName, int start) {
 		if (start >= foods.Count) {
+			GD.Print("Setting recipe");
 			root.recipe = recipeName;
 			return;
 		}
 		string foodToAdd = (string)foods[start];
+		foreach (FoodNode child in root.children){
+			if (child.ingredient == foodToAdd) {
+				GD.Print("Ingredient already exists in children");
+				insert(child, foods, recipeName, start + 1);
+				return;
+			}
+		}
 		FoodNode newNode = new FoodNode(foodToAdd);
-		root.children.Append(newNode);
+		root.children.Add(newNode);
+		insert(newNode, foods, recipeName, start + 1);
+		return;
+	}
+
+	public string findRecipe(Godot.Collections.Array ingredients) {
+		ingredients.Sort();
+		return traverseTree(root, ingredients, 0);
+	}
+
+	public string traverseTree(FoodNode root, Godot.Collections.Array ingredients, int start) {
+		//GD.Print("Traversing");
+		if (root.recipe != null) {
+			//GD.Print("Found recipe");
+			return root.recipe;
+		}
+		foreach (FoodNode child in root.children) {
+			//GD.Print("At child: :", child.ingredient);
+			if (child.ingredient == (string)ingredients[start]) {
+				//GD.Print("Found a match");
+				return traverseTree(child, ingredients, start + 1); //<-- recursive
+			}
+		}
+		//GD.Print("Recipe not found");
+		return "slop";
 	}
 
 	/*

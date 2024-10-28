@@ -1,3 +1,5 @@
 {
-	"Emet": ["BFlower", "Cupcake", "YFlower"]
+	"Emet": ["BFlower", "Cupcake", "YFlower"],
+	"Macaron": ["BFlower", "Soda", "Tea"],
+	"Trinkets": ["Tea", "YFlower", "Potion"]
 }
