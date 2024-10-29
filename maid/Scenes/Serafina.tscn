@@ -136,3 +136,24 @@ shape = SubResource("RectangleShape2D_o7vus")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ContainPlate"]
 position = Vector2(-188.5, -47)
 shape = SubResource("RectangleShape2D_g5ag0")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.14
+emission_shape = 1
+emission_sphere_radius = 19.1
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 833.33
+angular_velocity_min = 100.0
+angular_velocity_max = 100.0
+radial_accel_min = 10.0
+radial_accel_max = 10.0
+angle_min = -378.2
+angle_max = 247.3

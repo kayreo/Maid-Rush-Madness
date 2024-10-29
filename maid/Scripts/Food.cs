@@ -22,6 +22,7 @@ public partial class Food : RigidBody2D
 			Sprite2D vis = (Sprite2D)GetNode("Visual");
 			Serafina parent = (Serafina)area.GetParent();
 			parent.EmitSignal(Serafina.SignalName.FoodObtained, name, vis.Texture);
+			QueueFree();
 		}
 	}
 }

@@ -103,7 +103,7 @@ public partial class GameManager : Node2D
 		vis.Texture = dish.Texture;
 		newNode.Position = new Godot.Vector2(posX, table.Position.Y);
 		GetNode("Dishes").AddChild(newNode);
-		newNode.Velocity = new Godot.Vector2(-200, 0);
+		newNode.Velocity = new Godot.Vector2(0, 400);
 	}
 
 	private void OnPickRandomFood(Food newFood) {
@@ -176,9 +176,12 @@ public class FoodTree {
 
 	public string traverseTree(FoodNode root, Godot.Collections.Array ingredients, int start) {
 		//GD.Print("Traversing");
-		if (root.recipe != null) {
-			//GD.Print("Found recipe");
-			return root.recipe;
+		if (start >= ingredients.Count) {
+			if (root.recipe != null) {
+				//GD.Print("Found recipe");
+				return root.recipe;
+			}
+			return null;
 		}
 		foreach (FoodNode child in root.children) {
 			//GD.Print("At child: :", child.ingredient);

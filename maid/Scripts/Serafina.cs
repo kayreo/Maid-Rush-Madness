@@ -51,12 +51,12 @@ public partial class Serafina : CharacterBody2D
 		if (Input.IsActionPressed("left"))
 		{
 			velocity.X = -1 * Speed;
-			AnimatedSprite.FlipH = true;
+			//AnimatedSprite.FlipH = true;
 		}
 		else if (Input.IsActionPressed("right"))
 		{
 			velocity.X = 1 * Speed;
-			AnimatedSprite.FlipH = false;
+			//AnimatedSprite.FlipH = false;
 		}
 
 		if (Input.IsActionPressed("place")) {
@@ -70,6 +70,7 @@ public partial class Serafina : CharacterBody2D
 				dishSprite.Hide();
 				//dishCollision.Disabled = true;
 				heldDish = null;
+				HeldFood.Clear();
 			} else {
 				GD.Print("Can't place on thing");
 			}
@@ -126,7 +127,7 @@ public partial class Serafina : CharacterBody2D
 
 	// Check if any ingredients can be merged
 	private void mergeFood() {
-		if (HeldFood.Count >= 2) {
+		if (HeldFood.Count > 2) {
 			GD.Print(GetParent().Name);
 			parent.EmitSignal(GameManager.SignalName.FoodObtained, HeldFood);
 		}
