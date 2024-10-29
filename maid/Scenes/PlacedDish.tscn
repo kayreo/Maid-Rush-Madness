@@ -1,12 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://b75u2t47bnamx"]
+[gd_scene load_steps=3 format=3 uid="uid://b75u2t47bnamx"]
+
+[ext_resource type="Script" path="res://Scripts/PlacedDish.cs" id="1_7ciy5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h8lxt"]
 
 [node name="PlacedDish" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 4
+script = ExtResource("1_7ciy5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h8lxt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_OnVisibleOnScreenNotifier2DScreenExited"]

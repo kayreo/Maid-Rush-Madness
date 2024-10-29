@@ -80,10 +80,8 @@ public partial class GameManager : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		foreach (CharacterBody2D child in dishes.GetChildren()) {
-			child.MoveAndSlide();
-		}
 	}
+
 
 
 	// Check if any ingredients can be merged
@@ -103,12 +101,9 @@ public partial class GameManager : Node2D
 		CharacterBody2D newNode = (CharacterBody2D)PlacedDish.Instantiate();
 		Sprite2D vis = (Sprite2D)newNode.GetNode("Sprite2D");
 		vis.Texture = dish.Texture;
-		GD.Print("Texture: ", vis.Texture);
 		newNode.Position = new Godot.Vector2(posX, table.Position.Y);
-		GD.Print("New position: ", newNode.Position);
 		GetNode("Dishes").AddChild(newNode);
 		newNode.Velocity = new Godot.Vector2(-200, 0);
-		newNode.MoveAndSlide();
 	}
 
 	private void OnPickRandomFood(Food newFood) {
