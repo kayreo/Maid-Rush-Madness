@@ -16,10 +16,10 @@ public partial class Serafina : CharacterBody2D
 	public Area2D Plate;
 
 	[Signal]
-	public delegate void FoodObtainedEventHandler(string food, string spritePath);
+	public delegate void FoodObtainedEventHandler(string food, Texture2D spriteTexture);
 
 	[Signal]
-	public delegate void DishMergedEventHandler(string dish, string spritePath);
+	public delegate void DishMergedEventHandler(string food, Texture2D spriteTexture);
 
 	public string heldDish;
 
@@ -65,10 +65,11 @@ public partial class Serafina : CharacterBody2D
 				madeDish = false;
 				//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
 				Sprite2D dishSprite = (Sprite2D)Plate.GetNode("DishSprite");
+				parent.EmitSignal(GameManager.SignalName.PlaceDish, dishSprite);
 				dishSprite.Texture = null;
 				dishSprite.Hide();
 				//dishCollision.Disabled = true;
-				parent.EmitSignal(GameManager.SignalName.PlaceDish, heldDish);
+				heldDish = null;
 			} else {
 				GD.Print("Can't place on thing");
 			}
@@ -87,7 +88,7 @@ public partial class Serafina : CharacterBody2D
 	}
 
 	// Add food to held
-	public void GetFood(string food, string spritePath) {
+	public void GetFood(string food, Texture2D spriteTexture) {
 		// Check if food can be added
 		if (HeldFood.Count < 3) {
 			HeldFood.Add(food);
@@ -96,15 +97,13 @@ public partial class Serafina : CharacterBody2D
 			string placePos = "FoodSprite" + newInd;
 			GD.Print("Getting: ", placePos);
 			Sprite2D foodSprite = (Sprite2D)Plate.GetNode(placePos);
-			//AnimatedSprite2D foodSprite = (AnimatedSprite2D)foodBody.GetNode("FoodSprite");
-			foodSprite.Texture = (Texture2D)GD.Load(spritePath); 
+			foodSprite.Texture = spriteTexture; 
 			foodSprite.Visible = true;
-			//foodBody.Visible = true;
 			mergeFood();
 		}
 	}
 
-	private void GetDish(string dish, string spritePath) {
+	private void GetDish(string dish, Texture2D spriteTexture) {
 		GD.Print("Found dish!");
 		for (int i = 0; i < 3; i++) {
 			string placePos = "FoodSprite" + i;
@@ -120,7 +119,7 @@ public partial class Serafina : CharacterBody2D
 		//CollisionShape2D dishCollision = (CollisionShape2D)dishBody.GetNode("CollisionShape2D");
 		dishSprite.Show();
 		//dishCollision.Disabled = false;
-		dishSprite.Texture = (Texture2D)GD.Load(spritePath);
+		dishSprite.Texture = spriteTexture;
 		heldDish = dish;
 		madeDish = true;
 	}

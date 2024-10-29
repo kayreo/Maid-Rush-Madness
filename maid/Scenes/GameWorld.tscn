@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ktnnncnv3xab"]
+[gd_scene load_steps=8 format=3 uid="uid://ktnnncnv3xab"]
 
 [ext_resource type="PackedScene" uid="uid://ej07vkvm2xbb" path="res://Scenes/Serafina.tscn" id="1_40ut1"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_pk06s"]
 [ext_resource type="PackedScene" uid="uid://1u7rfdwivbu2" path="res://Scenes/Table.tscn" id="2_0xnwv"]
+[ext_resource type="PackedScene" uid="uid://b75u2t47bnamx" path="res://Scenes/PlacedDish.tscn" id="2_7rwda"]
 [ext_resource type="PackedScene" uid="uid://c8hd6iinmplop" path="res://Scenes/FoodSpawner.tscn" id="3_pd8vf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5x2n"]
@@ -13,6 +14,7 @@ size = Vector2(50, 1135.5)
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_pk06s")
+PlacedDish = ExtResource("2_7rwda")
 
 [node name="Serafina" parent="." instance=ExtResource("1_40ut1")]
 position = Vector2(276, 816)
@@ -44,9 +46,6 @@ shape = SubResource("RectangleShape2D_7fkf3")
 position = Vector2(-25, 552.25)
 shape = SubResource("RectangleShape2D_7fkf3")
 
-[node name="Table" parent="." instance=ExtResource("2_0xnwv")]
-position = Vector2(899, 1020)
-
 [node name="FoodSpawnPoints" type="Node2D" parent="."]
 
 [node name="FoodSpawner" parent="FoodSpawnPoints" instance=ExtResource("3_pd8vf")]
@@ -63,3 +62,8 @@ position = Vector2(1343, 8)
 
 [node name="FoodSpawner8" parent="FoodSpawnPoints" instance=ExtResource("3_pd8vf")]
 position = Vector2(1724, 2)
+
+[node name="Table" parent="." instance=ExtResource("2_0xnwv")]
+position = Vector2(899, 1020)
+
+[node name="Dishes" type="Node2D" parent="."]

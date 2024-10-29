@@ -70,7 +70,7 @@ position = Vector2(-12, -29)
 shape = SubResource("RectangleShape2D_osnpx")
 
 [node name="DishSprite" type="Sprite2D" parent="Plate"]
-position = Vector2(39, -45)
+position = Vector2(-8, -45)
 scale = Vector2(0.445, 0.445)
 
 [node name="FoodSprite0" type="Sprite2D" parent="Plate"]

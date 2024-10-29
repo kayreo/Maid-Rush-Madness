@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 
@@ -12,7 +13,12 @@ using System.Runtime.Serialization;
 public partial class GameManager : Node2D
 {
 
+	[Export]
+	public PackedScene PlacedDish { get; set; }
+
 	private FoodTree foodTree;
+
+	private Node2D dishes;
 
 	private Godot.Collections.Dictionary Recipes;
 
@@ -20,17 +26,22 @@ public partial class GameManager : Node2D
 
 	private Serafina player;
 
+	private Node2D table;
+
 	private Json jsonLoader;
 
 	[Signal]
 	public delegate void FoodObtainedEventHandler(Godot.Collections.Array FoodToMerge);
 
 	[Signal]
-	public delegate void PlaceDishEventHandler(string DishToPlace);
+	public delegate void PlaceDishEventHandler(Sprite2D DishToPlace);
 
-	public Godot.Collections.Dictionary FoodDict = new Godot.Collections.Dictionary{
+	[Signal]
+	public delegate void PickRandomFoodEventHandler(Food newFood);
 
-	};
+	public Godot.Collections.Dictionary FoodDict = new Godot.Collections.Dictionary();
+
+	public RandomNumberGenerator Random = new RandomNumberGenerator();
 
 	private string spriteFilePath = "res://Assets/items/";
 
@@ -40,6 +51,8 @@ public partial class GameManager : Node2D
 	{
 		FoodObtained += MergeFood;
 		PlaceDish += OnPlaceDish;
+		PickRandomFood += OnPickRandomFood;
+
 		jsonLoader = new Json();
 		var dataFile = File.ReadAllText("Data/FoodData.json");
 		jsonLoader.Parse(dataFile);
@@ -52,34 +65,61 @@ public partial class GameManager : Node2D
 		Godot.Collections.Dictionary tempDict = (Godot.Collections.Dictionary)jsonLoader.Data;
 		foreach (string line in tempDict.Keys) {
 			GD.Print("Loading: ", line);
-			Texture2D newText = (Texture2D)GD.Load(spriteFilePath + tempDict[line]);
-			Sprites[line] = newText;
+			Texture2D newTexture = (Texture2D)GD.Load(spriteFilePath + tempDict[line]);
+			Sprites[line] = newTexture;
 		}
 
 		GD.Print("Sprites now: ", Sprites);
 
 		player = (Serafina)GetNode("Serafina");
+		table = (Node2D)GetNode("Table");
+		dishes = (Node2D)GetNode("Dishes");
 		//GD.Print("I got: " + player.Name);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		foreach (CharacterBody2D child in dishes.GetChildren()) {
+			child.MoveAndSlide();
+		}
 	}
 
 
 	// Check if any ingredients can be merged
 	private void MergeFood(Godot.Collections.Array FoodToMerge) {
 		string recipe = foodTree.findRecipe(FoodToMerge);
+		GD.Print("Recipe found: ", recipe);
 		// Did not find a recipe and hit max number of ingredients
 		if (recipe == null) {
 			recipe = "slop";
 		}
-		player.EmitSignal(Serafina.SignalName.DishMerged, recipe, 0);
+		player.EmitSignal(Serafina.SignalName.DishMerged, recipe, Sprites[recipe]);
 	}
 
-	private void OnPlaceDish(string dish) {
+	private void OnPlaceDish(Sprite2D dish) {
 		GD.Print("Placing dish");
+		int posX = (int)dish.GlobalPosition.X;
+		CharacterBody2D newNode = (CharacterBody2D)PlacedDish.Instantiate();
+		Sprite2D vis = (Sprite2D)newNode.GetNode("Sprite2D");
+		vis.Texture = dish.Texture;
+		GD.Print("Texture: ", vis.Texture);
+		newNode.Position = new Godot.Vector2(posX, table.Position.Y);
+		GD.Print("New position: ", newNode.Position);
+		GetNode("Dishes").AddChild(newNode);
+		newNode.Velocity = new Godot.Vector2(-200, 0);
+		newNode.MoveAndSlide();
+	}
+
+	private void OnPickRandomFood(Food newFood) {
+		Random.Randomize();
+		Godot.Collections.Array keyArray = (Godot.Collections.Array)Sprites.Keys;
+		int randomKey = (int)Random.RandiRange(0, keyArray.Count - 1);
+		string randomSprite = (string)keyArray[randomKey];
+		Texture2D randomTexture = (Texture2D)Sprites[randomSprite];
+		Sprite2D newFoodVis = (Sprite2D)newFood.GetNode("Visual");
+		newFoodVis.Texture = randomTexture;
+		newFood.name = randomSprite;
 	}
 }
 
@@ -155,43 +195,4 @@ public class FoodTree {
 		//GD.Print("Recipe not found");
 		return null;
 	}
-
-	/*
-        newNode = Node (val, val2)
-        if (self.root == None):
-            self.root = newNode
-        else:
-            current = self.root
-            parent = self.root
-            while (current != None):
-                parent = current
-                if (val < current.id):
-                    current = current.lChild
-                else:
-                    current = current.rChild
-            if (val < parent.id):
-                parent.lChild = newNode
-            else:
-                parent.rChild = newNode
-
-	*/
-
-
-	/*
-    def __init__(self, data):
-        self.root = TrieNode()
-        #TODO: Student
-        for d in data:
-            split = d.split(", ")
-            self.insert(self.root, split[0].lower(), split[1], 0)
-
-    def insert(self, root, word, url, start):
-        if start >= len(word):
-            root.set_url(url)
-            return
-        if root.children[ord(word[start]) - 97] is None:
-            root.children[ord(word[start]) - 97] = TrieNode()
-        self.insert(root.children[ord(word[start]) - 97], word, url, start + 1)
-
-	*/
 }
