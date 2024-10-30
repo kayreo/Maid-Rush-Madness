@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ej07vkvm2xbb"]
+[gd_scene load_steps=14 format=3 uid="uid://ej07vkvm2xbb"]
 
 [ext_resource type="Script" path="res://Scripts/Serafina.cs" id="1_0xagd"]
 [ext_resource type="Texture2D" uid="uid://bfmopogtw3y1u" path="res://Assets/Serafina/seraHealth0.png" id="2_bmkwb"]
@@ -49,6 +49,10 @@ size = Vector2(341, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g5ag0"]
 size = Vector2(9, 108)
+
+[sub_resource type="Gradient" id="Gradient_0t80v"]
+offsets = PackedFloat32Array(0, 0.426667, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.573333, 0.573333, 0.573333, 0.573333, 0, 0, 0, 0)
 
 [node name="Serafina" type="CharacterBody2D"]
 script = ExtResource("1_0xagd")
@@ -157,3 +161,4 @@ radial_accel_min = 10.0
 radial_accel_max = 10.0
 angle_min = -378.2
 angle_max = 247.3
+color_ramp = SubResource("Gradient_0t80v")

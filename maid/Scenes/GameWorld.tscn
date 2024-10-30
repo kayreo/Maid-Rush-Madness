@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ktnnncnv3xab"]
+[gd_scene load_steps=9 format=3 uid="uid://ktnnncnv3xab"]
 
 [ext_resource type="PackedScene" uid="uid://ej07vkvm2xbb" path="res://Scenes/Serafina.tscn" id="1_40ut1"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_pk06s"]
 [ext_resource type="PackedScene" uid="uid://1u7rfdwivbu2" path="res://Scenes/Table.tscn" id="2_0xnwv"]
 [ext_resource type="PackedScene" uid="uid://b75u2t47bnamx" path="res://Scenes/PlacedDish.tscn" id="2_7rwda"]
 [ext_resource type="PackedScene" uid="uid://c8hd6iinmplop" path="res://Scenes/FoodSpawner.tscn" id="3_pd8vf"]
+[ext_resource type="PackedScene" uid="uid://bkfji30drxyn6" path="res://Scenes/RequestWindow.tscn" id="6_ce0h2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5x2n"]
 size = Vector2(1920, 33)
@@ -64,6 +65,8 @@ position = Vector2(1343, 8)
 position = Vector2(1724, 2)
 
 [node name="Table" parent="." instance=ExtResource("2_0xnwv")]
-position = Vector2(899, 1020)
+position = Vector2(956, 1026)
 
 [node name="Dishes" type="Node2D" parent="."]
+
+[node name="RequestWindow" parent="." instance=ExtResource("6_ce0h2")]

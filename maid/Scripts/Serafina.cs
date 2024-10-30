@@ -11,6 +11,8 @@ public partial class Serafina : CharacterBody2D
 
 	public AnimatedSprite2D AnimatedSprite;
 
+	public CpuParticles2D ParticleEffect;
+
 	private GameManager parent;
 
 	public Area2D Plate;
@@ -23,14 +25,15 @@ public partial class Serafina : CharacterBody2D
 
 	public string heldDish;
 
-	public Godot.Collections.Array HeldFood = new Godot.Collections.Array{
+	public Godot.Collections.Array HeldFood = new Godot.Collections.Array();
 
-	};
+	public Godot.Collections.Array currentRequests = new Godot.Collections.Array();
 
     public override void _Ready()
     {
         base._Ready();
 		AnimatedSprite = (AnimatedSprite2D)GetNode("AnimatedSprite2D");
+		ParticleEffect = (CpuParticles2D)GetNode("CPUParticles2D");
 		Plate = (Area2D)GetNode("Plate");
 	 	parent = (GameManager)GetParent();
 		//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
@@ -65,7 +68,7 @@ public partial class Serafina : CharacterBody2D
 				madeDish = false;
 				//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
 				Sprite2D dishSprite = (Sprite2D)Plate.GetNode("DishSprite");
-				parent.EmitSignal(GameManager.SignalName.PlaceDish, dishSprite);
+				parent.EmitSignal(GameManager.SignalName.PlaceDish, dishSprite, heldDish);
 				dishSprite.Texture = null;
 				dishSprite.Hide();
 				//dishCollision.Disabled = true;
@@ -101,6 +104,8 @@ public partial class Serafina : CharacterBody2D
 			foodSprite.Texture = spriteTexture; 
 			foodSprite.Visible = true;
 			mergeFood();
+			ParticleEffect.Texture = spriteTexture;
+			ParticleEffect.Emitting = true;
 		}
 	}
 

@@ -1,16 +1,28 @@
-shader_type canvas_item;
+//shader_type canvas_item;
 // Code adapted from: https://godotshaders.com/shader/panning/
 // --- Uniforms --- //
-uniform vec2 speed = vec2(0.001, 0.0);
-uniform vec2 increment = vec2(1.0, 0.0);
+//uniform vec2 speed = vec2(0.001, 0.0);
+//uniform vec2 increment = vec2(1.0, 0.0);
+//
+//void vertex() {
+	//// Called for every vertex the material is visible on.
+//}
+//
+//// --- Functions --- //
+//void fragment() {
+	//COLOR = texture(TEXTURE, mod(UV + mod(TIME, 10.0) * speed, 1.0));
+//}
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
+
+shader_type canvas_item;
+
+// --- Uniforms --- //
+uniform vec2 speed = vec2(0.35, 0.0);
+uniform float interval;
 
 // --- Functions --- //
 void fragment() {
-	COLOR = texture(TEXTURE, mod(UV + mod(TIME, 10.0) * speed, 1.0));
+	COLOR = texture(TEXTURE, mod(UV + interval * speed, 1.0));
 }
 
 //void light() {

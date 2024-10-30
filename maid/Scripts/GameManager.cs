@@ -28,22 +28,30 @@ public partial class GameManager : Node2D
 
 	private Node2D table;
 
+	public Control requestUI;
+
+	public Godot.Collections.Array curRecipes = new Godot.Collections.Array();
+
 	private Json jsonLoader;
 
 	[Signal]
 	public delegate void FoodObtainedEventHandler(Godot.Collections.Array FoodToMerge);
 
 	[Signal]
-	public delegate void PlaceDishEventHandler(Sprite2D DishToPlace);
+	public delegate void PlaceDishEventHandler(Sprite2D DishToPlace, string DishName);
 
 	[Signal]
 	public delegate void PickRandomFoodEventHandler(Food newFood);
 
 	public Godot.Collections.Dictionary FoodDict = new Godot.Collections.Dictionary();
 
+	public Godot.Collections.Array RecipeKeys;
+
 	public RandomNumberGenerator Random = new RandomNumberGenerator();
 
 	private string spriteFilePath = "res://Assets/items/";
+
+	public string tgtRecipe;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -57,6 +65,7 @@ public partial class GameManager : Node2D
 		var dataFile = File.ReadAllText("Data/FoodData.json");
 		jsonLoader.Parse(dataFile);
 		Recipes = (Godot.Collections.Dictionary)jsonLoader.Data;
+		RecipeKeys = (Godot.Collections.Array)Recipes.Keys;
 		foodTree = new FoodTree(Recipes);
 
 		var spriteFile = File.ReadAllText("Data/SpriteData.json");
@@ -74,6 +83,12 @@ public partial class GameManager : Node2D
 		player = (Serafina)GetNode("Serafina");
 		table = (Node2D)GetNode("Table");
 		dishes = (Node2D)GetNode("Dishes");
+		requestUI = (Control)GetNode("RequestWindow");
+		
+
+		Label recipeLabel = (Label)requestUI.GetNode("CanvasLayer/VBoxContainer/RecipeLabel");
+		recipeLabel.Text = "BFlower";
+		tgtRecipe = "BFlower";
 		//GD.Print("I got: " + player.Name);
 	}
 
@@ -95,7 +110,7 @@ public partial class GameManager : Node2D
 		player.EmitSignal(Serafina.SignalName.DishMerged, recipe, Sprites[recipe]);
 	}
 
-	private void OnPlaceDish(Sprite2D dish) {
+	private void OnPlaceDish(Sprite2D dish, string dishName) {
 		GD.Print("Placing dish");
 		int posX = (int)dish.GlobalPosition.X;
 		CharacterBody2D newNode = (CharacterBody2D)PlacedDish.Instantiate();
@@ -103,7 +118,12 @@ public partial class GameManager : Node2D
 		vis.Texture = dish.Texture;
 		newNode.Position = new Godot.Vector2(posX, table.Position.Y);
 		GetNode("Dishes").AddChild(newNode);
-		newNode.Velocity = new Godot.Vector2(0, 400);
+		newNode.Velocity = new Godot.Vector2(-400, 0);
+		
+		if (dishName == tgtRecipe) {
+			GD.Print("Correct Dish!");
+			OnPickRandomDish();
+		}
 	}
 
 	private void OnPickRandomFood(Food newFood) {
@@ -116,6 +136,20 @@ public partial class GameManager : Node2D
 		newFoodVis.Texture = randomTexture;
 		newFood.name = randomSprite;
 	}
+
+	private void OnPickRandomDish() {
+		Random.Randomize();
+		GD.Print("Keys: ", RecipeKeys);
+		int randomKey = (int)Random.RandiRange(0, RecipeKeys.Count - 1);
+		string randomDish = (string)RecipeKeys[randomKey];
+		GD.Print("I got the dish: ", randomDish);
+
+		Label recipeLabel = (Label)requestUI.GetNode("CanvasLayer/VBoxContainer/RecipeLabel");
+		recipeLabel.Text = randomDish;
+		tgtRecipe = randomDish;
+		//Texture2D randomTexture = (Texture2D)Sprites[randomSprite];
+	}
+
 }
 
 
