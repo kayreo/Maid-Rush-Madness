@@ -1,6 +1,18 @@
 {
-	"Emet": ["BFlower", "Cupcake", "YFlower"],
-	"Macaron": ["BFlower", "Soda", "Tea"],
-	"Trinkets": ["Tea", "YFlower", "Potion"],
-	"BFlower": ["BFlower", "BFlower", "BFlower"]
+	"Bflower": ["Bflower", "Bflower", "Bflower"],
+	"Cake": ["Egg", "Flour", "Milk"],
+	"Brownies": ["Chocolate", "Egg", "Flour"],
+	"Sundae": ["Ice cream", "Chocolate", "Strawberries"],
+	"Chocolate milkshake": ["Ice cream", "Milk", "Chocolate"],
+	"Strawberry milkshake": ["Ice cream", "Milk", "Chocolate"],
+	"Rice pudding": ["Rice", "Water", "Milk"],
+	"Spaghetti": ["Noddles", "Tomato", "Beef"],
+	"Ramen": ["Water", "Noodles", "Egg"],
+	"Omurice": ["Egg", "Tomato", "Rice"],
+	"Garlic bread": ["Flour", "Water", "Garlic"],
+	"Steak dinner": ["Beef", "Potato", "Garlic"],
+	"Garlic fries": ["Potato", "Garlic", "Tomato"],
+	"Tentacle ramen": ["Water", "Noodles", "Tentacle"],
+	"Blood milkshake": ["Milk", "Ice cream", "Blood"],
+	"Rat dinner": ["Rat", "Potato", "Garlic"]
 }

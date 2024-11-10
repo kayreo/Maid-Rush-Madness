@@ -1,0 +1,190 @@
+{
+	"Level0Start": {
+		"0": [
+			"02",
+			"Where is it... wheres the number..."
+		],
+		"1": [
+			"02", "none",
+			"I need to call him before its too late!"
+		],
+		"2": [
+			"02", "none" ,
+			"I cant believe I forgot."
+		],
+		"3": [
+			"01", "none",
+			"Whatever, I'll just see if i can find Gigi's number instead."
+		],
+		"4": [
+			"02", "none",
+			"Huh? Seems like the phone's's out..."
+		],
+		"5": [
+			"01", "none",
+			"Looks like I'll need to fix this up before I can call Gigi."
+		],
+		"6": [
+			"02", "none",
+			"(To start, press the question mark in the corner of the screen!)"
+		]
+	},
+	"Level0End": {
+		"0": [
+			"01", "none",
+			"Sounds like it's working!"
+		],
+		"1": [
+			"01", "none",
+			"Now to call Gigi..."
+		]
+	},
+
+	"Level1Start": {
+		"0": [
+			"01", "10",
+			"Hey! Gigi! What's up!"
+		],
+		"1": [
+			"00", "11",
+			"Ughhh. I just woke up... "
+		],
+		"2": [
+			"00", "11",
+			"I passed out playing Exploding Love Romance 9000 (MURDER EDITION)."
+		],		
+		"3": [
+			"01", "10",
+			"Uh ok well no time for that. anyways, listen, I need you to call-"
+		],
+		"4": [
+			"00", "11",
+			"Oh shoot, it's The Day, isn't it.."
+		],
+		"5": [
+			"01", "10",
+			"It's The Day.."
+		],		
+		"6": [
+			"00", "11",
+			"Ok, um, I can't find my glasses right now, and I don't remember his number..."
+		],
+		"7": [
+			"00", "11",
+			"I'll call Johnny instead."
+		],
+		"8": [
+			"01", "10",
+			"Great! Thanks!-"
+		],
+		"9": [
+			"11", "none",
+			"Great..."
+		]
+	},
+	"Level1End": {
+		"0": [
+			"12", "20",
+			"Oh, there they are! I can see again!"
+		],
+		"1": ["12", "21",
+				"What?"],
+		"2": [
+			"12", "20",
+			"Oh, nothing. whats up?"
+		],
+		"3": [
+			"12", "21",
+			"Nothing much. whaddya want?"
+		], 
+		"4": [
+			"12", "20",
+			"You know what day it is?"
+		], 
+		"5": [
+			"12", "21",
+			"Oh shoot."
+		], 
+		"6": [
+			"12", "20",
+			"Shoot!"
+		], 
+		"7": [
+			"12", "21",
+			"Shoot!!"
+		], 
+		"8": [
+			"12", "20",
+			"Shoo-"
+		], 
+		"9": [
+			"12", "21",
+			"Ok I'll call him bye."
+		]
+	},
+	"Level2Start": {
+		"0": [
+			"21", "30",
+			"Hey man, can't believe we almost forgot, but-"
+		],
+		"1": [
+			"20", "30",
+			"~kzzt~ hi- ~kzzt~ my connection- ~kzzt~"
+		],
+		"2": [
+			"21", "30",
+			"Woah, your connection's awful. Listen-"
+		],
+		"3": [
+			"20", "30",
+			"hello? ~kzzt~ listen i ~kzzt~ cant hear ~kzzt~ "
+		],
+		"4": [
+			"20", "30",
+			"weather ~kzzt~ landline ~kzzt~ 5 piece nugget "
+		],
+		"5": [
+			"21", "30",
+			"...uh, I'll stay on the line. let's hope the weather clears up... "
+		]
+
+	},
+	"Level2End": {
+		"0": [
+			"21", "30",
+			"hm, i think the connection should be back."
+		],
+		"1": [
+			"21", "30",
+			"well, i just wanted to say from all of us..."
+		],
+		"2": [
+			"21", "30",
+			"well, i just wanted to say from all of us..."
+		],
+		"3": [
+			"21", "30",
+			"happy birthday."
+		],
+		"4": [
+			"20", "31",
+			"wow, really?! yippee!! hooray!! "
+		],
+		"5": [
+			"20", "31",
+			"so jolly! so very, very jolly! "
+		],
+		"6": [
+			"20", "31",
+			"so jolly!!!!!!!!!!!"
+		],
+		"7": [
+			"20", "31",
+			"you're all the best friends around!"
+		],
+		"8": [
+			"21", "31",
+			"...hehe, i know."
+		]
+	}
+}

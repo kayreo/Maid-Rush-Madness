@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://4nuihuijam7l"]
+
+[ext_resource type="Script" path="res://Scripts/DialogueHUD.cs" id="1_wsgj8"]
+[ext_resource type="SpriteFrames" uid="uid://d2e0a3guluvd" path="res://Assets/Serafina/Serafina.tres" id="2_8cxcm"]
+
+[node name="DialogueHUD" type="CanvasLayer"]
+script = ExtResource("1_wsgj8")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speaker" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(0, -85)
+scale = Vector2(0.712888, 0.712888)
+sprite_frames = ExtResource("2_8cxcm")
+animation = &"health"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -836.0
+offset_top = -291.0
+offset_right = 836.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.099298, 0.19121, 0.344387, 1)
+
+[node name="Dialogue" type="RichTextLabel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -802.0
+offset_top = -269.0
+offset_right = 802.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 50
+text = "Meowmeowmeowmeowmoemwoemw meomwomewome.. meomwomeowm? meomowmoem"
+scroll_active = false
+autowrap_mode = 2

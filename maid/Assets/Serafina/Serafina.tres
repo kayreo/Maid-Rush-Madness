@@ -1,0 +1,35 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://d2e0a3guluvd"]
+
+[ext_resource type="Texture2D" uid="uid://dqbheyu20g610" path="res://Assets/Serafina/seraHealth3.png" id="1_f2b66"]
+[ext_resource type="Texture2D" uid="uid://cnucapayfsjgn" path="res://Assets/Serafina/seraHealth2.png" id="2_as1uv"]
+[ext_resource type="Texture2D" uid="uid://e3c5m5f5hi4w" path="res://Assets/Serafina/seraHealth1.png" id="3_elh16"]
+[ext_resource type="Texture2D" uid="uid://bfmopogtw3y1u" path="res://Assets/Serafina/seraHealth0.png" id="4_dqov0"]
+[ext_resource type="Texture2D" uid="uid://dikedgqi8f33l" path="res://Assets/Serafina/seraNewOrder.png" id="5_ufdsr"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_f2b66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_as1uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_elh16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dqov0")
+}],
+"loop": false,
+"name": &"health",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ufdsr")
+}],
+"loop": true,
+"name": &"newOrder",
+"speed": 0.0
+}]
