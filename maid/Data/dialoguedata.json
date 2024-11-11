@@ -1,38 +1,38 @@
 {
 	"None": {
 		"0": [
-		"Serafina",
+		"Serafina", 0,
 		"Debug scenario."
 		]
 	},
 
 	"ChallengeSera": {
 		"0": [
-			"Serafina0",
+			"Serafina", 0,
 			"Where is it... wheres the number..."
 		],
 		"1": [
-			"Serafina0",
+			"Serafina", 0,
 			"I need to call him before its too late!"
 		],
 		"2": [
-			"Serafina0",
+			"Serafina", 1,
 			"I cant believe I forgot."
 		],
 		"3": [
-			"Serafina0",
+			"Serafina", 1,
 			"Whatever, I'll just see if i can find Gigi's number instead."
 		],
 		"4": [
-			"Serafina0",
+			"Serafina", 0,
 			"Huh? Seems like the phone's's out..."
 		],
 		"5": [
-			"Serafina0",
+			"Serafina", 0,
 			"Looks like I'll need to fix this up before I can call Gigi."
 		],
 		"6": [
-			"Serafina0",
+			"Serafina", 2,
 			"(To start, press the question mark in the corner of the screen!)"
 		]
 	}

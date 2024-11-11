@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgyv8do52crdc"
-path="res://.godot/imported/magic_jewelry.png-64dea57c61ceeb8e1f339d5f76a21896.ctex"
+uid="uid://dlcu0i5pmg8nr"
+path="res://.godot/imported/magic_mic.png-494d948dc5e7552ec617a965d7930c7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/magic_jewelry.png"
-dest_files=["res://.godot/imported/magic_jewelry.png-64dea57c61ceeb8e1f339d5f76a21896.ctex"]
+source_file="res://Assets/items/debug/magic_mic.png"
+dest_files=["res://.godot/imported/magic_mic.png-494d948dc5e7552ec617a965d7930c7d.ctex"]
 
 [params]
 

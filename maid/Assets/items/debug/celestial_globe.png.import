@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duyn3xk2ke4m2"
-path="res://.godot/imported/tea.png-51d96ab8f8d0d52a0911597805f030ea.ctex"
+uid="uid://bd26no8jx6cev"
+path="res://.godot/imported/celestial_globe.png-acfe9d10ed63ebfff4b05da46e2478d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/tea.png"
-dest_files=["res://.godot/imported/tea.png-51d96ab8f8d0d52a0911597805f030ea.ctex"]
+source_file="res://Assets/items/debug/celestial_globe.png"
+dest_files=["res://.godot/imported/celestial_globe.png-acfe9d10ed63ebfff4b05da46e2478d9.ctex"]
 
 [params]
 

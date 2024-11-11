@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr4n2w4i0ius7"
-path="res://.godot/imported/blank_journal.png-106d487bde97d93ba971554b21618da8.ctex"
+uid="uid://cpbxgmc8h6bts"
+path="res://.godot/imported/trinkets.png-2d2ad6b0dc1d611dd91e4f3af079cd3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/blank_journal.png"
-dest_files=["res://.godot/imported/blank_journal.png-106d487bde97d93ba971554b21618da8.ctex"]
+source_file="res://Assets/items/debug/trinkets.png"
+dest_files=["res://.godot/imported/trinkets.png-2d2ad6b0dc1d611dd91e4f3af079cd3c.ctex"]
 
 [params]
 

@@ -5,6 +5,7 @@
 
 [node name="DialogueHUD" type="CanvasLayer"]
 script = ExtResource("1_wsgj8")
+Scenario = "ChallengeSera"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -24,7 +25,7 @@ grow_vertical = 2
 position = Vector2(0, -85)
 scale = Vector2(0.712888, 0.712888)
 sprite_frames = ExtResource("2_uvmpj")
-animation = &"None"
+animation = &"Serafina"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 7

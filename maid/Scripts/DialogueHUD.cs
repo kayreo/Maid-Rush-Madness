@@ -32,6 +32,7 @@ public partial class DialogueHUD : CanvasLayer
 
 	private int CurrentLineIndex = 0;
 
+	public bool DialogueStarted = true;
 
 	[Signal]
 	public delegate void EndFirstDialogueEventHandler();
@@ -66,7 +67,7 @@ public partial class DialogueHUD : CanvasLayer
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (true) {
+		if (DialogueStarted) {
 			//Printing out a line
 			if (InProgress) {
 				// scroll text
@@ -91,6 +92,7 @@ public partial class DialogueHUD : CanvasLayer
 			}
 		} else {
 			Dialogue.Hide();
+			DialogueStarted = false;
 			CurrentLineIndex = 0;
 			Speaker.Frame = 0;
 		}
@@ -112,18 +114,18 @@ public partial class DialogueHUD : CanvasLayer
 			String[] DialogueLine = (String[])DialogueData[CurrentLineIndex.ToString()];
 			////GD.Print("Dialogue: ", DialogueLine[0]);
 			string Who = (string)DialogueLine[0];
+			int Frame = DialogueLine[1].ToInt();
 			//Speaker0.Animation = "player" + Who0[0];
 			if (Who.Contains("none")) {
 				Speaker.Hide();
 			} else {
 				Speaker.Animation = Who;
+				Speaker.Frame = Frame;
 				//Speaker.Frame = (int)Who[1] - '0';
 			}
 
-			Dialogue.Text = DialogueLine[1];
-			
-			InProgress = true;
-			
+			Dialogue.Text = DialogueLine[2];
+			InProgress = true;			
 			CurrentLineIndex++;
 			// //GD.Print("Visible: ", DialogueBox.VisibleCharacters);
 			// //GD.Print("Total: ", DialogueBox.Text.Length);

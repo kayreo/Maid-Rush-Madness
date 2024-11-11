@@ -14,16 +14,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_52nli")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_0kikm")
+"texture": ExtResource("4_ef1rr")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_mw5gi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_ef1rr")
+"texture": ExtResource("2_0kikm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_52nli")
 }],
 "loop": false,
 "name": &"Serafina",

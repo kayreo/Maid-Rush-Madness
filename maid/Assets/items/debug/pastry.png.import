@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj6mjmxnagdsw"
-path="res://.godot/imported/monst_book2.png-082ffdac2872fdf3eff207a9b6be249a.ctex"
+uid="uid://bw7phyuy1xipn"
+path="res://.godot/imported/pastry.png-a7451cc9fe0ae1a13c30b953aac1be49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/monst_book2.png"
-dest_files=["res://.godot/imported/monst_book2.png-082ffdac2872fdf3eff207a9b6be249a.ctex"]
+source_file="res://Assets/items/debug/pastry.png"
+dest_files=["res://.godot/imported/pastry.png-a7451cc9fe0ae1a13c30b953aac1be49.ctex"]
 
 [params]
 

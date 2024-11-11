@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bte4d10g7v27k"
-path="res://.godot/imported/macaron.png-e6b036dae26d82e0dcd98c70f90f323f.ctex"
+uid="uid://bjr2co74tvqea"
+path="res://.godot/imported/monst_book.png-3dfd5504b66d2c666965d6d17d16ebc5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/macaron.png"
-dest_files=["res://.godot/imported/macaron.png-e6b036dae26d82e0dcd98c70f90f323f.ctex"]
+source_file="res://Assets/items/debug/monst_book.png"
+dest_files=["res://.godot/imported/monst_book.png-3dfd5504b66d2c666965d6d17d16ebc5.ctex"]
 
 [params]
 

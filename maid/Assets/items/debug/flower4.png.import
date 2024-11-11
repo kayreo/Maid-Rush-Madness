@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f7g01fq3tl6u"
-path="res://.godot/imported/music_box.png-612bea511b9343b4459b0597fbe39d03.ctex"
+uid="uid://b2k8twg18v4vw"
+path="res://.godot/imported/flower4.png-d99709fdceac58a037fff4a53f52e09e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/music_box.png"
-dest_files=["res://.godot/imported/music_box.png-612bea511b9343b4459b0597fbe39d03.ctex"]
+source_file="res://Assets/items/debug/flower4.png"
+dest_files=["res://.godot/imported/flower4.png-d99709fdceac58a037fff4a53f52e09e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcbv6weljts0r"
-path="res://.godot/imported/soda.png-5f15bfe039515e8eefc5552797b08ed7.ctex"
+uid="uid://bte4d10g7v27k"
+path="res://.godot/imported/macaron.png-bda12cf8f7b991d523017de673332fa4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/soda.png"
-dest_files=["res://.godot/imported/soda.png-5f15bfe039515e8eefc5552797b08ed7.ctex"]
+source_file="res://Assets/items/debug/macaron.png"
+dest_files=["res://.godot/imported/macaron.png-bda12cf8f7b991d523017de673332fa4.ctex"]
 
 [params]
 

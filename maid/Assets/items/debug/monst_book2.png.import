@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpbxgmc8h6bts"
-path="res://.godot/imported/trinkets.png-380d1f088062a9a53215a64eb944645b.ctex"
+uid="uid://dj6mjmxnagdsw"
+path="res://.godot/imported/monst_book2.png-20a782fb5dd4c54f814ba40b8bc27460.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/trinkets.png"
-dest_files=["res://.godot/imported/trinkets.png-380d1f088062a9a53215a64eb944645b.ctex"]
+source_file="res://Assets/items/debug/monst_book2.png"
+dest_files=["res://.godot/imported/monst_book2.png-20a782fb5dd4c54f814ba40b8bc27460.ctex"]
 
 [params]
 

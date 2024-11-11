@@ -23,6 +23,9 @@ public partial class Serafina : CharacterBody2D
 	[Signal]
 	public delegate void DishMergedEventHandler(string food, Texture2D spriteTexture);
 
+	[Signal]
+	public delegate void TakeDamageEventHandler();
+
 	public string heldDish;
 
 	public Godot.Collections.Array HeldFood = new Godot.Collections.Array();
@@ -43,6 +46,7 @@ public partial class Serafina : CharacterBody2D
 		AnimatedSprite.Animation = "health";
     	FoodObtained += GetFood;
 		DishMerged += GetDish;
+		TakeDamage += OnTakeDamage;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -85,7 +89,7 @@ public partial class Serafina : CharacterBody2D
 		MoveAndSlide();
 	}
 
-	// Converts health (4-0) to respective frame number (0-4)
+	// Converts health (4-0) to respective frame number (0-3)
 	public int convertToFrame() {
 		int convertedFrame = 4 - health;
 		return convertedFrame;
@@ -135,6 +139,16 @@ public partial class Serafina : CharacterBody2D
 		if (HeldFood.Count > 2) {
 			GD.Print(GetParent().Name);
 			parent.EmitSignal(GameManager.SignalName.FoodObtained, HeldFood);
+		}
+	}
+
+	private void OnTakeDamage() {
+		health--;
+		if (health <= -1) {
+			GD.Print("Game over!");
+			parent.EmitSignal(GameManager.SignalName.GameOver);
+		} else {
+			AnimatedSprite.Frame = convertToFrame();
 		}
 	}
 }

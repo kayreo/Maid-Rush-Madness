@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cds5ymi6teilh"
-path="res://.godot/imported/makeup.png-878cbc33b4bacd8ff05bc248251b8cf7.ctex"
+uid="uid://ttyvtcj2k3hd"
+path="res://.godot/imported/cupcake.png-f81d1c786a9db7270c69ae81a987db1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/makeup.png"
-dest_files=["res://.godot/imported/makeup.png-878cbc33b4bacd8ff05bc248251b8cf7.ctex"]
+source_file="res://Assets/items/debug/cupcake.png"
+dest_files=["res://.godot/imported/cupcake.png-f81d1c786a9db7270c69ae81a987db1d.ctex"]
 
 [params]
 

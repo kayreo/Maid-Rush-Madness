@@ -30,6 +30,8 @@ public partial class GameManager : Node2D
 
 	public Control requestUI;
 
+	public Timer orderTimer;
+
 	public Godot.Collections.Array curRecipes = new Godot.Collections.Array();
 
 	private Json jsonLoader;
@@ -42,6 +44,9 @@ public partial class GameManager : Node2D
 
 	[Signal]
 	public delegate void PickRandomFoodEventHandler(Food newFood);
+
+	[Signal]
+	public delegate void GameOverEventHandler();
 
 	public Godot.Collections.Dictionary FoodDict = new Godot.Collections.Dictionary();
 
@@ -60,6 +65,7 @@ public partial class GameManager : Node2D
 		FoodObtained += MergeFood;
 		PlaceDish += OnPlaceDish;
 		PickRandomFood += OnPickRandomFood;
+		GameOver += EndGame;
 
 		jsonLoader = new Json();
 		var dataFile = File.ReadAllText("Data/FoodData.json");
@@ -84,11 +90,12 @@ public partial class GameManager : Node2D
 		table = (Node2D)GetNode("Table");
 		dishes = (Node2D)GetNode("Dishes");
 		requestUI = (Control)GetNode("RequestWindow");
-		
+		orderTimer = (Timer)GetNode("OrderTimer");	
 
 		Label recipeLabel = (Label)requestUI.GetNode("CanvasLayer/VBoxContainer/RecipeLabel");
 		recipeLabel.Text = "BFlower";
 		tgtRecipe = "BFlower";
+		orderTimer.Start();
 		//GD.Print("I got: " + player.Name);
 	}
 
@@ -123,6 +130,8 @@ public partial class GameManager : Node2D
 		if (dishName == tgtRecipe) {
 			GD.Print("Correct Dish!");
 			OnPickRandomDish();
+			orderTimer.Stop();
+			orderTimer.Start();
 		}
 	}
 
@@ -148,6 +157,15 @@ public partial class GameManager : Node2D
 		recipeLabel.Text = randomDish;
 		tgtRecipe = randomDish;
 		//Texture2D randomTexture = (Texture2D)Sprites[randomSprite];
+	}
+
+	private void _OnOrderTimeout() {
+		GD.Print("Order timed out, decreasing health and picking new order");
+		player.EmitSignal(Serafina.SignalName.TakeDamage);
+	}
+
+	private void EndGame() {
+		GD.Print("Ending game");
 	}
 
 }

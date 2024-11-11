@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biusltpme6x3j"
-path="res://.godot/imported/plush_doll.png-2390e11dd3098f2c1e922f5c354380af.ctex"
+uid="uid://bp34nns5a2i6w"
+path="res://.godot/imported/perfume.png-71a02535e7d2b35873d75c1d5dc2219b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/plush_doll.png"
-dest_files=["res://.godot/imported/plush_doll.png-2390e11dd3098f2c1e922f5c354380af.ctex"]
+source_file="res://Assets/items/debug/perfume.png"
+dest_files=["res://.godot/imported/perfume.png-71a02535e7d2b35873d75c1d5dc2219b.ctex"]
 
 [params]
 

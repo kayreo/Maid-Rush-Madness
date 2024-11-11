@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjr2co74tvqea"
-path="res://.godot/imported/monst_book.png-7330e849ddad676941efab45d1679700.ctex"
+uid="uid://biusltpme6x3j"
+path="res://.godot/imported/plush_doll.png-ed3a39d19e7aaab00344263bc31ade6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/monst_book.png"
-dest_files=["res://.godot/imported/monst_book.png-7330e849ddad676941efab45d1679700.ctex"]
+source_file="res://Assets/items/debug/plush_doll.png"
+dest_files=["res://.godot/imported/plush_doll.png-ed3a39d19e7aaab00344263bc31ade6a.ctex"]
 
 [params]
 

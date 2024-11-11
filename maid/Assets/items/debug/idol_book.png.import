@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlcu0i5pmg8nr"
-path="res://.godot/imported/magic_mic.png-3558f3d46399a14efa482598918f7291.ctex"
+uid="uid://dh4ueco43y678"
+path="res://.godot/imported/idol_book.png-e54bb8e7c018a211d163cc390f17d560.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/magic_mic.png"
-dest_files=["res://.godot/imported/magic_mic.png-3558f3d46399a14efa482598918f7291.ctex"]
+source_file="res://Assets/items/debug/idol_book.png"
+dest_files=["res://.godot/imported/idol_book.png-e54bb8e7c018a211d163cc390f17d560.ctex"]
 
 [params]
 

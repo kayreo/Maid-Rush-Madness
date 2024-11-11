@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cltyxsi83xubb"
-path="res://.godot/imported/ancient_scale.png-1e4ed85a50c4ed1241646b57bdd8c493.ctex"
+path="res://.godot/imported/ancient_scale.png-6bbc3205d1c5047353ce9b2368a008bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/ancient_scale.png"
-dest_files=["res://.godot/imported/ancient_scale.png-1e4ed85a50c4ed1241646b57bdd8c493.ctex"]
+source_file="res://Assets/items/debug/ancient_scale.png"
+dest_files=["res://.godot/imported/ancient_scale.png-6bbc3205d1c5047353ce9b2368a008bc.ctex"]
 
 [params]
 
