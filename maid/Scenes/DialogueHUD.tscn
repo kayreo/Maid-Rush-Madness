@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://4nuihuijam7l"]
 
 [ext_resource type="Script" path="res://Scripts/DialogueHUD.cs" id="1_wsgj8"]
-[ext_resource type="SpriteFrames" uid="uid://d2e0a3guluvd" path="res://Assets/Serafina/Serafina.tres" id="2_8cxcm"]
+[ext_resource type="SpriteFrames" uid="uid://dbpym26wda1g2" path="res://Data/DialogueSpeakers.tres" id="2_uvmpj"]
 
 [node name="DialogueHUD" type="CanvasLayer"]
 script = ExtResource("1_wsgj8")
@@ -23,8 +23,8 @@ grow_vertical = 2
 [node name="Speaker" type="AnimatedSprite2D" parent="Control"]
 position = Vector2(0, -85)
 scale = Vector2(0.712888, 0.712888)
-sprite_frames = ExtResource("2_8cxcm")
-animation = &"health"
+sprite_frames = ExtResource("2_uvmpj")
+animation = &"None"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 7

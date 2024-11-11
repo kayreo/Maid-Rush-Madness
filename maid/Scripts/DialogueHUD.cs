@@ -20,8 +20,13 @@ public partial class DialogueHUD : CanvasLayer
 
 	private string CurrentScenario;
 
+	private int VisibleCharacters = 0;
+
 	[Export]
 	public string CurSpeaker = "0";
+
+	[Export]
+	public string Scenario = "None";
 
 	private bool InProgress = false;
 
@@ -39,13 +44,13 @@ public partial class DialogueHUD : CanvasLayer
 
 	public override void _Ready()
 	{
-		/*GameManager = GetNode<GameManager>("/root/GameWorld");
-		EndDialogue += GameManager.OnEndDialogue;
+		/*GameManager = GetNode<GameManager>("/root/GameWorld");*/
+		EndDialogue += OnEndDialogue;/*
 		EndFirstDialogue += GameManager.OnFirstEndDialogue;*/
 		//DialogueBox = GetNode<TextureRect>("DialogueBox");
 
 		jsonLoader = new Json();
-		var file = File.ReadAllText("Data/dialoguedata.json");
+		var file = File.ReadAllText("Data/DialogueData.json");
 		jsonLoader.Parse(file);
 		DialogueScenarios = (Godot.Collections.Dictionary)jsonLoader.Data;
 
@@ -55,15 +60,13 @@ public partial class DialogueHUD : CanvasLayer
 		Dialogue = GetNode<RichTextLabel>("Dialogue");
 		Speaker = GetNode<AnimatedSprite2D>("Control/Speaker");
 		GD.Print("Speaker got: ", Speaker.Name);
-		//Dialogue.VisibleCharacters = 0;
-		EmitSignal("TriggerDialogue", "Start");
+		EmitSignal("TriggerDialogue", Scenario);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if (true) {
-			Dialogue.Show();
 			//Printing out a line
 			if (InProgress) {
 				// scroll text
@@ -111,13 +114,13 @@ public partial class DialogueHUD : CanvasLayer
 			string Who = (string)DialogueLine[0];
 			//Speaker0.Animation = "player" + Who0[0];
 			if (Who.Contains("none")) {
-				Speaker.Animation = "none";
+				Speaker.Hide();
 			} else {
-				Speaker.Animation = (string)"player" + Who[0];
-				Speaker.Frame = (int)Who[1] - '0';
+				Speaker.Animation = Who;
+				//Speaker.Frame = (int)Who[1] - '0';
 			}
 
-			Dialogue.Text = DialogueLine[2];
+			Dialogue.Text = DialogueLine[1];
 			
 			InProgress = true;
 			
@@ -130,7 +133,6 @@ public partial class DialogueHUD : CanvasLayer
 			if (CurrentScenario.Contains("Start")) {
 
 			} else {
-				Speaker.Animation = "player";
 				EmitSignal("EndDialogue");
 			}
 		}
@@ -142,4 +144,10 @@ public partial class DialogueHUD : CanvasLayer
 		//GD.Print("Chef");
 		//GetNode<TileMap>("PortraitControl/Portrait").SetCell(0, new Vector2I(0,0), 0, WhichPortrait);
 	}
+
+
+	private void OnEndDialogue() {
+		Hide();
+	}
+
 }
