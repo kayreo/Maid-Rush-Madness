@@ -104,8 +104,6 @@ public partial class GameManager : Node2D
 	{
 	}
 
-
-
 	// Check if any ingredients can be merged
 	private void MergeFood(Godot.Collections.Array FoodToMerge) {
 		string recipe = foodTree.findRecipe(FoodToMerge);
