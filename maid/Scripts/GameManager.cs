@@ -110,7 +110,7 @@ public partial class GameManager : Node2D
 		GD.Print("Recipe found: ", recipe);
 		// Did not find a recipe and hit max number of ingredients
 		if (recipe == null) {
-			recipe = "slop";
+			recipe = "Slop";
 		}
 		player.EmitSignal(Serafina.SignalName.DishMerged, recipe, Sprites[recipe]);
 	}
@@ -123,7 +123,7 @@ public partial class GameManager : Node2D
 		vis.Texture = dish.Texture;
 		newNode.Position = new Godot.Vector2(posX, table.Position.Y);
 		GetNode("Dishes").AddChild(newNode);
-		newNode.Velocity = new Godot.Vector2(-400, 0);
+		newNode.Velocity = new Godot.Vector2(0, -400);
 		
 		if (dishName == tgtRecipe) {
 			GD.Print("Correct Dish!");
@@ -136,6 +136,8 @@ public partial class GameManager : Node2D
 	private void OnPickRandomFood(Food newFood) {
 		Random.Randomize();
 		Godot.Collections.Array keyArray = (Godot.Collections.Array)Sprites.Keys;
+		keyArray = keyArray.Slice(0, 18);
+		GD.Print("Array: ", keyArray);
 		int randomKey = (int)Random.RandiRange(0, keyArray.Count - 1);
 		string randomSprite = (string)keyArray[randomKey];
 		Texture2D randomTexture = (Texture2D)Sprites[randomSprite];
@@ -172,7 +174,6 @@ public partial class GameManager : Node2D
 public class FoodNode {
 	public string ingredient;
 	public string recipe;
-
 	public List<FoodNode> children;
 
 	public FoodNode(string ingredientName) {
@@ -240,7 +241,7 @@ public class FoodTree {
 				return traverseTree(child, ingredients, start + 1); //<-- recursive
 			}
 		}
-		//GD.Print("Recipe not found");
+		GD.Print("Recipe not found");
 		return null;
 	}
 }

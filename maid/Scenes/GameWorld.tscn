@@ -72,6 +72,6 @@ position = Vector2(956, 1026)
 [node name="RequestWindow" parent="." instance=ExtResource("6_ce0h2")]
 
 [node name="OrderTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 180.0
 
 [connection signal="timeout" from="OrderTimer" to="." method="_OnOrderTimeout"]
