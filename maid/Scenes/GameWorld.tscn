@@ -74,4 +74,7 @@ position = Vector2(956, 1026)
 [node name="OrderTimer" type="Timer" parent="."]
 wait_time = 180.0
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
 [connection signal="timeout" from="OrderTimer" to="." method="_OnOrderTimeout"]

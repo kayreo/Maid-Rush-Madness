@@ -14,7 +14,7 @@ public partial class PlacedDish : CharacterBody2D
 
 	
 	private void _OnVisibleOnScreenNotifier2DScreenExited() {
-		GD.Print("Left screen");
+		//GD.Print("Left screen");
 		QueueFree();
 	}
 }

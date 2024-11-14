@@ -67,6 +67,9 @@ public partial class Serafina : CharacterBody2D
 		}
 
 		if (Input.IsActionPressed("place")) {
+			HeldFood.Clear();
+			ClearHolding();
+			GD.Print("Holding now: ", HeldFood);
 			if (madeDish) {
 				GD.Print("Can place on thing");
 				madeDish = false;
@@ -77,7 +80,6 @@ public partial class Serafina : CharacterBody2D
 				dishSprite.Hide();
 				//dishCollision.Disabled = true;
 				heldDish = null;
-				HeldFood.Clear();
 			} else {
 				GD.Print("Can't place on thing");
 			}
@@ -113,8 +115,7 @@ public partial class Serafina : CharacterBody2D
 		}
 	}
 
-	private void GetDish(string dish, Texture2D spriteTexture) {
-		GD.Print("Found dish!");
+	private void ClearHolding() {
 		for (int i = 0; i < 3; i++) {
 			string placePos = "FoodSprite" + i;
 			//RigidBody2D foodBody = (RigidBody2D)Plate.GetNode(placePos);
@@ -124,6 +125,10 @@ public partial class Serafina : CharacterBody2D
 			foodSprite.Hide();
 			//foodCollision.Disabled = true;
 		}
+	}
+
+	private void GetDish(string dish, Texture2D spriteTexture) {
+		ClearHolding();
 		//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
 		Sprite2D dishSprite = (Sprite2D)Plate.GetNode("DishSprite");
 		//CollisionShape2D dishCollision = (CollisionShape2D)dishBody.GetNode("CollisionShape2D");

@@ -50,6 +50,14 @@ public partial class GameManager : Node2D
 
 	public Godot.Collections.Dictionary FoodDict = new Godot.Collections.Dictionary();
 
+	public Godot.Collections.Dictionary ChallengeDict = new Godot.Collections.Dictionary();
+
+	public string CurChallenge = "";
+
+	public Godot.Collections.Array CurRecipes;
+
+	public Godot.Collections.Array CurIngredients = new Godot.Collections.Array();
+
 	public Godot.Collections.Array RecipeKeys;
 
 	public RandomNumberGenerator Random = new RandomNumberGenerator();
@@ -67,6 +75,7 @@ public partial class GameManager : Node2D
 		PickRandomFood += OnPickRandomFood;
 		GameOver += EndGame;
 
+		// Load food data
 		jsonLoader = new Json();
 		var dataFile = File.ReadAllText("Data/FoodData.json");
 		jsonLoader.Parse(dataFile);
@@ -74,18 +83,23 @@ public partial class GameManager : Node2D
 		RecipeKeys = (Godot.Collections.Array)Recipes.Keys;
 		foodTree = new FoodTree(Recipes);
 
+		// Load visual data
 		var spriteFile = File.ReadAllText("Data/SpriteData.json");
 		jsonLoader.Parse(spriteFile);
 		GD.Print(jsonLoader.Data);
 		Godot.Collections.Dictionary tempDict = (Godot.Collections.Dictionary)jsonLoader.Data;
 		foreach (string line in tempDict.Keys) {
-			GD.Print("Loading: ", line);
+			//GD.Print("Loading: ", line);
 			Texture2D newTexture = (Texture2D)GD.Load(spriteFilePath + tempDict[line]);
 			Sprites[line] = newTexture;
 		}
 
-		GD.Print("Sprites now: ", Sprites);
-
+		//GD.Print("Sprites now: ", Sprites);
+		
+		// Load challenge data
+		var challengeFile = File.ReadAllText("Data/ChallengeData.json");
+		jsonLoader.Parse(challengeFile);
+		ChallengeDict = (Godot.Collections.Dictionary)jsonLoader.Data;
 		player = (Serafina)GetNode("Serafina");
 		table = (Node2D)GetNode("Table");
 		dishes = (Node2D)GetNode("Dishes");
@@ -93,9 +107,16 @@ public partial class GameManager : Node2D
 		orderTimer = (Timer)GetNode("OrderTimer");	
 
 		Label recipeLabel = (Label)requestUI.GetNode("CanvasLayer/VBoxContainer/RecipeLabel");
+
+		// Pick a challenge
+		CurChallenge = "SweetChallenge";
+		// Get recipes for that challenge
+		CurRecipes = (Godot.Collections.Array)ChallengeDict[CurChallenge];
+		GD.Print("Recipes for this challenge: ", CurRecipes);
 		recipeLabel.Text = "BFlower";
 		tgtRecipe = "BFlower";
 		orderTimer.Start();
+		PopulateRandomFoodChoices();
 		//GD.Print("I got: " + player.Name);
 	}
 
@@ -123,7 +144,7 @@ public partial class GameManager : Node2D
 		vis.Texture = dish.Texture;
 		newNode.Position = new Godot.Vector2(posX, table.Position.Y);
 		GetNode("Dishes").AddChild(newNode);
-		newNode.Velocity = new Godot.Vector2(0, -400);
+		newNode.Velocity = new Godot.Vector2(0, 400);
 		
 		if (dishName == tgtRecipe) {
 			GD.Print("Correct Dish!");
@@ -135,15 +156,26 @@ public partial class GameManager : Node2D
 
 	private void OnPickRandomFood(Food newFood) {
 		Random.Randomize();
-		Godot.Collections.Array keyArray = (Godot.Collections.Array)Sprites.Keys;
-		keyArray = keyArray.Slice(0, 18);
-		GD.Print("Array: ", keyArray);
-		int randomKey = (int)Random.RandiRange(0, keyArray.Count - 1);
-		string randomSprite = (string)keyArray[randomKey];
+		//keyArray = keyArray.Slice(0, 18);
+		//GD.Print("Array: ", keyArray);
+		int randomKey = (int)Random.RandiRange(0, CurIngredients.Count - 1);
+		string randomSprite = (string)CurIngredients[randomKey];
 		Texture2D randomTexture = (Texture2D)Sprites[randomSprite];
 		Sprite2D newFoodVis = (Sprite2D)newFood.GetNode("Visual");
 		newFoodVis.Texture = randomTexture;
 		newFood.name = randomSprite;
+	}
+
+	private void PopulateRandomFoodChoices() {
+		foreach (string recipe in CurRecipes) {
+			Godot.Collections.Array toLoadRecipe = (Godot.Collections.Array)Recipes[recipe];
+			foreach (string ingredient in toLoadRecipe) {
+				if (!CurIngredients.Contains(ingredient)) {
+					CurIngredients.Add(ingredient);
+				}
+			}
+		}
+		GD.Print("Populated: ", CurIngredients);
 	}
 
 	private void OnPickRandomDish() {
@@ -202,7 +234,7 @@ public class FoodTree {
 
 	public void insert(FoodNode root, Godot.Collections.Array foods, string recipeName, int start) {
 		if (start >= foods.Count) {
-			GD.Print("Setting recipe");
+			//GD.Print("Setting recipe");
 			root.recipe = recipeName;
 			return;
 		}

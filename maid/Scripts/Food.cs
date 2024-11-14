@@ -25,4 +25,9 @@ public partial class Food : RigidBody2D
 			QueueFree();
 		}
 	}
+
+	private void _OnVisibleOnScreenNotifier2DScreenExited() {
+		//GD.Print("Left screen");
+		QueueFree();
+	}
 }
