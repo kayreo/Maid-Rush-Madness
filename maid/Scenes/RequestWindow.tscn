@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bkfji30drxyn6"]
+[gd_scene load_steps=2 format=3 uid="uid://bkfji30drxyn6"]
+
+[ext_resource type="Texture2D" uid="uid://dy5y0ydbwwnsx" path="res://Assets/items/egg.png" id="1_ets0v"]
 
 [node name="RequestWindow" type="Control"]
 layout_mode = 3
@@ -14,18 +16,17 @@ grow_vertical = 2
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -652.0
-offset_bottom = 381.0
+offset_left = -763.0
+offset_bottom = 407.0
 grow_horizontal = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -527.0
-offset_top = 30.0
-offset_right = -102.0
-offset_bottom = 355.0
+offset_left = -758.0
+offset_top = 2.0
+offset_bottom = 399.0
 grow_horizontal = 0
 
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
@@ -33,12 +34,28 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
 text = "CURRENT ORDER"
+horizontal_alignment = 1
 
 [node name="RecipeLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
-text = "MEOW MEOW MEOW MEOW MEOWMOEMWOMEOW"
+text = "MEOW MEOW"
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="Ingredients" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ingr0" type="TextureRect" parent="CanvasLayer/VBoxContainer/Ingredients"]
+layout_mode = 2
+texture = ExtResource("1_ets0v")
+
+[node name="ingr1" type="TextureRect" parent="CanvasLayer/VBoxContainer/Ingredients"]
+layout_mode = 2
+texture = ExtResource("1_ets0v")
+
+[node name="ingr2" type="TextureRect" parent="CanvasLayer/VBoxContainer/Ingredients"]
+layout_mode = 2
+texture = ExtResource("1_ets0v")

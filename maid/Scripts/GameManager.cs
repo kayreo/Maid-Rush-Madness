@@ -112,9 +112,8 @@ public partial class GameManager : Node2D
 		CurChallenge = "SweetChallenge";
 		// Get recipes for that challenge
 		CurRecipes = (Godot.Collections.Array)ChallengeDict[CurChallenge];
-		GD.Print("Recipes for this challenge: ", CurRecipes);
-		recipeLabel.Text = "BFlower";
-		tgtRecipe = "BFlower";
+		//GD.Print("Recipes for this challenge: ", CurRecipes);
+		OnPickRandomDish();
 		orderTimer.Start();
 		PopulateRandomFoodChoices();
 		//GD.Print("I got: " + player.Name);
@@ -175,18 +174,25 @@ public partial class GameManager : Node2D
 				}
 			}
 		}
-		GD.Print("Populated: ", CurIngredients);
+		//GD.Print("Populated: ", CurIngredients);
 	}
 
 	private void OnPickRandomDish() {
 		Random.Randomize();
-		GD.Print("Keys: ", RecipeKeys);
-		int randomKey = (int)Random.RandiRange(0, RecipeKeys.Count - 1);
-		string randomDish = (string)RecipeKeys[randomKey];
+		//GD.Print("Keys: ", RecipeKeys);
+		int randomKey = (int)Random.RandiRange(0, CurRecipes.Count - 1);
+		string randomDish = (string)CurRecipes[randomKey];
 		GD.Print("I got the dish: ", randomDish);
-
+		Godot.Collections.Array recipeIngredients = (Godot.Collections.Array)Recipes[randomDish];
+	
 		Label recipeLabel = (Label)requestUI.GetNode("CanvasLayer/VBoxContainer/RecipeLabel");
 		recipeLabel.Text = randomDish;
+		HBoxContainer ingredientsList = (HBoxContainer)requestUI.GetNode("CanvasLayer/VBoxContainer/Ingredients");
+		for (int i = 0; i < ingredientsList.GetChildCount(); i++) {
+			TextureRect castedI = (TextureRect)ingredientsList.GetChild(i);
+			Texture2D textI = (Texture2D)Sprites[recipeIngredients[i]];
+			castedI.Texture = textI;
+		}
 		tgtRecipe = randomDish;
 		//Texture2D randomTexture = (Texture2D)Sprites[randomSprite];
 	}

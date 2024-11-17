@@ -69,7 +69,7 @@ public partial class Serafina : CharacterBody2D
 		if (Input.IsActionPressed("place")) {
 			HeldFood.Clear();
 			ClearHolding();
-			GD.Print("Holding now: ", HeldFood);
+			//GD.Print("Holding now: ", HeldFood);
 			if (madeDish) {
 				GD.Print("Can place on thing");
 				madeDish = false;
@@ -81,7 +81,7 @@ public partial class Serafina : CharacterBody2D
 				//dishCollision.Disabled = true;
 				heldDish = null;
 			} else {
-				GD.Print("Can't place on thing");
+				//GD.Print("Can't place on thing");
 			}
 		}
 
