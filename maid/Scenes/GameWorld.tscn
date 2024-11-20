@@ -72,9 +72,34 @@ position = Vector2(956, 1026)
 [node name="RequestWindow" parent="." instance=ExtResource("6_ce0h2")]
 
 [node name="OrderTimer" type="Timer" parent="."]
-wait_time = 180.0
+wait_time = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+
+[node name="TimerDisplay" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TimerDisplay"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -336.0
+offset_top = -98.0
+offset_right = -49.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="TimerDisplay/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "TIME LEFT:"
+
+[node name="TimeLeft" type="Label" parent="TimerDisplay/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "0"
 
 [connection signal="timeout" from="OrderTimer" to="." method="_OnOrderTimeout"]

@@ -122,6 +122,8 @@ public partial class GameManager : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		Label timeLeftLabel = (Label)GetNode("TimerDisplay/HBoxContainer/TimeLeft");
+		timeLeftLabel.Text = String.Format("{0:0}", orderTimer.TimeLeft);
 	}
 
 	// Check if any ingredients can be merged
@@ -204,6 +206,7 @@ public partial class GameManager : Node2D
 
 	private void EndGame() {
 		GD.Print("Ending game");
+		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
 	}
 
 }

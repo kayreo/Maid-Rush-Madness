@@ -149,7 +149,7 @@ public partial class Serafina : CharacterBody2D
 
 	private void OnTakeDamage() {
 		health--;
-		if (health <= -1) {
+		if (health <= 0) {
 			GD.Print("Game over!");
 			parent.EmitSignal(GameManager.SignalName.GameOver);
 		} else {
