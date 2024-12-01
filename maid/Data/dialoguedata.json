@@ -1,39 +1,145 @@
 {
 	"None": {
 		"0": [
-		"Serafina", 0,
-		"Debug scenario."
+			"Serafina",
+			0,
+			"Debug scenario."
 		]
 	},
-
 	"ChallengeSera": {
 		"0": [
-			"Serafina", 0,
+			"Serafina",
+			0,
 			"Where is it... wheres the number..."
 		],
 		"1": [
-			"Serafina", 0,
+			"Serafina",
+			0,
 			"I need to call him before its too late!"
 		],
 		"2": [
-			"Serafina", 1,
+			"Serafina",
+			1,
 			"I cant believe I forgot."
 		],
 		"3": [
-			"Serafina", 1,
+			"Serafina",
+			1,
 			"Whatever, I'll just see if i can find Gigi's number instead."
 		],
 		"4": [
-			"Serafina", 0,
+			"Serafina",
+			0,
 			"Huh? Seems like the phone's's out..."
 		],
 		"5": [
-			"Serafina", 0,
+			"Serafina",
+			0,
 			"Looks like I'll need to fix this up before I can call Gigi."
 		],
 		"6": [
-			"Serafina", 2,
+			"Serafina",
+			2,
 			"(To start, press the question mark in the corner of the screen!)"
+		]
+	},
+	"ChallengeLetti": {
+		"0": [
+			"Letti",
+			0,
+			"Oh my... that journey sure was something. I'm starving."
+		],
+		"1": [
+			"Letti",
+			0,
+			"It smells amazing in here... I hope I'll have enough room for dessert!"
+		],
+		"2": [
+			"Letti",
+			1,
+			"Hello there! Are you the maid who will be serving to me? It's a pleasure to meet you! I'm Letti."
+		],
+		"3": [
+			"Letti",
+			0,
+			"I've heard you just completed your training. I'm excited to see what your mentor has taught you!"
+		],
+		"4": [
+			"Letti",
+			0,
+			"You wouldn't happen to make anything sweet? Like maybe a cake, or perhaps a sundae..."
+		],
+		"5": [
+			"Letti",
+			1,
+			"Ah, but of course I would love to sample your meals as well!"
+		],
+		"6": [
+			"Serafina",
+			4,
+			"(O-oh my! Doesn't she work at that famed aquatic lab by the southern ocean..?)"
+		],
+		"7": [
+			"Serafina",
+			1,
+			"(Things that are sweet...perhaps I should focus on providing desserts.)"
+		]
+	},
+	"ChallengeDoll": {
+		"0": [
+			"Doll",
+			0,
+			"..."
+		],
+		"1": [
+			"Doll",
+			0,
+			"..."
+		],
+		"2": [
+			"Doll",
+			0,
+			"Hello."
+		],
+		"3": [
+			"Doll",
+			0,
+			"I have heard good things about your services."
+		],
+		"4": [
+			"Doll",
+			0,
+			"Savory dishes, sweet meals..."
+		],
+		"5": [
+			"Doll",
+			0,
+			"I want to taste it all."
+		],
+		"6": [
+			"Doll",
+			0,
+			"I want to see what it is like to be...human."
+		],
+		"7": [
+			"Doll",
+			0,
+			"Do not disappoint me."
+		],
+		"8": [
+			"Serafina",
+			3,
+			"(Eek!)"
+		],
+		"9": [
+			"Serafina",
+			3,
+			"(That's one of Lady Lacrimosa's artificial handmaidens!)"
+		],
+		"10": [
+			"Serafina",
+			2,
+			"(I must be on my best behavior, lest I draw the lady's wrath...)"
 		]
 	}
 }

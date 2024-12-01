@@ -125,6 +125,7 @@ public partial class DialogueHUD : CanvasLayer
 			}
 
 			Dialogue.Text = DialogueLine[2];
+			Dialogue.VisibleCharacters = 0;
 			InProgress = true;			
 			CurrentLineIndex++;
 			// //GD.Print("Visible: ", DialogueBox.VisibleCharacters);

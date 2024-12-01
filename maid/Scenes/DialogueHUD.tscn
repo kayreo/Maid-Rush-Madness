@@ -5,7 +5,7 @@
 
 [node name="DialogueHUD" type="CanvasLayer"]
 script = ExtResource("1_wsgj8")
-Scenario = "ChallengeSera"
+Scenario = "ChallengeLetti"
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Speaker" type="AnimatedSprite2D" parent="Control"]
-position = Vector2(0, -85)
+position = Vector2(-6, -85)
 scale = Vector2(0.712888, 0.712888)
 sprite_frames = ExtResource("2_uvmpj")
 animation = &"Serafina"
