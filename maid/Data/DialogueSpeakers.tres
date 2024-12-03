@@ -22,6 +22,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("9_lwt13")
+}],
+"loop": true,
+"name": &"Gob",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_u13w0")
 }, {
 "duration": 1.0,
@@ -50,12 +58,4 @@ animations = [{
 "loop": false,
 "name": &"Serafina",
 "speed": 0.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_lwt13")
-}],
-"loop": true,
-"name": &"Shadow",
-"speed": 5.0
 }]

@@ -18,6 +18,8 @@ public partial class DialogueHUD : CanvasLayer
 
 	private AnimatedSprite2D Speaker;
 
+	private TextureRect BG;
+
 	private string CurrentScenario;
 
 	private int VisibleCharacters = 0;
@@ -60,6 +62,7 @@ public partial class DialogueHUD : CanvasLayer
 		TriggerDialogue += OnDialogueTrigger;
 		Dialogue = GetNode<RichTextLabel>("Dialogue");
 		Speaker = GetNode<AnimatedSprite2D>("Control/Speaker");
+		BG = GetNode<TextureRect>("BG");
 		GD.Print("Speaker got: ", Speaker.Name);
 		EmitSignal("TriggerDialogue", Scenario);
 	}
@@ -105,6 +108,7 @@ public partial class DialogueHUD : CanvasLayer
 		//GD.Print("Received signal", Scenario);
 		DialogueData = (Godot.Collections.Dictionary)DialogueScenarios[Scenario];
 		CurrentScenario = Scenario;
+		BG.EmitSignal("SetBG", CurrentScenario);
 		//BoardManager.DialogueActive = true;
 		ContinueDialogue();
 	}

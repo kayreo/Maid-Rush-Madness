@@ -114,29 +114,34 @@
 		"5": [
 			"Doll",
 			0,
-			"I want to taste it all."
+			"Even your more...unconventional creations."
 		],
 		"6": [
 			"Doll",
 			0,
-			"I want to see what it is like to be...human."
+			"I want to taste it all."
 		],
 		"7": [
 			"Doll",
 			0,
-			"Do not disappoint me."
+			"I want to see what it is like to be...human."
 		],
 		"8": [
-			"Serafina",
-			3,
-			"(Eek!)"
+			"Doll",
+			0,
+			"Do not disappoint me."
 		],
 		"9": [
 			"Serafina",
 			3,
-			"(That's one of Lady Lacrimosa's artificial handmaidens!)"
+			"(Eek!)"
 		],
 		"10": [
+			"Serafina",
+			3,
+			"(That's one of Lady Lacrimosa's artificial handmaidens!)"
+		],
+		"11": [
 			"Serafina",
 			2,
 			"(I must be on my best behavior, lest I draw the lady's wrath...)"

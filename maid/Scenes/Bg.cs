@@ -13,7 +13,7 @@ public partial class Bg : TextureRect
 	public Texture2D ChallengeDoll;
 
 	[Export]
-	public Texture2D ChallengeShadow;
+	public Texture2D ChallengeGob;
 
 	[Export]
 	public Texture2D ChallengeAnnieAlex;
@@ -32,7 +32,7 @@ public partial class Bg : TextureRect
 				{"ChallengeSera", ChallengeSera},
 				{"ChallengeLetti", ChallengeLetti},
 				{"ChallengeDoll", ChallengeDoll},
-				{"ChallengeShadow", ChallengeShadow},
+				{"ChallengeGob", ChallengeGob},
 				{"ChallengeAnnieAlex", ChallengeAnnieAlex}
 			};
 	}

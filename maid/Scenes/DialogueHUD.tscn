@@ -22,7 +22,7 @@ script = ExtResource("3_rit3c")
 ChallengeSera = ExtResource("4_nce0s")
 ChallengeLetti = ExtResource("5_wp0nl")
 ChallengeDoll = ExtResource("2_pc87u")
-ChallengeShadow = ExtResource("6_km3vd")
+ChallengeGob = ExtResource("6_km3vd")
 ChallengeAnnieAlex = ExtResource("7_6gqkr")
 
 [node name="Control" type="Control" parent="."]
@@ -43,7 +43,7 @@ grow_vertical = 2
 position = Vector2(17, 62)
 scale = Vector2(1.00892, 1.00892)
 sprite_frames = ExtResource("2_uvmpj")
-animation = &"Shadow"
+animation = &"Doll"
 
 [node name="ColorRect" type="TextureRect" parent="."]
 anchors_preset = 7
