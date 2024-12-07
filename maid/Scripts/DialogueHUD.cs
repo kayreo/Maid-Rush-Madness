@@ -98,6 +98,7 @@ public partial class DialogueHUD : CanvasLayer
 			DialogueStarted = false;
 			CurrentLineIndex = 0;
 			Speaker.Frame = 0;
+			GetParent().EmitSignal("BeginGame");
 		}
 	}
 
@@ -155,6 +156,13 @@ public partial class DialogueHUD : CanvasLayer
 
 	private void OnEndDialogue() {
 		Hide();
+	}
+
+	
+	public void OnSetScenario(string name) {
+		GD.Print("Tgt challenge is now: ", name);
+		Scenario = name;
+		QueueFree();
 	}
 
 }

@@ -7,6 +7,9 @@ public partial class GameManager : Node2D
 	[Signal]
 	public delegate void GetChallengeEventHandler(string name);
 
+	[Signal]
+	public delegate void BeginGameEventHandler();
+
 	[Export]
 	public PackedScene GameWorld { get; set; }
 
@@ -14,6 +17,11 @@ public partial class GameManager : Node2D
 
 	[Export]
 	public PackedScene GameOver { get; set; }
+
+	[Export]
+	public PackedScene Dialogue { get; set; }
+
+	private DialogueHUD DiaInst;
 
 	CanvasLayer Credits;
 
@@ -23,7 +31,7 @@ public partial class GameManager : Node2D
 
 	AudioStreamPlayer BGMusic;
 
-	string tgtChallenge = "ChallengeSera";
+	string tgtChallenge = "ChallengeDoll";
 
 
     // Called when the node enters the scene tree for the first time.
@@ -35,8 +43,10 @@ public partial class GameManager : Node2D
 		BGMusic = (AudioStreamPlayer)GetNode("BGMusic");
 
 		GetChallenge += OnGetChallenge;
+		BeginGame += OnBeginGame;
 
 		WorldInst = (LevelManager)GameWorld.Instantiate();
+		DiaInst = (DialogueHUD)Dialogue.Instantiate();
 
 		BGMusic.Play(1f);
 	}
@@ -49,8 +59,8 @@ public partial class GameManager : Node2D
 	private void _OnStartButtonPressed() {
 		//GD.Print("Changing scene");
 		MainMenu.Hide();
-		WorldInst.OnSetScenario(tgtChallenge);
-		AddChild(WorldInst);
+		DiaInst.OnSetScenario(tgtChallenge);
+		AddChild(DiaInst);
 		//GetTree().ChangeSceneToFile("res://Scenes/GameWorld.tscn");
 	}
 
@@ -75,5 +85,10 @@ public partial class GameManager : Node2D
 		tgtChallenge = name;
 		Challenges.Hide();
 		_OnStartButtonPressed();
+	}
+
+	private void OnBeginGame() {
+		WorldInst.OnSetScenario(tgtChallenge);
+		AddChild(WorldInst);
 	}
 }
