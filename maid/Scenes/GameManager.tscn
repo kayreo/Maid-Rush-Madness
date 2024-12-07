@@ -14,6 +14,7 @@ script = ExtResource("1_3fiqt")
 GameWorld = ExtResource("2_eo6ci")
 GameOver = ExtResource("3_ct4wp")
 Dialogue = ExtResource("4_fgk5l")
+tgtChallenge = "ChallengeLetti"
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_mmiv1")
@@ -24,6 +25,14 @@ parameters/looping = true
 visible = false
 
 [node name="MainMenu" parent="." instance=ExtResource("1_jheqx")]
+
+[node name="Splash" parent="MainMenu" index="1"]
+offset_left = -1316.0
+offset_right = 604.0
+
+[node name="Logo" parent="MainMenu" index="2"]
+offset_top = -444.0
+offset_bottom = 636.0
 
 [node name="Challenges" parent="." instance=ExtResource("7_f8dfb")]
 visible = false

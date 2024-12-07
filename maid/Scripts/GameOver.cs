@@ -46,7 +46,7 @@ public partial class GameOver : Control
 
 	private void _onTryAgainButtonPressed() {
 		GD.Print("Changing scene");
-		GetTree().ChangeSceneToFile("res://Scenes/GameWorld.tscn");
+		GetParent().EmitSignal("RestartGame");
 	}
 
 	private void OnGetScenario(string scenario, Boolean wonGame) {

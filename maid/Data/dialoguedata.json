@@ -10,7 +10,12 @@
 		"0": [
 			"Serafina",
 			0,
-			"Testing testing 1 2 3!"
+			"Testing testing!"
+		],
+		"1": [
+			"Serafina",
+			0,
+			"Meow meow meow meow!"
 		]
 	},
 	"ChallengeLetti": {

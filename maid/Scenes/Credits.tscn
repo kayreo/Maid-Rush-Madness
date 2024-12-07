@@ -54,7 +54,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
 theme_override_font_sizes/font_size = 75
-text = "Kayla Han........"
+text = "Kayla Han....."
 horizontal_alignment = 1
 
 [node name="Role" type="Label" parent="VBoxContainer/HBoxContainer"]
@@ -74,7 +74,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
 theme_override_font_sizes/font_size = 75
-text = "Light................"
+text = "Light............."
 horizontal_alignment = 1
 
 [node name="Role" type="Label" parent="VBoxContainer/HBoxContainer2"]
@@ -94,7 +94,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
 theme_override_font_sizes/font_size = 75
-text = "Liz...................."
+text = "Liz................."
 horizontal_alignment = 1
 
 [node name="Role" type="Label" parent="VBoxContainer/HBoxContainer3"]
@@ -114,7 +114,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
 theme_override_font_sizes/font_size = 75
-text = "Rick.................."
+text = "Rick..............."
 horizontal_alignment = 1
 
 [node name="Role" type="Label" parent="VBoxContainer/HBoxContainer4"]
@@ -134,7 +134,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
 theme_override_font_sizes/font_size = 75
-text = "Shadow............."
+text = "Shadow.........."
 horizontal_alignment = 1
 
 [node name="Role" type="Label" parent="VBoxContainer/HBoxContainer5"]

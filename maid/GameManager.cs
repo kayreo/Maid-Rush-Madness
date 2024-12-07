@@ -10,6 +10,12 @@ public partial class GameManager : Node2D
 	[Signal]
 	public delegate void BeginGameEventHandler();
 
+	[Signal]
+	public delegate void EndGameEventHandler(bool won);
+
+	[Signal]
+	public delegate void RestartGameEventHandler();
+
 	[Export]
 	public PackedScene GameWorld { get; set; }
 
@@ -17,6 +23,8 @@ public partial class GameManager : Node2D
 
 	[Export]
 	public PackedScene GameOver { get; set; }
+
+	private GameOver GamInst;
 
 	[Export]
 	public PackedScene Dialogue { get; set; }
@@ -32,7 +40,8 @@ public partial class GameManager : Node2D
 	AudioStreamPlayer BGMusic;
 
 
-	string tgtChallenge = "ChallengeSera";
+	[Export]
+	string tgtChallenge = "ChallengeDoll";
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -45,9 +54,8 @@ public partial class GameManager : Node2D
 
 		GetChallenge += OnGetChallenge;
 		BeginGame += OnBeginGame;
-
-		WorldInst = (LevelManager)GameWorld.Instantiate();
-		DiaInst = (DialogueHUD)Dialogue.Instantiate();
+		EndGame += OnEndGame;
+		RestartGame += OnRestartGame;
 
 		//BGMusic.Play(1f);
 	}
@@ -60,6 +68,7 @@ public partial class GameManager : Node2D
 	private void _OnStartButtonPressed() {
 		//GD.Print("Changing scene");
 		MainMenu.Hide();
+		DiaInst = (DialogueHUD)Dialogue.Instantiate();
 		DiaInst.OnSetScenario(tgtChallenge);
 		AddChild(DiaInst);
 		//GetTree().ChangeSceneToFile("res://Scenes/GameWorld.tscn");
@@ -93,9 +102,25 @@ public partial class GameManager : Node2D
 	}
 
 	private void OnBeginGame() {
-		GD.Print("Received signal");
+		WorldInst = (LevelManager)GameWorld.Instantiate();
 		WorldInst.OnSetScenario(tgtChallenge);
 		AddChild(WorldInst);
-		RemoveChild(GetNode("DialogueHUD"));
+		GetNode("DialogueHUD").QueueFree();
+	}
+
+	private void OnEndGame(bool won) {
+		GetNode("GameWorld").QueueFree();
+		GamInst = (GameOver)GameOver.Instantiate();
+		// Display win dialogue
+		if (won) {
+			AddChild(GamInst);
+		} else {
+			AddChild(GamInst);
+		}
+	}
+
+	private void OnRestartGame() {
+		GetNode("GameOver").QueueFree();
+		OnBeginGame();
 	}
 }

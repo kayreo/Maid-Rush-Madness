@@ -177,6 +177,7 @@ public partial class LevelManager : Node2D
 			GD.Print("Recipes now: ", CurRecipes);
 			if (CurRecipes.Count <= 0) {
 				GD.Print("No more recipes, game complete");
+				GetParent().EmitSignal("EndGame", true);
 			} else {
 				OnPickRandomDish();
 			}
@@ -193,17 +194,16 @@ public partial class LevelManager : Node2D
 	private void OnPickRandomFood(Food newFood) {
 		Random.Randomize();
 		// Weight to spawn desired ingredients
-		int tgtWeight = 6;
+		int tgtWeight = 5;
 		int randomWeight = (int)Random.RandiRange(0, 10);
-		int randomKey = 0;
-		string randomSprite = (string)RemainingIngredients[randomKey];
+		// Set default
+		int randomKey = (int)Random.RandiRange(0, CurIngredients.Count - 1);
+		string randomSprite = (string)CurIngredients[randomKey];
+		GD.Print("Picking random: ", randomSprite);
+		// See if weight changes info
 		if (RemainingIngredients.Count > 0 && randomWeight <= tgtWeight) {
 			randomKey = (int)Random.RandiRange(0, RemainingIngredients.Count - 1);
 			randomSprite = (string)RemainingIngredients[randomKey];
-		}
-		else {
-			randomKey = (int)Random.RandiRange(0, CurIngredients.Count - 1);
-			randomSprite = (string)CurIngredients[randomKey];
 		}
 		// Set vis
 		Texture2D randomTexture = (Texture2D)Sprites[randomSprite];
@@ -216,9 +216,9 @@ public partial class LevelManager : Node2D
 		foreach (string recipe in RecipeKeys) {
 			Godot.Collections.Array toLoadRecipe = (Godot.Collections.Array)Recipes[recipe];
 			foreach (string ingredient in toLoadRecipe) {
-				//if (!CurIngredients.Contains(ingredient)) {
-				CurIngredients.Add(ingredient);
-				//}
+				if (!CurIngredients.Contains(ingredient)) {
+					CurIngredients.Add(ingredient);
+				}
 			}
 		}
 		GD.Print("Populated: ", CurIngredients);
@@ -267,7 +267,7 @@ public partial class LevelManager : Node2D
 
 	private void EndGame() {
 		GD.Print("Ending game");
-		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
+		GetParent().EmitSignal("EndGame", false);
 	}
 
 	public void OnSetScenario(string name) {
