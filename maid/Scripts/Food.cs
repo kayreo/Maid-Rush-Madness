@@ -18,7 +18,7 @@ public partial class Food : RigidBody2D
 
 	public void _OnArea2DEntered(Area2D area) {
 		if (area.Name == "Plate") {
-			GD.Print("Hit sera");
+			//GD.Print("Hit sera");
 			Sprite2D vis = (Sprite2D)GetNode("Visual");
 			Serafina parent = (Serafina)area.GetParent();
 			parent.EmitSignal(Serafina.SignalName.FoodObtained, name, vis.Texture);

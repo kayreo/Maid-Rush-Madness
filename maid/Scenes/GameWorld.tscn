@@ -79,8 +79,11 @@ position = Vector2(956, 1026)
 
 [node name="RequestWindow" parent="." instance=ExtResource("6_ce0h2")]
 
-[node name="OrderTimer" type="Timer" parent="."]
+[node name="AppearTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="OrderTimer" type="Timer" parent="."]
+wait_time = 30.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -110,4 +113,5 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "0"
 
+[connection signal="timeout" from="AppearTimer" to="." method="_OnAppearTimeout"]
 [connection signal="timeout" from="OrderTimer" to="." method="_OnOrderTimeout"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://w11iai1cucjs"
+path="res://.godot/imported/Fox Tale Waltz Part 1 Instrumental.mp3-892c0e56465a3b010c0f3bbc5e1aa108.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Fox Tale Waltz Part 1 Instrumental.mp3"
+dest_files=["res://.godot/imported/Fox Tale Waltz Part 1 Instrumental.mp3-892c0e56465a3b010c0f3bbc5e1aa108.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

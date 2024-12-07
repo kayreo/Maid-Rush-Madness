@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://dymo5j040ifkd"]
+
+[ext_resource type="Texture2D" uid="uid://bichxa88fxfck" path="res://Assets/Menu/dialogueBox.png" id="1_njfuh"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueBG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -836.0
+offset_top = -306.0
+offset_right = 836.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_njfuh")
+
+[node name="DialogueText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -802.0
+offset_top = -290.0
+offset_right = 802.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 50
+text = "Meowmeowmeowmeowmoemwoemw meomwomewome.. meomwomeowm? meomowmoem"
+scroll_active = false
+autowrap_mode = 2

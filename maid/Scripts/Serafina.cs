@@ -26,6 +26,12 @@ public partial class Serafina : CharacterBody2D
 	[Signal]
 	public delegate void TakeDamageEventHandler();
 
+	[Signal]
+	public delegate void ChangeDisplayHealthEventHandler();
+
+	[Signal]
+	public delegate void ChangeDisplayOrderEventHandler();
+
 	public string heldDish;
 
 	public Godot.Collections.Array HeldFood = new Godot.Collections.Array();
@@ -47,6 +53,8 @@ public partial class Serafina : CharacterBody2D
     	FoodObtained += GetFood;
 		DishMerged += GetDish;
 		TakeDamage += OnTakeDamage;
+		ChangeDisplayHealth += SetDisplayHealth;
+		ChangeDisplayOrder += SetDisplayOrder;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -69,19 +77,17 @@ public partial class Serafina : CharacterBody2D
 		if (Input.IsActionPressed("place")) {
 			HeldFood.Clear();
 			ClearHolding();
+			Sprite2D dishSprite = (Sprite2D)Plate.GetNode("DishSprite");
 			//GD.Print("Holding now: ", HeldFood);
 			if (madeDish) {
-				GD.Print("Can place on thing");
+				//GD.Print("Can place on thing");
 				madeDish = false;
 				//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
-				Sprite2D dishSprite = (Sprite2D)Plate.GetNode("DishSprite");
 				parent.EmitSignal(GameManager.SignalName.PlaceDish, dishSprite, heldDish);
 				dishSprite.Texture = null;
 				dishSprite.Hide();
 				//dishCollision.Disabled = true;
 				heldDish = null;
-			} else {
-				//GD.Print("Can't place on thing");
 			}
 		}
 
@@ -105,13 +111,14 @@ public partial class Serafina : CharacterBody2D
 			int newLen = HeldFood.Count;
 			int newInd = newLen - 1;
 			string placePos = "FoodSprite" + newInd;
-			GD.Print("Getting: ", placePos);
+			//GD.Print("Getting: ", placePos);
 			Sprite2D foodSprite = (Sprite2D)Plate.GetNode(placePos);
 			foodSprite.Texture = spriteTexture; 
 			foodSprite.Visible = true;
 			mergeFood();
 			ParticleEffect.Texture = spriteTexture;
 			ParticleEffect.Emitting = true;
+			parent.EmitSignal(GameManager.SignalName.UpdateIngredients, food);
 		}
 	}
 
@@ -155,5 +162,14 @@ public partial class Serafina : CharacterBody2D
 		} else {
 			AnimatedSprite.Frame = convertToFrame();
 		}
+	}
+
+	private void SetDisplayHealth() {
+		AnimatedSprite.Animation = "health";
+		AnimatedSprite.Frame = convertToFrame();
+	}
+
+	private void SetDisplayOrder() {
+		AnimatedSprite.Animation = "newOrder";
 	}
 }

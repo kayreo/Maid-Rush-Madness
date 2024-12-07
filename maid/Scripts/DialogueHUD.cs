@@ -60,7 +60,7 @@ public partial class DialogueHUD : CanvasLayer
 		GD.Print("Scenarios: ", DialogueScenarios);
 
 		TriggerDialogue += OnDialogueTrigger;
-		Dialogue = GetNode<RichTextLabel>("Dialogue");
+		Dialogue = GetNode<RichTextLabel>("Dialogue/DialogueText");
 		Speaker = GetNode<AnimatedSprite2D>("Control/Speaker");
 		BG = GetNode<TextureRect>("BG");
 		GD.Print("Speaker got: ", Speaker.Name);

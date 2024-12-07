@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://3u3l2bon00ws"]
+[gd_scene load_steps=5 format=3 uid="uid://3u3l2bon00ws"]
 
 [ext_resource type="Script" path="res://Scripts/GameOver.cs" id="1_fl561"]
-[ext_resource type="Texture2D" uid="uid://bfmopogtw3y1u" path="res://Assets/Serafina/seraHealth0.png" id="2_ye6jc"]
+[ext_resource type="Texture2D" uid="uid://dliohwwgi68ln" path="res://Assets/Menu/sidebar.png" id="2_obmmc"]
+[ext_resource type="SpriteFrames" uid="uid://dbpym26wda1g2" path="res://Data/DialogueSpeakers.tres" id="2_oxy3y"]
+[ext_resource type="PackedScene" uid="uid://j2edk8r03bw0" path="res://Scenes/DialogueMini.tscn" id="3_luwsb"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -12,22 +14,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fl561")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Sidebar" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1920.0
+offset_top = -540.0
+offset_bottom = 540.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_obmmc")
+flip_h = true
 
-[node name="Sprite2D" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -217.0
-offset_top = -502.0
-offset_right = 652.0
-offset_bottom = 523.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_ye6jc")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -35,10 +37,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -138.0
-offset_top = -133.0
-offset_right = 138.0
-offset_bottom = 17.0
+offset_left = 555.0
+offset_top = -480.0
+offset_right = 831.0
+offset_bottom = -330.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -52,5 +54,24 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Try again?"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Speaker" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(435, -32)
+scale = Vector2(0.656482, 0.656482)
+sprite_frames = ExtResource("2_oxy3y")
+animation = &"Serafina"
+
+[node name="DialogueMini" parent="." instance=ExtResource("3_luwsb")]
+layout_mode = 1
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_onTryAgainButtonPressed"]

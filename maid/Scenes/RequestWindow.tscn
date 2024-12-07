@@ -10,9 +10,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Display" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Display"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -20,7 +20,7 @@ offset_left = -763.0
 offset_bottom = 407.0
 grow_horizontal = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Display"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -29,14 +29,14 @@ offset_top = 2.0
 offset_bottom = 399.0
 grow_horizontal = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="Label" type="Label" parent="Display/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 52
-text = "CURRENT ORDER"
+text = "NEW ORDER"
 horizontal_alignment = 1
 
-[node name="RecipeLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="RecipeLabel" type="Label" parent="Display/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -45,17 +45,17 @@ text = "MEOW MEOW"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Ingredients" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="Ingredients" type="HBoxContainer" parent="Display/VBoxContainer"]
 layout_mode = 2
 
-[node name="ingr0" type="TextureRect" parent="CanvasLayer/VBoxContainer/Ingredients"]
-layout_mode = 2
-texture = ExtResource("1_ets0v")
-
-[node name="ingr1" type="TextureRect" parent="CanvasLayer/VBoxContainer/Ingredients"]
+[node name="ingr0" type="TextureRect" parent="Display/VBoxContainer/Ingredients"]
 layout_mode = 2
 texture = ExtResource("1_ets0v")
 
-[node name="ingr2" type="TextureRect" parent="CanvasLayer/VBoxContainer/Ingredients"]
+[node name="ingr1" type="TextureRect" parent="Display/VBoxContainer/Ingredients"]
+layout_mode = 2
+texture = ExtResource("1_ets0v")
+
+[node name="ingr2" type="TextureRect" parent="Display/VBoxContainer/Ingredients"]
 layout_mode = 2
 texture = ExtResource("1_ets0v")

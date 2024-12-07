@@ -1,16 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://ej07vkvm2xbb"]
+[gd_scene load_steps=10 format=3 uid="uid://ej07vkvm2xbb"]
 
 [ext_resource type="Script" path="res://Scripts/Serafina.cs" id="1_0xagd"]
 [ext_resource type="SpriteFrames" uid="uid://d2e0a3guluvd" path="res://Assets/Serafina/Serafina.tres" id="2_no7us"]
+[ext_resource type="Texture2D" uid="uid://c28684oybep5f" path="res://Assets/Serafina/lePlate0.png" id="3_wfqt6"]
+[ext_resource type="Texture2D" uid="uid://bpa7a33rlb3i6" path="res://Assets/Serafina/lePlate1.png" id="4_7utob"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v12i4"]
 size = Vector2(536.625, 655.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osnpx"]
 size = Vector2(342, 52)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_n7im0"]
-radius = 29.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7vus"]
 size = Vector2(341, 10)
@@ -40,53 +39,31 @@ shape = SubResource("RectangleShape2D_v12i4")
 position = Vector2(-12, -29)
 shape = SubResource("RectangleShape2D_osnpx")
 
-[node name="DishSprite" type="Sprite2D" parent="Plate"]
-position = Vector2(-8, -45)
-scale = Vector2(0.445, 0.445)
+[node name="DishSpriteBack" type="Sprite2D" parent="Plate"]
+position = Vector2(-1, -170)
+scale = Vector2(0.616, 0.616)
+texture = ExtResource("3_wfqt6")
 
 [node name="FoodSprite0" type="Sprite2D" parent="Plate"]
-position = Vector2(-117, -41)
+position = Vector2(-101, -58)
 scale = Vector2(0.5, 0.5)
 
 [node name="FoodSprite1" type="Sprite2D" parent="Plate"]
-position = Vector2(-36, -43)
+position = Vector2(0, -58)
+scale = Vector2(0.5, 0.5)
+
+[node name="DishSprite" type="Sprite2D" parent="Plate"]
+position = Vector2(0, -104)
 scale = Vector2(0.5, 0.5)
 
 [node name="FoodSprite2" type="Sprite2D" parent="Plate"]
-position = Vector2(107, -41)
+position = Vector2(78, -58)
 scale = Vector2(0.5, 0.5)
 
-[node name="Dish" type="RigidBody2D" parent="Plate"]
-position = Vector2(38, -41)
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plate/Dish"]
-shape = SubResource("CircleShape2D_n7im0")
-
-[node name="Food0" type="RigidBody2D" parent="Plate"]
-position = Vector2(-117, -41)
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plate/Food0"]
-shape = SubResource("CircleShape2D_n7im0")
-
-[node name="Food1" type="RigidBody2D" parent="Plate"]
-position = Vector2(-36, -43)
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plate/Food1"]
-shape = SubResource("CircleShape2D_n7im0")
-
-[node name="Food2" type="RigidBody2D" parent="Plate"]
-position = Vector2(107, -41)
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Plate/Food2"]
-shape = SubResource("CircleShape2D_n7im0")
+[node name="DishSpriteFront" type="Sprite2D" parent="Plate"]
+position = Vector2(-1, -171)
+scale = Vector2(0.616, 0.616)
+texture = ExtResource("4_7utob")
 
 [node name="ContainPlate" type="StaticBody2D" parent="."]
 collision_layer = 4
