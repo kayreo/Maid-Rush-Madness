@@ -76,6 +76,10 @@ public partial class GameManager : Node2D
 		Credits.Show();
 	}
 
+	private void _OnExitPressed() {
+		GetTree().Quit();
+	}
+
 	private void _OnBackCreditsButtonPressed() {
 		Credits.Hide();
 		Challenges.Hide();

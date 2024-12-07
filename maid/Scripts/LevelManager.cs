@@ -192,12 +192,11 @@ public partial class LevelManager : Node2D
 
 	private void OnPickRandomFood(Food newFood) {
 		Random.Randomize();
-		//keyArray = keyArray.Slice(0, 18);
-		//GD.Print("Array: ", keyArray);
-		int tgtWeight = 7;
+		// Weight to spawn desired ingredients
+		int tgtWeight = 6;
 		int randomWeight = (int)Random.RandiRange(0, 10);
 		int randomKey = 0;
-		string randomSprite = (string)CurIngredients[randomKey];
+		string randomSprite = (string)RemainingIngredients[randomKey];
 		if (RemainingIngredients.Count > 0 && randomWeight <= tgtWeight) {
 			randomKey = (int)Random.RandiRange(0, RemainingIngredients.Count - 1);
 			randomSprite = (string)RemainingIngredients[randomKey];
@@ -206,6 +205,7 @@ public partial class LevelManager : Node2D
 			randomKey = (int)Random.RandiRange(0, CurIngredients.Count - 1);
 			randomSprite = (string)CurIngredients[randomKey];
 		}
+		// Set vis
 		Texture2D randomTexture = (Texture2D)Sprites[randomSprite];
 		Sprite2D newFoodVis = (Sprite2D)newFood.GetNode("Visual");
 		newFoodVis.Texture = randomTexture;
@@ -213,15 +213,15 @@ public partial class LevelManager : Node2D
 	}
 
 	private void PopulateRandomFoodChoices() {
-		foreach (string recipe in CurRecipes) {
+		foreach (string recipe in RecipeKeys) {
 			Godot.Collections.Array toLoadRecipe = (Godot.Collections.Array)Recipes[recipe];
 			foreach (string ingredient in toLoadRecipe) {
-				if (!CurIngredients.Contains(ingredient)) {
-					CurIngredients.Add(ingredient);
-				}
+				//if (!CurIngredients.Contains(ingredient)) {
+				CurIngredients.Add(ingredient);
+				//}
 			}
 		}
-		//GD.Print("Populated: ", CurIngredients);
+		GD.Print("Populated: ", CurIngredients);
 	}
 
 	private void OnPickRandomDish() {

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpdj2qkynsyug"]
+[gd_scene load_steps=5 format=3 uid="uid://bpdj2qkynsyug"]
 
 [ext_resource type="Script" path="res://Scripts/Food.cs" id="1_frnvt"]
+[ext_resource type="Texture2D" uid="uid://dmfdpsecxo4ju" path="res://Assets/items/adachi.png" id="2_nl2no"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u45sl"]
 
@@ -22,6 +23,7 @@ shape = SubResource("RectangleShape2D_u45sl")
 shape = SubResource("RectangleShape2D_u72nk")
 
 [node name="Visual" type="Sprite2D" parent="."]
+texture = ExtResource("2_nl2no")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

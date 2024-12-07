@@ -16,7 +16,7 @@ public partial class FoodSpawner : Node2D
 	{
 		Random.Randomize();
 		SpawnTimer = (Timer)GetNode("Timer");
-		SpawnTimer.WaitTime = Random.RandiRange(5, 20);
+		SpawnTimer.WaitTime = Random.RandiRange(2, 5);
 		SpawnTimer.Start();
 	}
 
@@ -31,7 +31,7 @@ public partial class FoodSpawner : Node2D
 		Sprite2D newFoodVis = (Sprite2D)newFood.GetNode("Visual");
 		AddChild(newFood);
 		GetParent().GetParent().EmitSignal("PickRandomFood", newFood);
-		SpawnTimer.WaitTime = Random.RandiRange(5, 20);
+		SpawnTimer.WaitTime = Random.RandiRange(2, 5);
 	}
 
 }

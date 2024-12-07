@@ -10,6 +10,7 @@ Food = ExtResource("2_ebdjc")
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="Marker2D"]
+visible = false
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0

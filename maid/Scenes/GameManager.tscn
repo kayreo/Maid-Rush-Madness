@@ -25,14 +25,6 @@ visible = false
 
 [node name="MainMenu" parent="." instance=ExtResource("1_jheqx")]
 
-[node name="Splash" parent="MainMenu" index="1"]
-offset_left = -1316.0
-offset_right = 604.0
-
-[node name="Logo" parent="MainMenu" index="2"]
-offset_top = -444.0
-offset_bottom = 636.0
-
 [node name="Challenges" parent="." instance=ExtResource("7_f8dfb")]
 visible = false
 
@@ -40,6 +32,7 @@ visible = false
 [connection signal="pressed" from="MainMenu/MenuButtons/StartButton" to="." method="_OnStartButtonPressed"]
 [connection signal="pressed" from="MainMenu/MenuButtons/Modes" to="." method="_OnModesPressed"]
 [connection signal="pressed" from="MainMenu/MenuButtons/Credits" to="." method="_OnCreditsPressed"]
+[connection signal="pressed" from="MainMenu/MenuButtons/Exit" to="." method="_OnExitPressed"]
 [connection signal="pressed" from="Challenges/BackButton" to="." method="_OnBackCreditsButtonPressed"]
 
 [editable path="Credits"]
