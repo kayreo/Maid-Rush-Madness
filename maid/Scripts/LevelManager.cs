@@ -34,6 +34,8 @@ public partial class LevelManager : Node2D
 
 	public Timer appearTimer;
 
+	public TextureRect BG;
+
 	public Godot.Collections.Array curRecipes = new Godot.Collections.Array();
 
 	private Json jsonLoader;
@@ -117,10 +119,12 @@ public partial class LevelManager : Node2D
 		requestUI = (Control)GetNode("RequestWindow");
 		orderTimer = (Timer)GetNode("OrderTimer");
 		appearTimer = (Timer)GetNode("AppearTimer");	
+		BG = (TextureRect)GetNode("BG");
 
 		Label recipeLabel = (Label)requestUI.GetNode("Display/VBoxContainer/RecipeLabel");
 
 		// Pick a challenge
+		BG.EmitSignal("SetBG", CurChallenge);
 		//CurChallenge = "ChallengeSera";
 		// Get recipes for that challenge
 		CurRecipes = (Godot.Collections.Array)ChallengeDict[CurChallenge];

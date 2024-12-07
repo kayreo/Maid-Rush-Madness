@@ -31,11 +31,12 @@ public partial class GameManager : Node2D
 
 	AudioStreamPlayer BGMusic;
 
-	string tgtChallenge = "ChallengeDoll";
+
+	string tgtChallenge = "ChallengeSera";
 
 
-    // Called when the node enters the scene tree for the first time.
-    public override void _Ready()
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
 	{
 		MainMenu = (CanvasLayer)GetNode("MainMenu");
 		Credits = (CanvasLayer)GetNode("Credits");
@@ -48,7 +49,7 @@ public partial class GameManager : Node2D
 		WorldInst = (LevelManager)GameWorld.Instantiate();
 		DiaInst = (DialogueHUD)Dialogue.Instantiate();
 
-		BGMusic.Play(1f);
+		//BGMusic.Play(1f);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -88,7 +89,9 @@ public partial class GameManager : Node2D
 	}
 
 	private void OnBeginGame() {
+		GD.Print("Received signal");
 		WorldInst.OnSetScenario(tgtChallenge);
 		AddChild(WorldInst);
+		RemoveChild(GetNode("DialogueHUD"));
 	}
 }
