@@ -30,7 +30,7 @@ public partial class FoodSpawner : Node2D
 		Food newFood = (Food)Food.Instantiate();
 		Sprite2D newFoodVis = (Sprite2D)newFood.GetNode("Visual");
 		AddChild(newFood);
-		GetTree().Root.GetNode("GameWorld").EmitSignal("PickRandomFood", newFood);
+		GetParent().GetParent().EmitSignal("PickRandomFood", newFood);
 		SpawnTimer.WaitTime = Random.RandiRange(5, 20);
 	}
 

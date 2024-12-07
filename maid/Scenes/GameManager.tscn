@@ -1,25 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3dpc4thia31e"]
+[gd_scene load_steps=8 format=3 uid="uid://b3dpc4thia31e"]
 
 [ext_resource type="Script" path="res://GameManager.cs" id="1_3fiqt"]
 [ext_resource type="PackedScene" uid="uid://c5nr1726wlfdv" path="res://Scenes/MainMenu.tscn" id="1_jheqx"]
 [ext_resource type="PackedScene" uid="uid://ktnnncnv3xab" path="res://Scenes/GameWorld.tscn" id="2_eo6ci"]
 [ext_resource type="PackedScene" uid="uid://3u3l2bon00ws" path="res://Scenes/GameOver.tscn" id="3_ct4wp"]
+[ext_resource type="AudioStream" uid="uid://w11iai1cucjs" path="res://Assets/Audio/Fox Tale Waltz Part 1 Instrumental.mp3" id="4_mmiv1"]
 [ext_resource type="PackedScene" uid="uid://bx7hjeod1rk4w" path="res://Scenes/Credits.tscn" id="5_s1s1y"]
+[ext_resource type="PackedScene" uid="uid://bo74efevn8r5q" path="res://Scenes/Challenges.tscn" id="7_f8dfb"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_3fiqt")
 GameWorld = ExtResource("2_eo6ci")
 GameOver = ExtResource("3_ct4wp")
 
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mmiv1")
+volume_db = -15.0
+parameters/looping = true
+
 [node name="Credits" parent="." instance=ExtResource("5_s1s1y")]
 visible = false
 
 [node name="MainMenu" parent="." instance=ExtResource("1_jheqx")]
 
+[node name="Challenges" parent="." instance=ExtResource("7_f8dfb")]
+visible = false
+
 [connection signal="pressed" from="Credits/BackButton" to="." method="_OnBackCreditsButtonPressed"]
 [connection signal="pressed" from="MainMenu/MenuButtons/StartButton" to="." method="_OnStartButtonPressed"]
 [connection signal="pressed" from="MainMenu/MenuButtons/Modes" to="." method="_OnModesPressed"]
 [connection signal="pressed" from="MainMenu/MenuButtons/Credits" to="." method="_OnCreditsPressed"]
+[connection signal="pressed" from="Challenges/BackButton" to="." method="_OnBackCreditsButtonPressed"]
 
 [editable path="Credits"]
 [editable path="MainMenu"]
+[editable path="Challenges"]

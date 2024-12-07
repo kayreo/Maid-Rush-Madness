@@ -42,6 +42,9 @@ public partial class LevelManager : Node2D
 	public delegate void FoodObtainedEventHandler(Godot.Collections.Array FoodToMerge);
 
 	[Signal]
+	public delegate void SetScenarioEventHandler(string name);
+
+	[Signal]
 	public delegate void PlaceDishEventHandler(Sprite2D DishToPlace, string DishName);
 
 	[Signal]
@@ -94,7 +97,7 @@ public partial class LevelManager : Node2D
 		// Load visual data
 		var spriteFile = File.ReadAllText("Data/SpriteData.json");
 		jsonLoader.Parse(spriteFile);
-		GD.Print(jsonLoader.Data);
+		//GD.Print(jsonLoader.Data);
 		Godot.Collections.Dictionary tempDict = (Godot.Collections.Dictionary)jsonLoader.Data;
 		foreach (string line in tempDict.Keys) {
 			//GD.Print("Loading: ", line);
@@ -118,10 +121,10 @@ public partial class LevelManager : Node2D
 		Label recipeLabel = (Label)requestUI.GetNode("Display/VBoxContainer/RecipeLabel");
 
 		// Pick a challenge
-		CurChallenge = "ChallengeSera";
+		//CurChallenge = "ChallengeSera";
 		// Get recipes for that challenge
 		CurRecipes = (Godot.Collections.Array)ChallengeDict[CurChallenge];
-		//GD.Print("Recipes for this challenge: ", CurRecipes);
+		GD.Print("Recipes for ", CurChallenge, ": ", CurRecipes);
 		OnPickRandomDish();
 		orderTimer.Start();
 		PopulateRandomFoodChoices();
@@ -138,7 +141,7 @@ public partial class LevelManager : Node2D
 	// Check if any ingredients can be merged
 	private void MergeFood(Godot.Collections.Array FoodToMerge) {
 		string recipe = foodTree.findRecipe(FoodToMerge);
-		GD.Print("Recipe found: ", recipe);
+		//GD.Print("Recipe found: ", recipe);
 		// Did not find a recipe and hit max number of ingredients
 		if (recipe == null) {
 			recipe = "Slop";
@@ -261,6 +264,11 @@ public partial class LevelManager : Node2D
 	private void EndGame() {
 		GD.Print("Ending game");
 		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
+	}
+
+	public void OnSetScenario(string name) {
+		GD.Print("Tgt challenge is now: ", name);
+		CurChallenge = name;
 	}
 
 }
