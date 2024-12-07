@@ -57,3 +57,4 @@ click={
 [rendering]
 
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.121569, 0.129412, 0.278431, 1)

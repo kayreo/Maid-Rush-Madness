@@ -13,7 +13,7 @@ public partial class Serafina : CharacterBody2D
 
 	public CpuParticles2D ParticleEffect;
 
-	private GameManager parent;
+	private LevelManager parent;
 
 	public Area2D Plate;
 
@@ -44,7 +44,7 @@ public partial class Serafina : CharacterBody2D
 		AnimatedSprite = (AnimatedSprite2D)GetNode("AnimatedSprite2D");
 		ParticleEffect = (CpuParticles2D)GetNode("CPUParticles2D");
 		Plate = (Area2D)GetNode("Plate");
-	 	parent = (GameManager)GetParent();
+	 	parent = (LevelManager)GetParent();
 		//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
 		Sprite2D dishSprite = (Sprite2D)Plate.GetNode("DishSprite");
 		dishSprite.Hide();
@@ -83,7 +83,7 @@ public partial class Serafina : CharacterBody2D
 				//GD.Print("Can place on thing");
 				madeDish = false;
 				//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
-				parent.EmitSignal(GameManager.SignalName.PlaceDish, dishSprite, heldDish);
+				parent.EmitSignal(LevelManager.SignalName.PlaceDish, dishSprite, heldDish);
 				dishSprite.Texture = null;
 				dishSprite.Hide();
 				//dishCollision.Disabled = true;
@@ -118,7 +118,7 @@ public partial class Serafina : CharacterBody2D
 			mergeFood();
 			ParticleEffect.Texture = spriteTexture;
 			ParticleEffect.Emitting = true;
-			parent.EmitSignal(GameManager.SignalName.UpdateIngredients, food);
+			parent.EmitSignal(LevelManager.SignalName.UpdateIngredients, food);
 		}
 	}
 
@@ -150,7 +150,7 @@ public partial class Serafina : CharacterBody2D
 	private void mergeFood() {
 		if (HeldFood.Count > 2) {
 			GD.Print(GetParent().Name);
-			parent.EmitSignal(GameManager.SignalName.FoodObtained, HeldFood);
+			parent.EmitSignal(LevelManager.SignalName.FoodObtained, HeldFood);
 		}
 	}
 
@@ -158,7 +158,7 @@ public partial class Serafina : CharacterBody2D
 		health--;
 		if (health <= 0) {
 			GD.Print("Game over!");
-			parent.EmitSignal(GameManager.SignalName.GameOver);
+			parent.EmitSignal(LevelManager.SignalName.GameOver);
 		} else {
 			AnimatedSprite.Frame = convertToFrame();
 		}

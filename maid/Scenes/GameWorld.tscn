@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ktnnncnv3xab"]
 
 [ext_resource type="PackedScene" uid="uid://ej07vkvm2xbb" path="res://Scenes/Serafina.tscn" id="1_40ut1"]
-[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_pk06s"]
+[ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_pk06s"]
 [ext_resource type="PackedScene" uid="uid://1u7rfdwivbu2" path="res://Scenes/Table.tscn" id="2_0xnwv"]
 [ext_resource type="PackedScene" uid="uid://b75u2t47bnamx" path="res://Scenes/PlacedDish.tscn" id="2_7rwda"]
 [ext_resource type="Texture2D" uid="uid://ckoi0jl1pb4tl" path="res://Assets/BGs/castleD.png" id="3_8v4h2"]

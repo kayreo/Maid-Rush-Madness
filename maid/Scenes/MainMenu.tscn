@@ -1,13 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5nr1726wlfdv"]
+[gd_scene load_steps=7 format=3 uid="uid://c5nr1726wlfdv"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenu.cs" id="1_rnlc4"]
 [ext_resource type="Texture2D" uid="uid://dliohwwgi68ln" path="res://Assets/Menu/sidebar.png" id="2_jed12"]
 [ext_resource type="Texture2D" uid="uid://cs2ltuixr75sc" path="res://Assets/Menu/splash.png" id="3_0ji02"]
 [ext_resource type="Texture2D" uid="uid://3eydmcbymxvf" path="res://Assets/Menu/logo.png" id="3_5llut"]
 
-[sub_resource type="Animation" id="Animation_2xojr"]
-resource_name = "splashScreen"
-length = 2.0
+[sub_resource type="Animation" id="Animation_078l0"]
+resource_name = "Splash"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -18,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 126), Vector2(0, 0)]
+"values": [Vector2(0, 96), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -42,7 +41,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.5, 1.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-349, 0), Vector2(0, 0)]
+"values": [Vector2(-356, 0), Vector2(0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -57,31 +56,31 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_w4jec"]
+[sub_resource type="Animation" id="Animation_tbrw2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Logo:modulate")
+tracks/0/path = NodePath("Logo:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(0, 96)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Logo:position")
+tracks/1/path = NodePath("Logo:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.001),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -93,7 +92,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-349, 0)]
+"values": [Vector2(-356, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -105,72 +104,81 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_804hr"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flwrk"]
 _data = {
-"RESET": SubResource("Animation_w4jec"),
-"splashScreen": SubResource("Animation_2xojr")
+"RESET": SubResource("Animation_tbrw2"),
+"Splash": SubResource("Animation_078l0")
 }
 
-[node name="MainMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_rnlc4")
+[node name="MainMenu" type="CanvasLayer"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Sidebar" type="TextureRect" parent="CanvasLayer"]
+[node name="Sidebar" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_jed12")
 
-[node name="StartButton" type="Button" parent="CanvasLayer"]
-visible = false
-offset_left = 79.0
-offset_top = 165.0
-offset_right = 516.0
-offset_bottom = 276.0
-theme_override_font_sizes/font_size = 75
-text = "Start Game!"
-
-[node name="Splash" type="TextureRect" parent="CanvasLayer"]
+[node name="Splash" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1309.0
+offset_left = -1316.0
 offset_top = -540.0
-offset_right = 611.0
+offset_right = 604.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_0ji02")
 
-[node name="Logo" type="TextureRect" parent="CanvasLayer"]
+[node name="Logo" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -960.0
-offset_top = -540.0
+offset_top = -444.0
 offset_right = 960.0
-offset_bottom = 540.0
+offset_bottom = 636.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_5llut")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
-libraries = {
-"": SubResource("AnimationLibrary_804hr")
-}
-autoplay = "splashScreen"
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 27.0
+offset_top = -298.0
+offset_right = 607.0
+offset_bottom = 298.0
+grow_vertical = 2
+theme_override_constants/separation = 100
 
-[connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_onStartButtonPressed"]
+[node name="StartButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+button_mask = 3
+text = "Start"
+
+[node name="Modes" type="Button" parent="MenuButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Modes"
+
+[node name="Credits" type="Button" parent="MenuButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 90
+text = "Credits"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_flwrk")
+}
+autoplay = "Splash"

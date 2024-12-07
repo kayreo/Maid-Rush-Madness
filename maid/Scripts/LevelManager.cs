@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 
 
-public partial class GameManager : Node2D
+public partial class LevelManager : Node2D
 {
 
 	[Export]
