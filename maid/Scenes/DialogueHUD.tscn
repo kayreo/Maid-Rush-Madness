@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ckoi0jl1pb4tl" path="res://Assets/BGs/castleD.png" id="2_pc87u"]
 [ext_resource type="SpriteFrames" uid="uid://dbpym26wda1g2" path="res://Data/DialogueSpeakers.tres" id="2_uvmpj"]
 [ext_resource type="Texture2D" uid="uid://bichxa88fxfck" path="res://Assets/Menu/dialogueBox.png" id="3_qao3q"]
-[ext_resource type="Script" path="res://Scenes/Bg.cs" id="3_rit3c"]
+[ext_resource type="Script" path="res://Scripts/Bg.cs" id="3_rit3c"]
 [ext_resource type="Texture2D" uid="uid://bt2vrcfbsyke8" path="res://Assets/BGs/castleS.png" id="4_nce0s"]
 [ext_resource type="Texture2D" uid="uid://d1s2344hlbf36" path="res://Assets/BGs/observD.png" id="5_wp0nl"]
 [ext_resource type="Texture2D" uid="uid://cc0fr3xyehc33" path="res://Assets/BGs/castleN.png" id="6_km3vd"]
@@ -12,7 +12,7 @@
 
 [node name="DialogueHUD" type="CanvasLayer"]
 script = ExtResource("1_wsgj8")
-Scenario = "ChallengeDoll"
+Scenario = "ChallengeLetti"
 
 [node name="BG" type="TextureRect" parent="."]
 offset_right = 40.0

@@ -1,6 +1,10 @@
 {
-    "Serafina": [""],
-    "SweetChallenge": ["Cake", "Brownies", "Sundae", "Chocolate milkshake", "Strawberry milkshake", "Rice pudding"],
-    "SavoryChallenge": ["Spaghetti", "Ramen", "Omurice", "Garlic bread", "Steak dinner", "Garlic fries"],
-    "WeirdChallenges": ["Tentacle ramen", "Blood milkshake", "Ratghetti"]
+    "ChallengeSera": ["Cake", "Ramen", "Rice pudding", "Brownies", "Omurice", "Spaghetti"],
+    "ChallengeLetti": ["Cake", "Brownies", "Sundae", "Chocolate milkshake", "Garlic bread", "Omurice"],
+    "ChallengeDoll": ["Strawberry milkshake", "Rice pudding", "Ratghetti", "Steak dinner", "Spaghetti", "Tentacle ramen"],
+    "ChallengeGob": ["Blood milkshake", "Eye sundae", "Brownies", "Ramen", "Cake", "Rice pudding"],
+    "ChallengeAnnieAlex": ["Tentacle ramen", "Steak dinner", "Garlic fries", "Spaghetti", "Omurice", "Sundae"],
+    "ChallengeSweet": ["Cake", "Brownies", "Sundae", "Chocolate milkshake", "Strawberry milkshake", "Rice pudding"],
+    "ChallengeSavory": ["Spaghetti", "Ramen", "Omurice", "Garlic bread", "Steak dinner", "Garlic fries"],
+    "ChallengesWeird": ["Tentacle ramen", "Blood milkshake", "Ratghetti", "Eye sundae"]
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ktnnncnv3xab"]
+[gd_scene load_steps=11 format=3 uid="uid://ktnnncnv3xab"]
 
 [ext_resource type="PackedScene" uid="uid://ej07vkvm2xbb" path="res://Scenes/Serafina.tscn" id="1_40ut1"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_pk06s"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b75u2t47bnamx" path="res://Scenes/PlacedDish.tscn" id="2_7rwda"]
 [ext_resource type="Texture2D" uid="uid://ckoi0jl1pb4tl" path="res://Assets/BGs/castleD.png" id="3_8v4h2"]
 [ext_resource type="PackedScene" uid="uid://c8hd6iinmplop" path="res://Scenes/FoodSpawner.tscn" id="3_pd8vf"]
+[ext_resource type="Script" path="res://Scripts/Bg.cs" id="4_jdpfn"]
 [ext_resource type="PackedScene" uid="uid://bkfji30drxyn6" path="res://Scenes/RequestWindow.tscn" id="6_ce0h2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5x2n"]
@@ -22,6 +23,7 @@ PlacedDish = ExtResource("2_7rwda")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_8v4h2")
+script = ExtResource("4_jdpfn")
 
 [node name="Serafina" parent="." instance=ExtResource("1_40ut1")]
 position = Vector2(276, 816)
