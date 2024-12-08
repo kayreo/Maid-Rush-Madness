@@ -1,5 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkfji30drxyn6"]
+[gd_scene load_steps=4 format=3 uid="uid://bkfji30drxyn6"]
 
+[ext_resource type="Texture2D" uid="uid://cffon0f54vg7t" path="res://Assets/Menu/requestBack.png" id="1_501tr"]
+[ext_resource type="FontFile" uid="uid://7cqcgkjhe7pd" path="res://Assets/Fonts/CherryBombOne-Regular.ttf" id="1_cor3j"]
 [ext_resource type="Texture2D" uid="uid://dy5y0ydbwwnsx" path="res://Assets/items/egg.png" id="1_ets0v"]
 
 [node name="RequestWindow" type="Control"]
@@ -12,34 +14,38 @@ grow_vertical = 2
 
 [node name="Display" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Display"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -763.0
-offset_bottom = 407.0
-grow_horizontal = 0
+[node name="ColorRect" type="TextureRect" parent="Display"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -380.0
+offset_right = 380.0
+offset_bottom = 435.0
+grow_horizontal = 2
+texture = ExtResource("1_501tr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Display"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -758.0
-offset_top = 2.0
-offset_bottom = 399.0
-grow_horizontal = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -379.0
+offset_right = 379.0
+offset_bottom = 397.0
+grow_horizontal = 2
 
 [node name="Label" type="Label" parent="Display/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 52
-text = "NEW ORDER"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_cor3j")
+theme_override_font_sizes/font_size = 64
+text = "NEW ORDER!"
 horizontal_alignment = 1
 
 [node name="RecipeLabel" type="Label" parent="Display/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_cor3j")
 theme_override_font_sizes/font_size = 48
 text = "MEOW MEOW"
 horizontal_alignment = 1

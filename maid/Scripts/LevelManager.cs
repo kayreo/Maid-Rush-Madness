@@ -43,6 +43,8 @@ public partial class LevelManager : Node2D
 
 	public TextureRect BG;
 
+	public CanvasLayer PauseScreen;
+
 	public Godot.Collections.Array curRecipes = new Godot.Collections.Array();
 
 	private Json jsonLoader;
@@ -80,6 +82,8 @@ public partial class LevelManager : Node2D
 	public Godot.Collections.Array RecipeKeys;
 
 	public RandomNumberGenerator Random = new RandomNumberGenerator();
+
+	public bool paused = false;
 
 	private string spriteFilePath = "res://Assets/items/";
 
@@ -119,6 +123,7 @@ public partial class LevelManager : Node2D
 		// Load challenge data
 		var challengeFile = File.ReadAllText("Data/ChallengeData.json");
 		jsonLoader.Parse(challengeFile);
+
 		ChallengeDict = (Godot.Collections.Dictionary)jsonLoader.Data;
 		player = (Serafina)GetNode("Serafina");
 		table = (Node2D)GetNode("Table");
@@ -130,6 +135,7 @@ public partial class LevelManager : Node2D
 		Timer = (Node2D)GetNode("Timer");
 		TimerFill = (TextureProgressBar)GetNode("Timer/TimerFill");
 		TimerPoint = (Sprite2D)GetNode("Timer/TimerPoint");
+		PauseScreen = (CanvasLayer)GetNode("PauseScreen");
 
 		Label recipeLabel = (Label)requestUI.GetNode("Display/VBoxContainer/RecipeLabel");
 
@@ -148,10 +154,29 @@ public partial class LevelManager : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Label timeLeftLabel = (Label)GetNode("TimerDisplay/HBoxContainer/TimeLeft");
-		timeLeftLabel.Text = String.Format("{0:0}", orderTimer.TimeLeft);
-		TimerFill.Value = orderTimer.WaitTime - orderTimer.TimeLeft;
-		TimerPoint.RotationDegrees = (360.0f * (float)(TimerFill.Value / TimerFill.MaxValue));
+		if (!paused) {
+			appearTimer.Paused = false;
+			orderTimer.Paused = false;
+			Label timeLeftLabel = (Label)GetNode("TimerDisplay/HBoxContainer/TimeLeft");
+			timeLeftLabel.Text = String.Format("{0:0}", orderTimer.TimeLeft);
+			TimerFill.Value = orderTimer.WaitTime - orderTimer.TimeLeft;
+			TimerPoint.RotationDegrees = (360.0f * (float)(TimerFill.Value / TimerFill.MaxValue));
+		} else {
+			appearTimer.Paused = true;
+			orderTimer.Paused = true;
+		}
+		
+		if (Input.IsActionJustPressed("pause"))
+		{
+			if (PauseScreen.Visible) {
+				paused = false;
+				PauseScreen.Hide();
+			}
+			else {
+				paused = true;
+				PauseScreen.Show();
+			}
+		}
 	}
 
 	// Check if any ingredients can be merged
@@ -178,14 +203,17 @@ public partial class LevelManager : Node2D
 		Sprite2D vis = (Sprite2D)newNode.GetNode("Sprite2D");
 		vis.Texture = dish.Texture;
 		vis.Scale = new Godot.Vector2(0.5f, 0.5f);
-		newNode.Position = new Godot.Vector2(posX, table.Position.Y);
+		newNode.Position = new Godot.Vector2(posX, table.Position.Y - 150);
 		GetNode("Dishes").AddChild(newNode);
 		newNode.Velocity = new Godot.Vector2(0, 400);
 		if (dishName == tgtRecipe) {
 			GD.Print("Correct Dish!");
 			orderTimer.Stop();
 			orderTimer.Start();
-			CurRecipes.Remove(dishName);
+			if (CurChallenge != "ChallengeSphene") {
+				// If not endless mode, remove recipe from pool
+				CurRecipes.Remove(dishName);
+			}
 			GD.Print("Recipes now: ", CurRecipes);
 			if (CurRecipes.Count <= 0) {
 				GD.Print("No more recipes, game complete");
@@ -285,6 +313,20 @@ public partial class LevelManager : Node2D
 	public void OnSetScenario(string name) {
 		GD.Print("Tgt challenge is now: ", name);
 		CurChallenge = name;
+	}
+
+	private void _OnPauseButtonPressed() {
+		paused = true;
+		PauseScreen.Show();
+	}
+
+	private void _OnContinueButtonPressed() {
+		paused = false;
+		PauseScreen.Hide();
+	}
+
+	private void _OnExitButtonPressed() {
+		GetParent().EmitSignal("ReturnToMenu");
 	}
 
 }

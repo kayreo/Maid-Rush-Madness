@@ -164,4 +164,8 @@ public partial class DialogueHUD : CanvasLayer
 		Scenario = name;
 	}
 
+	private void _OnSkipButtonPressed() {
+		EmitSignal("EndDialogue");
+	}
+
 }

@@ -11,11 +11,14 @@ public partial class FoodSpawner : Node2D
 
 	public RandomNumberGenerator Random = new RandomNumberGenerator();
 
+	private LevelManager Parent;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Random.Randomize();
 		SpawnTimer = (Timer)GetNode("Timer");
+		Parent = (LevelManager)GetParent().GetParent();
 		SpawnTimer.WaitTime = Random.RandiRange(1, 7);
 		SpawnTimer.Start();
 	}
@@ -27,11 +30,13 @@ public partial class FoodSpawner : Node2D
 	}
 
 	protected void _OnTimerTimeout() {
-		Food newFood = (Food)Food.Instantiate();
-		Sprite2D newFoodVis = (Sprite2D)newFood.GetNode("Visual");
-		AddChild(newFood);
-		GetParent().GetParent().EmitSignal("PickRandomFood", newFood);
-		SpawnTimer.WaitTime = Random.RandiRange(1, 7);
+		if (!Parent.paused) {
+			Food newFood = (Food)Food.Instantiate();
+			Sprite2D newFoodVis = (Sprite2D)newFood.GetNode("Visual");
+			AddChild(newFood);
+			GetParent().GetParent().EmitSignal("PickRandomFood", newFood);
+			SpawnTimer.WaitTime = Random.RandiRange(1, 7);
+		}
 	}
 
 }

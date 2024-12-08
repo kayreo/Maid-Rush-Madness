@@ -18,6 +18,9 @@ public partial class Bg : TextureRect
 	[Export]
 	public Texture2D ChallengeAnnieAlex;
 
+	[Export]
+	public Texture2D ChallengeSphene;
+
 	[Signal]
 	public delegate void SetBGEventHandler(string tgt);
 
@@ -33,7 +36,8 @@ public partial class Bg : TextureRect
 				{"ChallengeLetti", ChallengeLetti},
 				{"ChallengeDoll", ChallengeDoll},
 				{"ChallengeGob", ChallengeGob},
-				{"ChallengeAnnieAlex", ChallengeAnnieAlex}
+				{"ChallengeAnnieAlex", ChallengeAnnieAlex},
+				{"ChallengeSphene", ChallengeSphene}
 			};
 	}
 

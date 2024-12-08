@@ -60,41 +60,41 @@ public partial class Serafina : CharacterBody2D
     public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
-
-
-		// Movement
-		if (Input.IsActionPressed("left"))
-		{
-			velocity.X = -1 * Speed;
-			//AnimatedSprite.FlipH = true;
-		}
-		else if (Input.IsActionPressed("right"))
-		{
-			velocity.X = 1 * Speed;
-			//AnimatedSprite.FlipH = false;
-		}
-
-		if (Input.IsActionPressed("place")) {
-			HeldFood.Clear();
-			ClearHolding();
-			Sprite2D dishSprite = (Sprite2D)Plate.GetNode("DishSprite");
-			//GD.Print("Holding now: ", HeldFood);
-			if (madeDish) {
-				//GD.Print("Can place on thing");
-				madeDish = false;
-				//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
-				parent.EmitSignal(LevelManager.SignalName.PlaceDish, dishSprite, heldDish);
-				dishSprite.Texture = null;
-				dishSprite.Hide();
-				//dishCollision.Disabled = true;
-				heldDish = null;
+		if (!parent.paused) {
+			// Movement
+			if (Input.IsActionPressed("left"))
+			{
+				velocity.X = -1 * Speed;
+				//AnimatedSprite.FlipH = true;
 			}
-		}
+			else if (Input.IsActionPressed("right"))
+			{
+				velocity.X = 1 * Speed;
+				//AnimatedSprite.FlipH = false;
+			}
 
-		// Friction
-		velocity.X *= (float)0.95;
-		Velocity = velocity;
-		MoveAndSlide();
+			if (Input.IsActionPressed("place")) {
+				HeldFood.Clear();
+				ClearHolding();
+				Sprite2D dishSprite = (Sprite2D)Plate.GetNode("DishSprite");
+				//GD.Print("Holding now: ", HeldFood);
+				if (madeDish) {
+					//GD.Print("Can place on thing");
+					madeDish = false;
+					//RigidBody2D dishBody = (RigidBody2D)Plate.GetNode("Dish");
+					parent.EmitSignal(LevelManager.SignalName.PlaceDish, dishSprite, heldDish);
+					dishSprite.Texture = null;
+					dishSprite.Hide();
+					//dishCollision.Disabled = true;
+					heldDish = null;
+				}
+			}
+
+			// Friction
+			velocity.X *= (float)0.95;
+			Velocity = velocity;
+			MoveAndSlide();
+		}
 	}
 
 	// Converts health (4-0) to respective frame number (0-3)

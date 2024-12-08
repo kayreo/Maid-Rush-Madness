@@ -60,6 +60,13 @@
 			"(Things that are sweet...perhaps I should focus on providing desserts.)"
 		]
 	},
+	"ChallengeGob": {
+		"0": [
+			"Gob",
+			0,
+			"Hello..."
+		]
+	},
 	"ChallengeDoll": {
 		"0": [
 			"Doll",

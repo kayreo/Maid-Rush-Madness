@@ -22,6 +22,9 @@ public partial class GameManager : Node2D
 	[Signal]
 	public delegate void ContinueEventHandler();
 
+	[Signal]
+	public delegate void ReturnToMenuEventHandler();
+
 	[Export]
 	public PackedScene GameWorld { get; set; }
 
@@ -88,6 +91,7 @@ public partial class GameManager : Node2D
 		RestartGame += OnRestartGame;
 		ExitGame += _OnBackGameOverButtonPressed;
 		Continue += OnContinueGame;
+		ReturnToMenu += OnReturn;
 
 		//BGMusic.Play(1f);
 		initProgressDict();
@@ -167,6 +171,17 @@ public partial class GameManager : Node2D
 		Fade.Play("FadeIn");
 	}
 
+	private void OnReturn() {
+		tgtScreen = "Continue";
+		int chalInd = Progress.IndexOf(tgtChallenge) + 1;
+		if (chalInd < Progress.Count) {
+			tgtChallenge = (string)Progress[chalInd];
+		} else {
+			CompleteGame();
+		}
+		Fade.Play("FadeIn");
+	}
+
 	private void CompleteGame() {
 		GD.Print("Reached end of scenario");
 	}
@@ -192,9 +207,16 @@ public partial class GameManager : Node2D
 					break;
 				case "Challenge":
 					Challenges.Hide();
-					DiaInst = (DialogueHUD)Dialogue.Instantiate();
-					DiaInst.OnSetScenario(tgtChallenge);
-					Game.AddChild(DiaInst);
+					if (tgtChallenge != "ChallengeSphene") {
+						DiaInst = (DialogueHUD)Dialogue.Instantiate();
+						DiaInst.OnSetScenario(tgtChallenge);
+						Game.AddChild(DiaInst);
+					} else {
+						// Endless mode
+						WorldInst = (LevelManager)GameWorld.Instantiate();
+						WorldInst.OnSetScenario(tgtChallenge);
+						AddChild(WorldInst);
+					}
 					break;
 				case "Restart":
 					Game.GetNode("GameOver").QueueFree();
@@ -205,6 +227,10 @@ public partial class GameManager : Node2D
 					DiaInst = (DialogueHUD)Dialogue.Instantiate();
 					DiaInst.OnSetScenario(tgtChallenge);
 					Game.AddChild(DiaInst);
+					break;
+				case "Return":
+					GetNode("GameWorld").QueueFree();
+					MainMenu.Show();
 					break;
 				default:
 					Credits.Hide();

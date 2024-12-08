@@ -1,10 +1,11 @@
 {
     "ChallengeSera": ["Cake"],
-    "ChallengeLetti": ["Cake", "Brownies", "Sundae", "Chocolate milkshake", "Garlic bread", "Omurice"],
-    "ChallengeDoll": ["Strawberry milkshake", "Rice pudding", "Ratghetti", "Steak dinner", "Spaghetti", "Tentacle ramen"],
+    "ChallengeLetti": ["Cake", "Brownies", "Sundae", "Chocolate milkshake", "Garlic fries", "Omurice"],
+    "ChallengeDoll": ["Strawberry milkshake", "Rice pudding", "Ratghetti", "Sundae", "Spaghetti", "Tentacle ramen"],
     "ChallengeGob": ["Blood milkshake", "Eye sundae", "Brownies", "Ramen", "Cake", "Rice pudding"],
-    "ChallengeAnnieAlex": ["Tentacle ramen", "Steak dinner", "Garlic fries", "Spaghetti", "Omurice", "Sundae"],
+    "ChallengeAnnieAlex": ["Tentacle ramen", "Eye sundae", "Garlic fries", "Spaghetti", "Omurice", "Sundae"],
     "ChallengeSweet": ["Cake", "Brownies", "Sundae", "Chocolate milkshake", "Strawberry milkshake", "Rice pudding"],
-    "ChallengeSavory": ["Spaghetti", "Ramen", "Omurice", "Garlic bread", "Steak dinner", "Garlic fries"],
-    "ChallengesWeird": ["Tentacle ramen", "Blood milkshake", "Ratghetti", "Eye sundae"]
+    "ChallengeSavory": ["Spaghetti", "Ramen", "Omurice", "Garlic fries"],
+    "ChallengesWeird": ["Tentacle ramen", "Blood milkshake", "Ratghetti", "Eye sundae"],
+    "ChallengeSphene": ["Cake", "Brownies", "Sundae", "Chocolate milkshake", "Strawberry milkshake", "Rice pudding", "Spaghetti", "Ramen", "Omurice", "Garlic fries", "Tentacle ramen", "Blood milkshake", "Ratghetti", "Eye Sundae"]
 }

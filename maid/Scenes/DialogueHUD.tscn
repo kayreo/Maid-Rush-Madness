@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://4nuihuijam7l"]
+[gd_scene load_steps=13 format=3 uid="uid://4nuihuijam7l"]
 
 [ext_resource type="Script" path="res://Scripts/DialogueHUD.cs" id="1_wsgj8"]
 [ext_resource type="Texture2D" uid="uid://ckoi0jl1pb4tl" path="res://Assets/BGs/castleD.png" id="2_pc87u"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cc0fr3xyehc33" path="res://Assets/BGs/castleN.png" id="6_km3vd"]
 [ext_resource type="Texture2D" uid="uid://cqsmage5oca7y" path="res://Assets/BGs/lakeD.png" id="7_6gqkr"]
 [ext_resource type="PackedScene" uid="uid://dymo5j040ifkd" path="res://Scenes/Dialogue.tscn" id="9_ha0yq"]
+[ext_resource type="Texture2D" uid="uid://dx22fqw234ln3" path="res://Assets/Menu/buttonUnclickMini.png" id="10_ba6mj"]
+[ext_resource type="Texture2D" uid="uid://bh7ju77h5b5h1" path="res://Assets/Menu/buttonHoverMini.png" id="11_dov6a"]
+[ext_resource type="FontFile" uid="uid://7cqcgkjhe7pd" path="res://Assets/Fonts/CherryBombOne-Regular.ttf" id="12_q5f86"]
 
 [node name="DialogueHUD" type="CanvasLayer"]
 script = ExtResource("1_wsgj8")
@@ -46,3 +49,31 @@ sprite_frames = ExtResource("2_uvmpj")
 animation = &"Serafina"
 
 [node name="Dialogue" parent="." instance=ExtResource("9_ha0yq")]
+
+[node name="SkipButton" type="TextureButton" parent="."]
+offset_left = 35.0
+offset_top = 25.0
+offset_right = 335.0
+offset_bottom = 125.0
+texture_normal = ExtResource("10_ba6mj")
+texture_hover = ExtResource("11_dov6a")
+
+[node name="Label" type="Label" parent="SkipButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.5
+offset_top = -54.5
+offset_right = 84.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_q5f86")
+theme_override_font_sizes/font_size = 65
+text = "Skip"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="SkipButton" to="." method="_OnSkipButtonPressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo74efevn8r5q"]
+[gd_scene load_steps=9 format=3 uid="uid://bo74efevn8r5q"]
 
 [ext_resource type="Script" path="res://Scripts/Challenges.cs" id="1_1ikgt"]
 [ext_resource type="FontFile" uid="uid://7cqcgkjhe7pd" path="res://Assets/Fonts/CherryBombOne-Regular.ttf" id="1_ljut6"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cs2ltuixr75sc" path="res://Assets/Menu/splash.png" id="6_dce24"]
 [ext_resource type="Texture2D" uid="uid://3eydmcbymxvf" path="res://Assets/Menu/logo.png" id="7_u42g0"]
 [ext_resource type="Texture2D" uid="uid://dx22fqw234ln3" path="res://Assets/Menu/buttonUnclickMini.png" id="8_ggptc"]
-[ext_resource type="Texture2D" uid="uid://bh7ju77h5b5h1" path="res://Assets/Menu/buttonHoverMini.png" id="9_bsauh"]
 
 [node name="Challenges" type="CanvasLayer"]
 script = ExtResource("1_1ikgt")
@@ -266,7 +265,7 @@ offset_top = 55.0
 offset_right = 325.0
 offset_bottom = 155.0
 texture_normal = ExtResource("8_ggptc")
-texture_hover = ExtResource("9_bsauh")
+texture_hover = ExtResource("4_vfhjq")
 
 [node name="Label" type="Label" parent="BackButton"]
 layout_mode = 1
