@@ -151,9 +151,7 @@ public partial class LevelManager : Node2D
 		Label timeLeftLabel = (Label)GetNode("TimerDisplay/HBoxContainer/TimeLeft");
 		timeLeftLabel.Text = String.Format("{0:0}", orderTimer.TimeLeft);
 		TimerFill.Value = orderTimer.WaitTime - orderTimer.TimeLeft;
-		GD.Print("Val: ", TimerFill.Value);
 		TimerPoint.RotationDegrees = (360.0f * (float)(TimerFill.Value / TimerFill.MaxValue));
-		GD.Print("My rotation: ", TimerPoint.Rotation);
 	}
 
 	// Check if any ingredients can be merged

@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://1u7rfdwivbu2"]
+[gd_scene load_steps=4 format=3 uid="uid://1u7rfdwivbu2"]
 
-[ext_resource type="Script" path="res://Scripts/Table.cs" id="1_es0pf"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/Table.gdshader" id="1_kuxs6"]
 [ext_resource type="Texture2D" uid="uid://c0ke2fvp7xm8a" path="res://Assets/conveyorBelt.png" id="2_u78pa"]
 
@@ -10,7 +9,6 @@ shader_parameter/speed = Vector2(0.35, 0)
 shader_parameter/interval = null
 
 [node name="Table" type="Node2D"]
-script = ExtResource("1_es0pf")
 
 [node name="ConveyorBelt" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_my28q")

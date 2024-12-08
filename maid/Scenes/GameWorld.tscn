@@ -93,10 +93,10 @@ position = Vector2(956, 1026)
 wait_time = 3.0
 
 [node name="OrderTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 16.0
 
 [node name="Timer" parent="." instance=ExtResource("13_jbu27")]
-position = Vector2(1778, 939)
+position = Vector2(1708, 890)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -129,5 +129,3 @@ text = "0"
 
 [connection signal="timeout" from="AppearTimer" to="." method="_OnAppearTimeout"]
 [connection signal="timeout" from="OrderTimer" to="." method="_OnOrderTimeout"]
-
-[editable path="Timer"]

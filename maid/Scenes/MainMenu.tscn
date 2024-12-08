@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5nr1726wlfdv"]
+[gd_scene load_steps=10 format=3 uid="uid://c5nr1726wlfdv"]
 
 [ext_resource type="Texture2D" uid="uid://dliohwwgi68ln" path="res://Assets/Menu/sidebar.png" id="2_jed12"]
 [ext_resource type="Texture2D" uid="uid://cs2ltuixr75sc" path="res://Assets/Menu/splash.png" id="3_0ji02"]
 [ext_resource type="Texture2D" uid="uid://3eydmcbymxvf" path="res://Assets/Menu/logo.png" id="3_5llut"]
+[ext_resource type="Texture2D" uid="uid://behnifmkv3h4p" path="res://Assets/Menu/buttonUnclick.png" id="4_vm2gf"]
+[ext_resource type="Texture2D" uid="uid://boxmwk6mcb10y" path="res://Assets/Menu/buttonHover.png" id="5_dafeo"]
+[ext_resource type="FontFile" uid="uid://7cqcgkjhe7pd" path="res://Assets/Fonts/CherryBombOne-Regular.ttf" id="6_q7pru"]
 
 [sub_resource type="Animation" id="Animation_078l0"]
 resource_name = "Splash"
@@ -162,26 +165,98 @@ offset_bottom = 298.0
 grow_vertical = 2
 theme_override_constants/separation = 100
 
-[node name="StartButton" type="Button" parent="MenuButtons"]
+[node name="StartButton" type="TextureButton" parent="MenuButtons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 90
 button_mask = 3
+texture_normal = ExtResource("4_vm2gf")
+texture_hover = ExtResource("5_dafeo")
+
+[node name="Label" type="Label" parent="MenuButtons/StartButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -80.5
+offset_right = 199.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_q7pru")
+theme_override_font_sizes/font_size = 100
 text = "Start"
+horizontal_alignment = 1
 
-[node name="Modes" type="Button" parent="MenuButtons"]
+[node name="Modes" type="TextureButton" parent="MenuButtons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 90
+texture_normal = ExtResource("4_vm2gf")
+texture_hover = ExtResource("5_dafeo")
+
+[node name="Label" type="Label" parent="MenuButtons/Modes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -80.5
+offset_right = 199.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_q7pru")
+theme_override_font_sizes/font_size = 100
 text = "Challenges"
+horizontal_alignment = 1
 
-[node name="Credits" type="Button" parent="MenuButtons"]
+[node name="Credits" type="TextureButton" parent="MenuButtons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 90
+texture_normal = ExtResource("4_vm2gf")
+texture_hover = ExtResource("5_dafeo")
+
+[node name="Label" type="Label" parent="MenuButtons/Credits"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -80.5
+offset_right = 199.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_q7pru")
+theme_override_font_sizes/font_size = 100
 text = "Credits"
+horizontal_alignment = 1
 
-[node name="Exit" type="Button" parent="MenuButtons"]
+[node name="Exit" type="TextureButton" parent="MenuButtons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 90
+texture_normal = ExtResource("4_vm2gf")
+texture_hover = ExtResource("5_dafeo")
+
+[node name="Label" type="Label" parent="MenuButtons/Exit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -80.5
+offset_right = 199.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_q7pru")
+theme_override_font_sizes/font_size = 100
 text = "Exit"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

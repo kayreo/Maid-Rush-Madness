@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bx7hjeod1rk4w"]
+[gd_scene load_steps=4 format=3 uid="uid://bx7hjeod1rk4w"]
 
 [ext_resource type="FontFile" uid="uid://7cqcgkjhe7pd" path="res://Assets/Fonts/CherryBombOne-Regular.ttf" id="1_o2c0h"]
+[ext_resource type="Texture2D" uid="uid://dx22fqw234ln3" path="res://Assets/Menu/buttonUnclickMini.png" id="2_x4e7e"]
+[ext_resource type="Texture2D" uid="uid://bh7ju77h5b5h1" path="res://Assets/Menu/buttonHoverMini.png" id="3_ohl0m"]
 
 [node name="Credits" type="CanvasLayer"]
 
@@ -154,10 +156,28 @@ text = "\"Fox Tale Waltz Part 1 Instrumental\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/"
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="TextureButton" parent="."]
 offset_left = 113.0
 offset_top = 68.0
 offset_right = 294.0
 offset_bottom = 179.0
-theme_override_font_sizes/font_size = 75
+texture_normal = ExtResource("2_x4e7e")
+texture_hover = ExtResource("3_ohl0m")
+
+[node name="Label" type="Label" parent="BackButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -55.5
+offset_right = 70.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_o2c0h")
+theme_override_font_sizes/font_size = 65
 text = "Back"
+horizontal_alignment = 1
