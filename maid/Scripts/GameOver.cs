@@ -74,6 +74,10 @@ public partial class GameOver : CanvasLayer
 		GetParent().GetParent().EmitSignal("ExitGame");
 	}
 
+	private void _OnContinueButtonPressed() {
+		GetParent().GetParent().EmitSignal("Continue");
+	}
+
 	public void OnGetScenario(string scenario, int wonGame) {
 		diaScenario = scenario;
 		diaWonGame = wonGame;

@@ -19,6 +19,9 @@ public partial class GameManager : Node2D
 	[Signal]
 	public delegate void ExitGameEventHandler();
 
+	[Signal]
+	public delegate void ContinueEventHandler();
+
 	[Export]
 	public PackedScene GameWorld { get; set; }
 
@@ -53,6 +56,22 @@ public partial class GameManager : Node2D
 	string tgtScreen = "MainMenu";
 
 
+	// Stores order of challenges
+	public Godot.Collections.Array Progress;
+
+	public void initProgressDict()
+	{
+		Progress = new Godot.Collections.Array
+			{
+				"ChallengeSera",
+				"ChallengeLetti",
+				"ChallengeDoll",
+				"ChallengeGob",
+				"ChallengeAnnieAlex"
+			};
+	}
+
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -68,8 +87,10 @@ public partial class GameManager : Node2D
 		EndGame += OnEndGame;
 		RestartGame += OnRestartGame;
 		ExitGame += _OnBackGameOverButtonPressed;
+		Continue += OnContinueGame;
 
 		//BGMusic.Play(1f);
+		initProgressDict();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -135,6 +156,21 @@ public partial class GameManager : Node2D
 		AddChild(WorldInst);
 	}
 
+	private void OnContinueGame() {
+		tgtScreen = "Continue";
+		int chalInd = Progress.IndexOf(tgtChallenge) + 1;
+		if (chalInd < Progress.Count) {
+			tgtChallenge = (string)Progress[chalInd];
+		} else {
+			CompleteGame();
+		}
+		Fade.Play("FadeIn");
+	}
+
+	private void CompleteGame() {
+		GD.Print("Reached end of scenario");
+	}
+
 	private void _OnAnimationPlayerAnimationFinished(StringName animName) {
 		switch(animName) {
 			case "FadeIn":
@@ -163,6 +199,12 @@ public partial class GameManager : Node2D
 				case "Restart":
 					Game.GetNode("GameOver").QueueFree();
 					MainMenu.Show();
+					break;
+				case "Continue":
+					Game.GetNode("GameOver").QueueFree();
+					DiaInst = (DialogueHUD)Dialogue.Instantiate();
+					DiaInst.OnSetScenario(tgtChallenge);
+					Game.AddChild(DiaInst);
 					break;
 				default:
 					Credits.Hide();

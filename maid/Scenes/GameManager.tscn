@@ -102,6 +102,7 @@ script = ExtResource("1_3fiqt")
 GameWorld = ExtResource("2_eo6ci")
 GameOver = ExtResource("3_ct4wp")
 Dialogue = ExtResource("4_fgk5l")
+tgtChallenge = "ChallengeSera"
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_mmiv1")
