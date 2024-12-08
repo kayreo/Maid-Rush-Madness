@@ -168,3 +168,7 @@ visible = false
 [connection signal="timeout" from="AppearTimer" to="." method="_OnAppearTimeout"]
 [connection signal="timeout" from="OrderTimer" to="." method="_OnOrderTimeout"]
 [connection signal="pressed" from="PauseButton" to="." method="_OnPauseButtonPressed"]
+[connection signal="pressed" from="PauseScreen/HBoxContainer/ContinueButton" to="." method="_OnContinueButtonPressed"]
+[connection signal="pressed" from="PauseScreen/HBoxContainer/ExitButton" to="." method="_OnExitButtonPressed"]
+
+[editable path="PauseScreen"]
