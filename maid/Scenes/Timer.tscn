@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvwuicyhlh7pb"]
+
+[ext_resource type="Texture2D" uid="uid://bedyq1snnfvdq" path="res://Assets/timerBack.png" id="1_gne1g"]
+[ext_resource type="Texture2D" uid="uid://bgi1o0uictxfd" path="res://Assets/timerFront.png" id="2_flm1e"]
+[ext_resource type="Texture2D" uid="uid://237uvqwjx4ug" path="res://Assets/timerFill.png" id="3_nhn6r"]
+[ext_resource type="Texture2D" uid="uid://dp4tt8g5gr0kc" path="res://Assets/timerPoint.png" id="4_h47cm"]
+
+[node name="Timer" type="Node2D"]
+
+[node name="TimerBack" type="Sprite2D" parent="."]
+texture = ExtResource("1_gne1g")
+
+[node name="TimerFill" type="TextureProgressBar" parent="."]
+offset_left = -132.0
+offset_top = -130.0
+offset_right = 168.0
+offset_bottom = 170.0
+max_value = 30.0
+fill_mode = 4
+texture_over = ExtResource("2_flm1e")
+texture_progress = ExtResource("3_nhn6r")
+
+[node name="TimerFront" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_flm1e")
+
+[node name="TimerPoint" type="Sprite2D" parent="."]
+position = Vector2(-8, -9)
+texture = ExtResource("4_h47cm")

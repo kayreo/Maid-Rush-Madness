@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ktnnncnv3xab"]
+[gd_scene load_steps=16 format=3 uid="uid://ktnnncnv3xab"]
 
 [ext_resource type="PackedScene" uid="uid://ej07vkvm2xbb" path="res://Scenes/Serafina.tscn" id="1_40ut1"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_pk06s"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d1s2344hlbf36" path="res://Assets/BGs/observD.png" id="6_g3rtb"]
 [ext_resource type="Texture2D" uid="uid://cc0fr3xyehc33" path="res://Assets/BGs/castleN.png" id="7_mw8ec"]
 [ext_resource type="Texture2D" uid="uid://cqsmage5oca7y" path="res://Assets/BGs/lakeD.png" id="8_s78qi"]
+[ext_resource type="PackedScene" uid="uid://cvwuicyhlh7pb" path="res://Scenes/Timer.tscn" id="13_jbu27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5x2n"]
 size = Vector2(1920, 33)
@@ -94,10 +95,14 @@ wait_time = 3.0
 [node name="OrderTimer" type="Timer" parent="."]
 wait_time = 30.0
 
+[node name="Timer" parent="." instance=ExtResource("13_jbu27")]
+position = Vector2(1778, 939)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
 [node name="TimerDisplay" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TimerDisplay"]
 anchors_preset = 3
@@ -124,3 +129,5 @@ text = "0"
 
 [connection signal="timeout" from="AppearTimer" to="." method="_OnAppearTimeout"]
 [connection signal="timeout" from="OrderTimer" to="." method="_OnOrderTimeout"]
+
+[editable path="Timer"]

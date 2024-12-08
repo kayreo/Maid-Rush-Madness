@@ -8,6 +8,7 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using System.Security.Principal;
 
 
 public partial class LevelManager : Node2D
@@ -33,6 +34,12 @@ public partial class LevelManager : Node2D
 	public Timer orderTimer;
 
 	public Timer appearTimer;
+
+	private Node2D Timer;
+
+	private TextureProgressBar TimerFill;
+
+	private Sprite2D TimerPoint;
 
 	public TextureRect BG;
 
@@ -120,6 +127,9 @@ public partial class LevelManager : Node2D
 		orderTimer = (Timer)GetNode("OrderTimer");
 		appearTimer = (Timer)GetNode("AppearTimer");	
 		BG = (TextureRect)GetNode("BG");
+		Timer = (Node2D)GetNode("Timer");
+		TimerFill = (TextureProgressBar)GetNode("Timer/TimerFill");
+		TimerPoint = (Sprite2D)GetNode("Timer/TimerPoint");
 
 		Label recipeLabel = (Label)requestUI.GetNode("Display/VBoxContainer/RecipeLabel");
 
@@ -140,6 +150,10 @@ public partial class LevelManager : Node2D
 	{
 		Label timeLeftLabel = (Label)GetNode("TimerDisplay/HBoxContainer/TimeLeft");
 		timeLeftLabel.Text = String.Format("{0:0}", orderTimer.TimeLeft);
+		TimerFill.Value = orderTimer.WaitTime - orderTimer.TimeLeft;
+		GD.Print("Val: ", TimerFill.Value);
+		TimerPoint.RotationDegrees = (360.0f * (float)(TimerFill.Value / TimerFill.MaxValue));
+		GD.Print("My rotation: ", TimerPoint.Rotation);
 	}
 
 	// Check if any ingredients can be merged
