@@ -57,13 +57,13 @@ public partial class DialogueHUD : CanvasLayer
 		jsonLoader.Parse(file);
 		DialogueScenarios = (Godot.Collections.Dictionary)jsonLoader.Data;
 
-		GD.Print("Scenarios: ", DialogueScenarios);
+		//GD.Print("Scenarios: ", DialogueScenarios);
 
 		TriggerDialogue += OnDialogueTrigger;
 		Dialogue = GetNode<RichTextLabel>("Dialogue/DialogueText");
 		Speaker = GetNode<AnimatedSprite2D>("Control/Speaker");
 		BG = GetNode<TextureRect>("BG");
-		GD.Print("Speaker got: ", Speaker.Name);
+		//GD.Print("Speaker got: ", Speaker.Name);
 		EmitSignal("TriggerDialogue", Scenario);
 	}
 

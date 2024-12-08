@@ -58,6 +58,11 @@
 			"Serafina",
 			1,
 			"(Things that are sweet...perhaps I should focus on providing desserts.)"
+		],
+		"8": [
+			"Letti",
+			0,
+			"Please take your time serving me! I want to try your very best dishes!"
 		]
 	},
 	"ChallengeGob": {
@@ -111,7 +116,7 @@
 		"8": [
 			"Doll",
 			0,
-			"Do not disappoint me."
+			"I expect prompt and perfect service. Do not disappoint me."
 		],
 		"9": [
 			"Serafina",

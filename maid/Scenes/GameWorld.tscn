@@ -28,6 +28,8 @@ size = Vector2(50, 1135.5)
 script = ExtResource("1_pk06s")
 PlacedDish = ExtResource("2_7rwda")
 
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+
 [node name="BG" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -98,7 +100,7 @@ position = Vector2(956, 1026)
 wait_time = 3.0
 
 [node name="OrderTimer" type="Timer" parent="."]
-wait_time = 16.0
+wait_time = 36.0
 
 [node name="Timer" parent="." instance=ExtResource("13_jbu27")]
 position = Vector2(1708, 890)

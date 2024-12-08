@@ -144,6 +144,30 @@ public partial class LevelManager : Node2D
 		//CurChallenge = "ChallengeSera";
 		// Get recipes for that challenge
 		CurRecipes = (Godot.Collections.Array)ChallengeDict[CurChallenge];
+
+		// Set time limit
+		switch (CurChallenge) {
+			case "ChallengeSera":
+				appearTimer.WaitTime = 5;
+				orderTimer.WaitTime = 36;
+				break;
+			case "ChallengeLetti":
+				orderTimer.WaitTime = 32;
+				break;
+			case "ChallengeAnnieAlex":
+				orderTimer.WaitTime = 28;
+				break;
+			case "ChallengeGob":
+				orderTimer.WaitTime = 24;
+				break;
+			case "ChallengeDoll":
+				appearTimer.WaitTime = 1;
+				orderTimer.WaitTime = 16;
+				break;
+			case "ChallengeSphene":
+				orderTimer.WaitTime = 20;
+				break;
+		}
 		GD.Print("Recipes for ", CurChallenge, ": ", CurRecipes);
 		OnPickRandomDish();
 		orderTimer.Start();
@@ -239,7 +263,7 @@ public partial class LevelManager : Node2D
 		// Set default
 		int randomKey = (int)Random.RandiRange(0, CurIngredients.Count - 1);
 		string randomSprite = (string)CurIngredients[randomKey];
-		GD.Print("Picking random: ", randomSprite);
+		//GD.Print("Picking random: ", randomSprite);
 		// See if weight changes info
 		if (RemainingIngredients.Count > 0 && randomWeight <= tgtWeight) {
 			randomKey = (int)Random.RandiRange(0, RemainingIngredients.Count - 1);
@@ -261,7 +285,7 @@ public partial class LevelManager : Node2D
 				}
 			}
 		}
-		GD.Print("Populated: ", CurIngredients);
+		//GD.Print("Populated: ", CurIngredients);
 	}
 
 	private void OnPickRandomDish() {
@@ -270,7 +294,7 @@ public partial class LevelManager : Node2D
 		//GD.Print("Keys: ", RecipeKeys);
 		int randomKey = (int)Random.RandiRange(0, CurRecipes.Count - 1);
 		string randomDish = (string)CurRecipes[randomKey];
-		GD.Print("I got the dish: ", randomDish);
+		//GD.Print("I got the dish: ", randomDish);
 		Godot.Collections.Array recipeIngredients = (Godot.Collections.Array)Recipes[randomDish];
 	
 		Label recipeLabel = (Label)requestUI.GetNode("Display/VBoxContainer/RecipeLabel");

@@ -172,7 +172,7 @@ public partial class GameManager : Node2D
 	}
 
 	private void OnReturn() {
-		tgtScreen = "Continue";
+		tgtScreen = "Return";
 		int chalInd = Progress.IndexOf(tgtChallenge) + 1;
 		if (chalInd < Progress.Count) {
 			tgtChallenge = (string)Progress[chalInd];
