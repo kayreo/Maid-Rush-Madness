@@ -155,7 +155,7 @@ public partial class DialogueHUD : CanvasLayer
 
 	private void OnEndDialogue() {
 		Hide();
-		GetParent().EmitSignal("BeginGame");
+		GetParent().GetParent().EmitSignal("BeginGame");
 	}
 
 	

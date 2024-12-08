@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3dpc4thia31e"]
+[gd_scene load_steps=13 format=3 uid="uid://b3dpc4thia31e"]
 
 [ext_resource type="Script" path="res://GameManager.cs" id="1_3fiqt"]
 [ext_resource type="PackedScene" uid="uid://c5nr1726wlfdv" path="res://Scenes/MainMenu.tscn" id="1_jheqx"]
@@ -9,12 +9,99 @@
 [ext_resource type="PackedScene" uid="uid://bx7hjeod1rk4w" path="res://Scenes/Credits.tscn" id="5_s1s1y"]
 [ext_resource type="PackedScene" uid="uid://bo74efevn8r5q" path="res://Scenes/Challenges.tscn" id="7_f8dfb"]
 
+[sub_resource type="Animation" id="Animation_dhxad"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/Fade:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2ws8y"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/Fade:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p5ljs"]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/Fade:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vshbd"]
+_data = {
+"FadeIn": SubResource("Animation_2ws8y"),
+"FadeOut": SubResource("Animation_p5ljs"),
+"RESET": SubResource("Animation_dhxad")
+}
+
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_3fiqt")
 GameWorld = ExtResource("2_eo6ci")
 GameOver = ExtResource("3_ct4wp")
 Dialogue = ExtResource("4_fgk5l")
-tgtChallenge = "ChallengeLetti"
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_mmiv1")
@@ -26,16 +113,33 @@ visible = false
 
 [node name="MainMenu" parent="." instance=ExtResource("1_jheqx")]
 
-[node name="Splash" parent="MainMenu" index="1"]
-offset_left = -1316.0
-offset_right = 604.0
-
-[node name="Logo" parent="MainMenu" index="2"]
-offset_top = -444.0
-offset_bottom = 636.0
-
 [node name="Challenges" parent="." instance=ExtResource("7_f8dfb")]
 visible = false
+
+[node name="Game" type="Node2D" parent="."]
+
+[node name="Transition" type="CanvasLayer" parent="."]
+
+[node name="Fade" type="ColorRect" parent="Transition"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vshbd")
+}
 
 [connection signal="pressed" from="Credits/BackButton" to="." method="_OnBackCreditsButtonPressed"]
 [connection signal="pressed" from="MainMenu/MenuButtons/StartButton" to="." method="_OnStartButtonPressed"]
@@ -43,6 +147,7 @@ visible = false
 [connection signal="pressed" from="MainMenu/MenuButtons/Credits" to="." method="_OnCreditsPressed"]
 [connection signal="pressed" from="MainMenu/MenuButtons/Exit" to="." method="_OnExitPressed"]
 [connection signal="pressed" from="Challenges/BackButton" to="." method="_OnBackCreditsButtonPressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_OnAnimationPlayerAnimationFinished"]
 
 [editable path="Credits"]
 [editable path="MainMenu"]

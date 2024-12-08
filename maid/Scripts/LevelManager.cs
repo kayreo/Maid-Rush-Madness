@@ -177,7 +177,7 @@ public partial class LevelManager : Node2D
 			GD.Print("Recipes now: ", CurRecipes);
 			if (CurRecipes.Count <= 0) {
 				GD.Print("No more recipes, game complete");
-				GetParent().EmitSignal("EndGame", true);
+				GetParent().EmitSignal("EndGame", 1);
 			} else {
 				OnPickRandomDish();
 			}
@@ -267,7 +267,7 @@ public partial class LevelManager : Node2D
 
 	private void EndGame() {
 		GD.Print("Ending game");
-		GetParent().EmitSignal("EndGame", false);
+		GetParent().EmitSignal("EndGame", 0);
 	}
 
 	public void OnSetScenario(string name) {

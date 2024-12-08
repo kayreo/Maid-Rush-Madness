@@ -1,0 +1,57 @@
+{
+	"None": {
+		"0": [
+			"Serafina",
+			0,
+			"Debug scenario."
+		]
+	},
+	"ChallengeSera": {
+		"0": [
+			"Serafina",
+			3,
+            "Oh my, that was a disaster..."
+		],
+		"1": [
+			"Serafina",
+			0,
+			"Phew! That went well!"
+		]
+	},
+	"ChallengeLetti": {
+		"0": [
+			"Letti",
+			1,
+            "O-oh, it seems I may have been a bit too demanding. I deeply apologize, but I must be going now..."
+		],
+		"1": [
+			"Letti",
+			0,
+			"Wow, Annie's recommendations are always spot on! I wonder what the dessert menu looks like..."
+		]
+	},
+    "ChallengeGob": {
+		"0": [
+			"Gob",
+			0,
+			"..."
+		],
+		"1": [
+			"Gob",
+			0,
+			"..."
+		]
+	},
+	"ChallengeDoll": {
+		"0": [
+			"Doll",
+			0,
+			"...You will not see me again."
+		],
+		"1": [
+			"Doll",
+			0,
+            "...Acceptable. I will return again."
+		]
+	}
+}

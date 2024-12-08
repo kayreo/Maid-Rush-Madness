@@ -11,10 +11,13 @@ public partial class GameManager : Node2D
 	public delegate void BeginGameEventHandler();
 
 	[Signal]
-	public delegate void EndGameEventHandler(bool won);
+	public delegate void EndGameEventHandler(int won);
 
 	[Signal]
 	public delegate void RestartGameEventHandler();
+
+	[Signal]
+	public delegate void ExitGameEventHandler();
 
 	[Export]
 	public PackedScene GameWorld { get; set; }
@@ -39,9 +42,15 @@ public partial class GameManager : Node2D
 
 	AudioStreamPlayer BGMusic;
 
+	AnimationPlayer Fade;
+
+	Node2D Game;
+
 
 	[Export]
 	string tgtChallenge = "ChallengeDoll";
+
+	string tgtScreen = "MainMenu";
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -51,11 +60,14 @@ public partial class GameManager : Node2D
 		Credits = (CanvasLayer)GetNode("Credits");
 		Challenges = (CanvasLayer)GetNode("Challenges");
 		BGMusic = (AudioStreamPlayer)GetNode("BGMusic");
+		Fade = (AnimationPlayer)GetNode("AnimationPlayer");
+		Game = (Node2D)GetNode("Game");
 
 		GetChallenge += OnGetChallenge;
 		BeginGame += OnBeginGame;
 		EndGame += OnEndGame;
 		RestartGame += OnRestartGame;
+		ExitGame += _OnBackGameOverButtonPressed;
 
 		//BGMusic.Play(1f);
 	}
@@ -66,23 +78,19 @@ public partial class GameManager : Node2D
 	}
 
 	private void _OnStartButtonPressed() {
-		//GD.Print("Changing scene");
-		MainMenu.Hide();
-		DiaInst = (DialogueHUD)Dialogue.Instantiate();
-		DiaInst.OnSetScenario(tgtChallenge);
-		AddChild(DiaInst);
-		//GetTree().ChangeSceneToFile("res://Scenes/GameWorld.tscn");
+		tgtScreen = "Game";
+		Fade.Play("FadeIn");
 	}
 
 	private void _OnModesPressed() {
-		MainMenu.Hide();
-		Challenges.Show();
+		tgtScreen = "Modes";
+		Fade.Play("FadeIn");
 	}
 
 	private void _OnCreditsPressed() {
+		tgtScreen = "Credits";
+		Fade.Play("FadeIn");
 		//GD.Print("Credits pressed");
-		MainMenu.Hide();
-		Credits.Show();
 	}
 
 	private void _OnExitPressed() {
@@ -90,37 +98,80 @@ public partial class GameManager : Node2D
 	}
 
 	private void _OnBackCreditsButtonPressed() {
-		Credits.Hide();
-		Challenges.Hide();
-		MainMenu.Show();
+		tgtScreen = "MainMenu";
+		Fade.Play("FadeIn");
+	}
+
+	private void _OnBackGameOverButtonPressed() {
+		tgtScreen = "Restart";
+		Fade.Play("FadeIn");
 	}
 
 	private void OnGetChallenge(string name) {
+		tgtScreen = "Challenge";
 		tgtChallenge = name;
-		Challenges.Hide();
-		_OnStartButtonPressed();
+		Fade.Play("FadeIn");
 	}
 
 	private void OnBeginGame() {
 		WorldInst = (LevelManager)GameWorld.Instantiate();
 		WorldInst.OnSetScenario(tgtChallenge);
 		AddChild(WorldInst);
-		GetNode("DialogueHUD").QueueFree();
+		Game.GetNode("DialogueHUD").QueueFree();
 	}
 
-	private void OnEndGame(bool won) {
+	private void OnEndGame(int won) {
 		GetNode("GameWorld").QueueFree();
 		GamInst = (GameOver)GameOver.Instantiate();
-		// Display win dialogue
-		if (won) {
-			AddChild(GamInst);
-		} else {
-			AddChild(GamInst);
-		}
+		// Set dialogue before adding
+		GamInst.OnGetScenario(tgtChallenge, won);
+		Game.AddChild(GamInst);
 	}
 
 	private void OnRestartGame() {
-		GetNode("GameOver").QueueFree();
-		OnBeginGame();
+		Game.GetNode("GameOver").QueueFree();
+		WorldInst = (LevelManager)GameWorld.Instantiate();
+		WorldInst.OnSetScenario(tgtChallenge);
+		AddChild(WorldInst);
+	}
+
+	private void _OnAnimationPlayerAnimationFinished(StringName animName) {
+		switch(animName) {
+			case "FadeIn":
+				switch(tgtScreen) 
+				{
+				case "Game":
+					MainMenu.Hide();
+					DiaInst = (DialogueHUD)Dialogue.Instantiate();
+					DiaInst.OnSetScenario(tgtChallenge);
+					Game.AddChild(DiaInst);
+					break;
+				case "Modes":
+					MainMenu.Hide();
+					Challenges.Show();
+					break;
+				case "Credits":
+					MainMenu.Hide();
+					Credits.Show();
+					break;
+				case "Challenge":
+					Challenges.Hide();
+					DiaInst = (DialogueHUD)Dialogue.Instantiate();
+					DiaInst.OnSetScenario(tgtChallenge);
+					Game.AddChild(DiaInst);
+					break;
+				case "Restart":
+					Game.GetNode("GameOver").QueueFree();
+					MainMenu.Show();
+					break;
+				default:
+					Credits.Hide();
+					Challenges.Hide();
+					MainMenu.Show();
+					break;
+				}
+				Fade.Play("FadeOut");
+				break;
+		}
 	}
 }

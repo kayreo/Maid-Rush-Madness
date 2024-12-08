@@ -1,16 +1,28 @@
 using Godot;
 using System;
+using System.IO;
+using System.Linq;
+using System.Reflection.Metadata;
 
-public partial class GameOver : Control
+public partial class GameOver : CanvasLayer
 {
 	[Signal]
-	public delegate void GetScenarioEventHandler(string scenario, Boolean wonGame);
+	public delegate void GetScenarioEventHandler(string scenario, int wonGame);
 
 	private RichTextLabel Dialogue;	
 
 	private AnimatedSprite2D Speaker;
 
 	private bool InProgress = true;
+
+	private Json jsonLoader;
+
+	private Godot.Collections.Dictionary DialogueScenarios;
+
+	private Godot.Collections.Array DiaLine;
+
+	int diaWonGame = 0;
+	string diaScenario = "ChallengeSera";
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -20,8 +32,17 @@ public partial class GameOver : Control
 
 		GetScenario += OnGetScenario;
 
-		Dialogue.Text = "Well... that's a game over...See you next time....";
-		Speaker.Animation = "Doll";
+		jsonLoader = new Json();
+		var file = File.ReadAllText("Data/GameOverData.json");
+		jsonLoader.Parse(file);
+		DialogueScenarios = (Godot.Collections.Dictionary)jsonLoader.Data;
+		GD.Print("Data: ", DialogueScenarios);
+
+		Godot.Collections.Dictionary Dia = (Godot.Collections.Dictionary)DialogueScenarios[diaScenario];
+		DiaLine = (Godot.Collections.Array)Dia[diaWonGame.ToString()];
+		Speaker.Animation = (string)DiaLine[0];
+		Speaker.Frame = (int)DiaLine[1];
+		Dialogue.Text = (string)DiaLine[2];
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,12 +65,17 @@ public partial class GameOver : Control
 		}
 	}
 
-	private void _onTryAgainButtonPressed() {
+	private void _OnTryAgainButtonPressed() {
 		GD.Print("Changing scene");
-		GetParent().EmitSignal("RestartGame");
+		GetParent().GetParent().EmitSignal("RestartGame");
 	}
 
-	private void OnGetScenario(string scenario, Boolean wonGame) {
+	private void _OnExitButtonPressed() {
+		GetParent().GetParent().EmitSignal("ExitGame");
+	}
 
+	public void OnGetScenario(string scenario, int wonGame) {
+		diaScenario = scenario;
+		diaWonGame = wonGame;
 	}
 }
