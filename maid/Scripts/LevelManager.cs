@@ -150,22 +150,28 @@ public partial class LevelManager : Node2D
 			case "ChallengeSera":
 				appearTimer.WaitTime = 5;
 				orderTimer.WaitTime = 36;
+				TimerFill.MaxValue = 36;
 				break;
 			case "ChallengeLetti":
 				orderTimer.WaitTime = 32;
+				TimerFill.MaxValue = 32;
 				break;
 			case "ChallengeAnnieAlex":
 				orderTimer.WaitTime = 28;
+				TimerFill.MaxValue = 28;
 				break;
 			case "ChallengeGob":
 				orderTimer.WaitTime = 24;
+				TimerFill.MaxValue = 24;
 				break;
 			case "ChallengeDoll":
 				appearTimer.WaitTime = 1;
 				orderTimer.WaitTime = 16;
+				TimerFill.MaxValue = 16;
 				break;
 			case "ChallengeSphene":
 				orderTimer.WaitTime = 20;
+				TimerFill.MaxValue = 20;
 				break;
 		}
 		GD.Print("Recipes for ", CurChallenge, ": ", CurRecipes);

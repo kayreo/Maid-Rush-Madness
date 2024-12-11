@@ -10,12 +10,82 @@
 		"0": [
 			"Serafina",
 			0,
-			"Testing testing!"
+			"I can't believe it... I've completed my maid training!"
 		],
 		"1": [
 			"Serafina",
+			2,
+			"It seems like only yesterday I was a tiny fledgling maid learning from Lady Felicia... I can still hear her reprimands..."	
+		],
+		"2": [
+			"Serafina",
+			1,
+			"Hmm, it doesn't seem like anyone else will need to be served today. Perhaps I should go over everything before my first assignment..."
+		],
+		"3": [
+			"Onboarding",
 			0,
-			"Meow meow meow meow!"
+			"Welcome to Maid Rush Madness! The goal of the game is to serve dishes to your increasingly demanding guests."
+		],
+		"4": [
+			"Onboarding",
+			1,
+			"Ingredients for recipes will fall out of the sky. You need to move Serafina under them to catch them!"
+		], 		
+		"5": [
+			"Onboarding",
+			2,
+			"You can move Serafina left and right using the arrow keys."
+		],
+		"6": [
+			"Onboarding",
+			3,
+			"You'll catch an ingredient when it falls and collides with Serafina! Your currently held ingredients can be seen on her plate."
+		],
+		"7": [
+			"Onboarding",
+			4,
+			"Catch 3 ingredients to make a dish! There are a lot of combinations that lead to certain dishes, and some don't lead to any dishes at all..."
+		],
+		"8": [
+			"Onboarding",
+			5,
+			"When you have created a dish, it'll show up on your plate! You can't catch any more ingredients until you serve your currently held dish."
+		],
+		"9": [
+			"Onboarding",
+			6,
+			"To serve your current dish, press the spacebar!"
+		],
+		"10": [
+			"Onboarding",
+			6,
+			"(Tip: If your plate only has ingredients and you haven't made a dish yet, you can press space to clear your plate!)"
+		],
+		"11": [
+			"Onboarding",
+			7,
+			"You need to serve dishes before time runs out! The timer at the bottom of the screen will tell you how much time you have left."
+		],
+		"12": [
+			"Onboarding",
+			8,
+			"The timer will progressively fill as you play the game. Some guests are needier than others, meaning the timer will fill faster!"
+		],
+		"13": [
+			"Onboarding",
+			9,
+			"If the timer fills and you haven't yet completed the order, the current request will reappear to remind you of what to make! Serafina might also get a little discouraged... if she messes up too many times, she'll fail her assignment!"
+		],
+		"14": [
+			"Onboarding",
+			0,
+			"Each guest will have different dishes they'd like to be served. Make sure to remember which one to make before the request window disappears!"
+		],
+		"15": [
+			"Onboarding",
+			0,
+			"That's all for the tutorial, good luck!"
 		]
 	},
 	"ChallengeLetti": {

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmfdpsecxo4ju"
-path="res://.godot/imported/adachi.png-e84d74c7a15a79af477055166b8d720d.ctex"
+uid="uid://d1emmrfcvlmqm"
+path="res://.godot/imported/createOrder.png-7d4a27795c0231ddf613f7aa808f3c23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/items/adachi.png"
-dest_files=["res://.godot/imported/adachi.png-e84d74c7a15a79af477055166b8d720d.ctex"]
+source_file="res://Assets/Onboarding/createOrder.png"
+dest_files=["res://.godot/imported/createOrder.png-7d4a27795c0231ddf613f7aa808f3c23.ctex"]
 
 [params]
 

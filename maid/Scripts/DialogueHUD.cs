@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 public partial class DialogueHUD : CanvasLayer
 {
 	private TextureRect DialogueBox;
@@ -123,6 +124,11 @@ public partial class DialogueHUD : CanvasLayer
 			if (Who.Contains("none")) {
 				Speaker.Hide();
 			} else {
+				if (Who == "Onboarding") {
+					Speaker.Position = new Godot.Vector2(17, -130);
+				} else {
+					Speaker.Position = new Godot.Vector2(17, 62);
+				}
 				Speaker.Animation = Who;
 				Speaker.Frame = Frame;
 				//Speaker.Frame = (int)Who[1] - '0';

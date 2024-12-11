@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://dbpym26wda1g2"]
+[gd_resource type="SpriteFrames" load_steps=21 format=3 uid="uid://dbpym26wda1g2"]
 
 [ext_resource type="Texture2D" uid="uid://bfmopogtw3y1u" path="res://Assets/Serafina/seraHealth0.png" id="1_52nli"]
 [ext_resource type="Texture2D" uid="uid://vt48n626ap0x" path="res://Assets/NPCs/doll.png" id="1_kplxs"]
@@ -7,8 +7,49 @@
 [ext_resource type="Texture2D" uid="uid://cnucapayfsjgn" path="res://Assets/Serafina/seraHealth2.png" id="3_mw5gi"]
 [ext_resource type="Texture2D" uid="uid://3r2mmnfmwv0q" path="res://Assets/NPCs/letti1.png" id="3_xt04q"]
 [ext_resource type="Texture2D" uid="uid://dqbheyu20g610" path="res://Assets/Serafina/seraHealth3.png" id="4_ef1rr"]
+[ext_resource type="Texture2D" uid="uid://bij45dunt6e7p" path="res://Assets/Onboarding/Onboarding.png" id="5_04lsv"]
 [ext_resource type="Texture2D" uid="uid://dikedgqi8f33l" path="res://Assets/Serafina/seraNewOrder.png" id="8_i52uf"]
 [ext_resource type="Texture2D" uid="uid://cp6p6w2xqebxs" path="res://Assets/NPCs/shadow.png" id="9_lwt13"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ti75"]
+atlas = ExtResource("5_04lsv")
+region = Rect2(0, 1352, 1074, 676)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm20m"]
+atlas = ExtResource("5_04lsv")
+region = Rect2(1074, 0, 1074, 676)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3olb"]
+atlas = ExtResource("5_04lsv")
+region = Rect2(0, 676, 1074, 676)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvm8i"]
+atlas = ExtResource("5_04lsv")
+region = Rect2(1074, 676, 1074, 676)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvxl6"]
+atlas = ExtResource("5_04lsv")
+region = Rect2(0, 0, 1074, 676)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw6rq"]
+atlas = ExtResource("5_04lsv")
+region = Rect2(1074, 1352, 1074, 676)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6ce2"]
+atlas = ExtResource("5_04lsv")
+region = Rect2(0, 2028, 1074, 676)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r78j0"]
+atlas = ExtResource("5_04lsv")
+region = Rect2(0, 2704, 1074, 676)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b62xl"]
+atlas = ExtResource("5_04lsv")
+region = Rect2(1074, 2028, 1074, 676)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isack"]
+atlas = ExtResource("5_04lsv")
+region = Rect2(1074, 2704, 1074, 676)
 
 [resource]
 animations = [{
@@ -38,6 +79,41 @@ animations = [{
 "loop": true,
 "name": &"Letti",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ti75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm20m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3olb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvm8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvxl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw6rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6ce2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r78j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b62xl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isack")
+}],
+"loop": true,
+"name": &"Onboarding",
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
