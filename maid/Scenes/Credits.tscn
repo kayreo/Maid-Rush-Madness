@@ -34,24 +34,38 @@ theme_override_font_sizes/font_size = 100
 text = "Credits!"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -833.5
-offset_top = -319.0
-offset_right = 833.5
-offset_bottom = 429.0
+offset_left = -840.0
+offset_top = -352.0
+offset_right = 840.0
+offset_bottom = 470.0
 grow_horizontal = 2
 grow_vertical = 2
+vertical_scroll_mode = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Page1" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="ScrollContainer/Page1"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
+theme_override_fonts/font = ExtResource("1_o2c0h")
+theme_override_font_sizes/font_size = 50
+text = "This game was developed as a supplementary solo project for Dr. Paul Toprac's 2D Game Development Capstone."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/Page1"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Name" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Name" type="Label" parent="ScrollContainer/Page1/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
@@ -59,7 +73,7 @@ theme_override_font_sizes/font_size = 75
 text = "Kayla Han............................................."
 horizontal_alignment = 1
 
-[node name="Role" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="Role" type="Label" parent="ScrollContainer/Page1/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.396078, 0.741176, 0.882353, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
@@ -67,11 +81,11 @@ theme_override_font_sizes/font_size = 75
 text = "Programming"
 horizontal_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="ScrollContainer/Page1"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Name" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="Name" type="Label" parent="ScrollContainer/Page1/HBoxContainer4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
@@ -79,7 +93,7 @@ theme_override_font_sizes/font_size = 75
 text = "Christine Le................................"
 horizontal_alignment = 1
 
-[node name="Role" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="Role" type="Label" parent="ScrollContainer/Page1/HBoxContainer4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.396078, 0.741176, 0.882353, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
@@ -87,11 +101,11 @@ theme_override_font_sizes/font_size = 75
 text = "Letti design & art"
 horizontal_alignment = 1
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="ScrollContainer/Page1"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Name" type="Label" parent="VBoxContainer/HBoxContainer5"]
+[node name="Name" type="Label" parent="ScrollContainer/Page1/HBoxContainer5"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
@@ -99,7 +113,7 @@ theme_override_font_sizes/font_size = 75
 text = "Shadow Sincross..........................."
 horizontal_alignment = 1
 
-[node name="Role" type="Label" parent="VBoxContainer/HBoxContainer5"]
+[node name="Role" type="Label" parent="ScrollContainer/Page1/HBoxContainer5"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.396078, 0.741176, 0.882353, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
@@ -107,11 +121,11 @@ theme_override_font_sizes/font_size = 75
 text = "Gob design & art"
 horizontal_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/Page1"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Name" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="Name" type="Label" parent="ScrollContainer/Page1/HBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
@@ -119,7 +133,7 @@ theme_override_font_sizes/font_size = 75
 text = "Lel Vaisla......................................."
 horizontal_alignment = 1
 
-[node name="Role" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="Role" type="Label" parent="ScrollContainer/Page1/HBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.396078, 0.741176, 0.882353, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
@@ -127,11 +141,11 @@ theme_override_font_sizes/font_size = 75
 text = "Doll design & art"
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/Page1"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Name" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Name" type="Label" parent="ScrollContainer/Page1/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
@@ -139,7 +153,7 @@ theme_override_font_sizes/font_size = 75
 text = "Light........................................."
 horizontal_alignment = 1
 
-[node name="Role" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Role" type="Label" parent="ScrollContainer/Page1/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.396078, 0.741176, 0.882353, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
@@ -147,7 +161,7 @@ theme_override_font_sizes/font_size = 75
 text = "Serafina & food art"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="VBoxContainer"]
+[node name="Label3" type="Label" parent="ScrollContainer/Page1"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
 theme_override_fonts/font = ExtResource("1_o2c0h")
@@ -155,6 +169,13 @@ theme_override_font_sizes/font_size = 40
 text = "\"Fox Tale Waltz Part 1 Instrumental\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/"
+
+[node name="Label4" type="Label" parent="ScrollContainer/Page1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.121569, 0.129412, 0.278431, 1)
+theme_override_fonts/font = ExtResource("1_o2c0h")
+theme_override_font_sizes/font_size = 40
+text = "SFX from Soundly Free library"
 
 [node name="BackButton" type="TextureButton" parent="."]
 offset_left = 113.0

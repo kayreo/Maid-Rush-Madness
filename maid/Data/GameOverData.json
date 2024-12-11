@@ -53,5 +53,17 @@
 			0,
             "...Acceptable. I will return again."
 		]
+	},
+	"ChallengeSphene": {
+		"0": [
+			"Serafina",
+			0,
+			"Whew! That was a good training session."
+		],
+		"1": [
+			"Serafina",
+			3,
+			"Ummm, you aren't supposed to reach this screen!"
+		]
 	}
 }

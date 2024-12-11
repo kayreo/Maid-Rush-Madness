@@ -17,6 +17,18 @@ public partial class LevelManager : Node2D
 	[Export]
 	public PackedScene PlacedDish { get; set; }
 
+	[Export]
+	public AudioStream OrderDing { get; set; }
+
+	[Export]
+	public AudioStream ItemGet { get; set; }
+
+	[Export]
+	public AudioStream ItemPlace { get; set; }
+
+	[Export]
+	public AudioStream TimerUp { get; set; }
+
 	private FoodTree foodTree;
 
 	private Node2D dishes;
@@ -83,6 +95,10 @@ public partial class LevelManager : Node2D
 
 	public RandomNumberGenerator Random = new RandomNumberGenerator();
 
+	public AudioStreamPlayer SFX;
+
+	public AudioStreamPlayer TimerSFX;
+
 	public bool paused = false;
 
 	private string spriteFilePath = "res://Assets/items/";
@@ -136,6 +152,8 @@ public partial class LevelManager : Node2D
 		TimerFill = (TextureProgressBar)GetNode("Timer/TimerFill");
 		TimerPoint = (Sprite2D)GetNode("Timer/TimerPoint");
 		PauseScreen = (CanvasLayer)GetNode("PauseScreen");
+		SFX = (AudioStreamPlayer)GetNode("SFX");
+		TimerSFX = (AudioStreamPlayer)GetNode("TimerSFX");
 
 		Label recipeLabel = (Label)requestUI.GetNode("Display/VBoxContainer/RecipeLabel");
 
@@ -196,6 +214,12 @@ public partial class LevelManager : Node2D
 			orderTimer.Paused = true;
 		}
 		
+		// Make timer tick when time almost up
+		if (TimerFill.Value / TimerFill.MaxValue >= .75 && !TimerSFX.Playing) {
+			TimerSFX.Play();
+		} else if (TimerFill.Value / TimerFill.MaxValue <= 0.0 && TimerSFX.Playing) {
+			TimerSFX.Stop();
+		}
 		if (Input.IsActionJustPressed("pause"))
 		{
 			if (PauseScreen.Visible) {
@@ -227,6 +251,8 @@ public partial class LevelManager : Node2D
 	}
 
 	private void OnPlaceDish(Sprite2D dish, string dishName) {
+		SFX.Stream = ItemPlace;
+		SFX.Play();
 		//GD.Print("Placing dish");
 		int posX = (int)dish.GlobalPosition.X;
 		CharacterBody2D newNode = (CharacterBody2D)PlacedDish.Instantiate();
@@ -331,6 +357,8 @@ public partial class LevelManager : Node2D
 
 	private void ShowRequest() {
 		CanvasLayer display = (CanvasLayer)requestUI.GetNode("Display");
+		SFX.Stream = OrderDing;
+		SFX.Play();
 		display.Show();
 		appearTimer.Start();
 	}
@@ -346,16 +374,19 @@ public partial class LevelManager : Node2D
 	}
 
 	private void _OnPauseButtonPressed() {
+		GetParent().EmitSignal("PlayClick");
 		paused = true;
 		PauseScreen.Show();
 	}
 
 	private void _OnContinueButtonPressed() {
+		GetParent().EmitSignal("PlayClick");
 		paused = false;
 		PauseScreen.Hide();
 	}
 
 	private void _OnExitButtonPressed() {
+		GetParent().EmitSignal("PlayClick");
 		GetParent().EmitSignal("ReturnToMenu");
 	}
 

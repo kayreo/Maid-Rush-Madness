@@ -107,6 +107,9 @@ public partial class Serafina : CharacterBody2D
 	public void GetFood(string food, Texture2D spriteTexture) {
 		// Check if food can be added
 		if (HeldFood.Count < 3) {
+			// Play SFX
+			parent.SFX.Stream = parent.ItemGet;
+			parent.SFX.Play();
 			HeldFood.Add(food);
 			int newLen = HeldFood.Count;
 			int newInd = newLen - 1;

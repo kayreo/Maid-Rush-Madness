@@ -171,6 +171,7 @@ public partial class DialogueHUD : CanvasLayer
 	}
 
 	private void _OnSkipButtonPressed() {
+		GetParent().GetParent().EmitSignal("PlayClick");
 		EmitSignal("EndDialogue");
 	}
 

@@ -25,6 +25,10 @@ public partial class GameManager : Node2D
 	[Signal]
 	public delegate void ReturnToMenuEventHandler();
 
+	[Signal]
+	public delegate void PlayClickEventHandler();
+
+
 	[Export]
 	public PackedScene GameWorld { get; set; }
 
@@ -52,6 +56,7 @@ public partial class GameManager : Node2D
 
 	Node2D Game;
 
+	AudioStreamPlayer Click;
 
 	[Export]
 	string tgtChallenge = "ChallengeDoll";
@@ -84,6 +89,7 @@ public partial class GameManager : Node2D
 		BGMusic = (AudioStreamPlayer)GetNode("BGMusic");
 		Fade = (AnimationPlayer)GetNode("AnimationPlayer");
 		Game = (Node2D)GetNode("Game");
+		Click = (AudioStreamPlayer)GetNode("Click");
 
 		GetChallenge += OnGetChallenge;
 		BeginGame += OnBeginGame;
@@ -92,6 +98,7 @@ public partial class GameManager : Node2D
 		ExitGame += _OnBackGameOverButtonPressed;
 		Continue += OnContinueGame;
 		ReturnToMenu += OnReturn;
+		PlayClick += OnPlayClick;
 
 		BGMusic.Play(1f);
 		initProgressDict();
@@ -102,37 +109,49 @@ public partial class GameManager : Node2D
 	{
 	}
 
+	private void OnPlayClick() {
+		Click.Play();
+	}
+
 	private void _OnStartButtonPressed() {
+		Click.Play();
+		tgtChallenge = "ChallengeSera";
 		tgtScreen = "Game";
 		Fade.Play("FadeIn");
 	}
 
 	private void _OnModesPressed() {
+		Click.Play();
 		tgtScreen = "Modes";
 		Fade.Play("FadeIn");
 	}
 
 	private void _OnCreditsPressed() {
+		Click.Play();
 		tgtScreen = "Credits";
 		Fade.Play("FadeIn");
 		//GD.Print("Credits pressed");
 	}
 
 	private void _OnExitPressed() {
+		Click.Play();
 		GetTree().Quit();
 	}
 
 	private void _OnBackCreditsButtonPressed() {
+		Click.Play();
 		tgtScreen = "MainMenu";
 		Fade.Play("FadeIn");
 	}
-
+	
 	private void _OnBackGameOverButtonPressed() {
+		Click.Play();
 		tgtScreen = "Restart";
 		Fade.Play("FadeIn");
 	}
 
 	private void OnGetChallenge(string name) {
+		Click.Play();
 		tgtScreen = "Challenge";
 		tgtChallenge = name;
 		Fade.Play("FadeIn");
@@ -154,6 +173,7 @@ public partial class GameManager : Node2D
 	}
 
 	private void OnRestartGame() {
+		Click.Play();
 		Game.GetNode("GameOver").QueueFree();
 		WorldInst = (LevelManager)GameWorld.Instantiate();
 		WorldInst.OnSetScenario(tgtChallenge);
@@ -161,6 +181,7 @@ public partial class GameManager : Node2D
 	}
 
 	private void OnContinueGame() {
+		Click.Play();
 		tgtScreen = "Continue";
 		int chalInd = Progress.IndexOf(tgtChallenge) + 1;
 		if (chalInd < Progress.Count) {
@@ -172,13 +193,8 @@ public partial class GameManager : Node2D
 	}
 
 	private void OnReturn() {
+		Click.Play();
 		tgtScreen = "Return";
-		int chalInd = Progress.IndexOf(tgtChallenge) + 1;
-		if (chalInd < Progress.Count) {
-			tgtChallenge = (string)Progress[chalInd];
-		} else {
-			CompleteGame();
-		}
 		Fade.Play("FadeIn");
 	}
 

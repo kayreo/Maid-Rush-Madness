@@ -6,12 +6,20 @@ using System.Reflection.Metadata;
 
 public partial class GameOver : CanvasLayer
 {
+	[Export]
+	public AudioStream WonSFX;
+
+	[Export]
+	public AudioStream LostSFX;
+
 	[Signal]
 	public delegate void GetScenarioEventHandler(string scenario, int wonGame);
 
 	private RichTextLabel Dialogue;	
 
 	private AnimatedSprite2D Speaker;
+
+	private AudioStreamPlayer SFX;
 
 	private bool InProgress = true;
 
@@ -29,6 +37,7 @@ public partial class GameOver : CanvasLayer
 	{
 		Dialogue = (RichTextLabel)GetNode("DialogueMini/DialogueText");
 		Speaker = (AnimatedSprite2D)GetNode("Control/Speaker");
+		SFX = (AudioStreamPlayer)GetNode("SFX");
 
 		GetScenario += OnGetScenario;
 
@@ -43,6 +52,15 @@ public partial class GameOver : CanvasLayer
 		Speaker.Animation = (string)DiaLine[0];
 		Speaker.Frame = (int)DiaLine[1];
 		Dialogue.Text = (string)DiaLine[2];
+
+		if (diaWonGame != 1) {
+			TextureButton ContinueButton = (TextureButton)GetNode("Buttons/Continue");
+			ContinueButton.Hide();
+			SFX.Stream = LostSFX;
+		} else {
+			SFX.Stream = WonSFX;
+		}
+		SFX.Play();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

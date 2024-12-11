@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ktnnncnv3xab"]
+[gd_scene load_steps=24 format=3 uid="uid://ktnnncnv3xab"]
 
 [ext_resource type="PackedScene" uid="uid://ej07vkvm2xbb" path="res://Scenes/Serafina.tscn" id="1_40ut1"]
 [ext_resource type="Script" path="res://Scripts/LevelManager.cs" id="1_pk06s"]
@@ -6,10 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://b75u2t47bnamx" path="res://Scenes/PlacedDish.tscn" id="2_7rwda"]
 [ext_resource type="Texture2D" uid="uid://ckoi0jl1pb4tl" path="res://Assets/BGs/castleD.png" id="3_8v4h2"]
 [ext_resource type="PackedScene" uid="uid://c8hd6iinmplop" path="res://Scenes/FoodSpawner.tscn" id="3_pd8vf"]
+[ext_resource type="AudioStream" uid="uid://cvaa0f6jh147y" path="res://Assets/Sounds/RequestDing.mp3" id="3_spmxd"]
 [ext_resource type="Script" path="res://Scripts/Bg.cs" id="4_jdpfn"]
+[ext_resource type="AudioStream" uid="uid://coohcm8a1yuvc" path="res://Assets/Sounds/ItemGet.mp3" id="4_s5fvh"]
+[ext_resource type="AudioStream" uid="uid://cue8d1675kyad" path="res://Assets/Sounds/PlaceItem.mp3" id="5_k5qac"]
 [ext_resource type="Texture2D" uid="uid://bt2vrcfbsyke8" path="res://Assets/BGs/castleS.png" id="5_raotj"]
 [ext_resource type="PackedScene" uid="uid://bkfji30drxyn6" path="res://Scenes/RequestWindow.tscn" id="6_ce0h2"]
 [ext_resource type="Texture2D" uid="uid://d1s2344hlbf36" path="res://Assets/BGs/observD.png" id="6_g3rtb"]
+[ext_resource type="AudioStream" uid="uid://darerxypei4ul" path="res://Assets/Sounds/TimerUp.mp3" id="6_kx1rc"]
 [ext_resource type="Texture2D" uid="uid://cc0fr3xyehc33" path="res://Assets/BGs/castleN.png" id="7_mw8ec"]
 [ext_resource type="Texture2D" uid="uid://cqsmage5oca7y" path="res://Assets/BGs/lakeD.png" id="8_s78qi"]
 [ext_resource type="PackedScene" uid="uid://cvwuicyhlh7pb" path="res://Scenes/Timer.tscn" id="13_jbu27"]
@@ -27,8 +31,18 @@ size = Vector2(50, 1135.5)
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_pk06s")
 PlacedDish = ExtResource("2_7rwda")
+OrderDing = ExtResource("3_spmxd")
+ItemGet = ExtResource("4_s5fvh")
+ItemPlace = ExtResource("5_k5qac")
+TimerUp = ExtResource("6_kx1rc")
+
+[node name="TimerSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_kx1rc")
+bus = &"SFX"
+parameters/looping = false
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="BG" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -135,7 +149,6 @@ theme_override_font_sizes/font_size = 50
 text = "0"
 
 [node name="PauseButton" type="TextureButton" parent="."]
-visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
