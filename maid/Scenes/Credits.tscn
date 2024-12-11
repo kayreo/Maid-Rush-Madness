@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bx7hjeod1rk4w"]
 
 [ext_resource type="FontFile" uid="uid://7cqcgkjhe7pd" path="res://Assets/Fonts/CherryBombOne-Regular.ttf" id="1_o2c0h"]
-[ext_resource type="Texture2D" uid="uid://dx22fqw234ln3" path="res://Assets/Menu/buttonUnclickMini.png" id="2_x4e7e"]
-[ext_resource type="Texture2D" uid="uid://bh7ju77h5b5h1" path="res://Assets/Menu/buttonHoverMini.png" id="3_ohl0m"]
+[ext_resource type="Texture2D" uid="uid://cirf13t0vspd1" path="res://Assets/Menu/buttonUnclickMini.png" id="2_x4e7e"]
+[ext_resource type="Texture2D" uid="uid://wdq1e5qsb11g" path="res://Assets/Menu/buttonHoverMini.png" id="3_ohl0m"]
 
 [node name="Credits" type="CanvasLayer"]
 

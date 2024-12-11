@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cvwuicyhlh7pb"]
 
-[ext_resource type="Texture2D" uid="uid://bedyq1snnfvdq" path="res://Assets/timerBack.png" id="1_gne1g"]
-[ext_resource type="Texture2D" uid="uid://bgi1o0uictxfd" path="res://Assets/timerFront.png" id="2_flm1e"]
-[ext_resource type="Texture2D" uid="uid://237uvqwjx4ug" path="res://Assets/timerFill.png" id="3_nhn6r"]
-[ext_resource type="Texture2D" uid="uid://dp4tt8g5gr0kc" path="res://Assets/timerPoint.png" id="4_h47cm"]
+[ext_resource type="Texture2D" uid="uid://bg6gc543mprys" path="res://Assets/timerBack.png" id="1_gne1g"]
+[ext_resource type="Texture2D" uid="uid://dutak1nmncclc" path="res://Assets/timerFront.png" id="2_flm1e"]
+[ext_resource type="Texture2D" uid="uid://vbqm14rmqd31" path="res://Assets/timerFill.png" id="3_nhn6r"]
+[ext_resource type="Texture2D" uid="uid://wxb7i5qal2s4" path="res://Assets/timerPoint.png" id="4_h47cm"]
 
 [node name="Timer" type="Node2D"]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://ej07vkvm2xbb"]
 
-[ext_resource type="Script" path="res://Scripts/Serafina.cs" id="1_0xagd"]
+[ext_resource type="Script" path="res://Scripts/Serafina.gd" id="1_0xagd"]
 [ext_resource type="SpriteFrames" uid="uid://d2e0a3guluvd" path="res://Assets/Serafina/Serafina.tres" id="2_no7us"]
-[ext_resource type="Texture2D" uid="uid://c28684oybep5f" path="res://Assets/Serafina/lePlate0.png" id="3_wfqt6"]
-[ext_resource type="Texture2D" uid="uid://bpa7a33rlb3i6" path="res://Assets/Serafina/lePlate1.png" id="4_7utob"]
+[ext_resource type="Texture2D" uid="uid://dnufqtlm3onqs" path="res://Assets/Serafina/lePlate0.png" id="3_wfqt6"]
+[ext_resource type="Texture2D" uid="uid://bumkeddjhin4l" path="res://Assets/Serafina/lePlate1.png" id="4_7utob"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v12i4"]
 size = Vector2(536.625, 655.25)

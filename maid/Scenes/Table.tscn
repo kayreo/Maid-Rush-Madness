@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://1u7rfdwivbu2"]
 
 [ext_resource type="Shader" path="res://Scripts/Shaders/Table.gdshader" id="1_kuxs6"]
-[ext_resource type="Texture2D" uid="uid://c0ke2fvp7xm8a" path="res://Assets/conveyorBelt.png" id="2_u78pa"]
+[ext_resource type="Texture2D" uid="uid://htcnd6ljuprk" path="res://Assets/conveyorBelt.png" id="2_u78pa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_my28q"]
 shader = ExtResource("1_kuxs6")

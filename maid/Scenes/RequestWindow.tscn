@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkfji30drxyn6"]
 
-[ext_resource type="Texture2D" uid="uid://cffon0f54vg7t" path="res://Assets/Menu/requestBack.png" id="1_501tr"]
+[ext_resource type="Texture2D" uid="uid://bc4pwx3jewplr" path="res://Assets/Menu/requestBack.png" id="1_501tr"]
 [ext_resource type="FontFile" uid="uid://7cqcgkjhe7pd" path="res://Assets/Fonts/CherryBombOne-Regular.ttf" id="1_cor3j"]
-[ext_resource type="Texture2D" uid="uid://dy5y0ydbwwnsx" path="res://Assets/items/egg.png" id="1_ets0v"]
+[ext_resource type="Texture2D" uid="uid://bbtvrxj21rtnv" path="res://Assets/items/egg.png" id="1_ets0v"]
 
 [node name="RequestWindow" type="Control"]
 layout_mode = 3

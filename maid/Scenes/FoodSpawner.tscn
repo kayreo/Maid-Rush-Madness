@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8hd6iinmplop"]
 
-[ext_resource type="Script" path="res://Scripts/FoodSpawner.cs" id="1_wupbx"]
+[ext_resource type="Script" path="res://Scripts/FoodSpawner.gd" id="1_wupbx"]
 [ext_resource type="PackedScene" uid="uid://bpdj2qkynsyug" path="res://Scenes/Food.tscn" id="2_ebdjc"]
 
 [node name="FoodSpawner" type="Node2D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://j2edk8r03bw0"]
 
-[ext_resource type="Texture2D" uid="uid://bichxa88fxfck" path="res://Assets/Menu/dialogueBox.png" id="1_pr0va"]
+[ext_resource type="Texture2D" uid="uid://fis8m15lqpjp" path="res://Assets/Menu/dialogueBox.png" id="1_pr0va"]
 
 [node name="DialogueMini" type="Control"]
 layout_mode = 3
