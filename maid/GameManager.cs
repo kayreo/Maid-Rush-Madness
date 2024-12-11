@@ -93,7 +93,7 @@ public partial class GameManager : Node2D
 		Continue += OnContinueGame;
 		ReturnToMenu += OnReturn;
 
-		//BGMusic.Play(1f);
+		BGMusic.Play(1f);
 		initProgressDict();
 	}
 
