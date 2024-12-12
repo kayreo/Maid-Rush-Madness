@@ -75,14 +75,19 @@
 		"13": [
 			"Onboarding",
 			9,
-			"If the timer fills and you haven't yet completed the order, the current request will reappear to remind you of what to make! Serafina might also get a little discouraged... if she messes up too many times, she'll fail her assignment!"
+			"If the timer fills and you haven't yet completed the order, the current request will reappear to remind you of what to make!"
 		],
 		"14": [
+			"Onboarding",
+			9,
+			"Serafina might also get a little discouraged... if she messes up too many times, she'll fail her assignment!"
+		],
+		"15": [
 			"Onboarding",
 			0,
 			"Each guest will have different dishes they'd like to be served. Make sure to remember which one to make before the request window disappears!"
 		],
-		"15": [
+		"16": [
 			"Onboarding",
 			0,
 			"That's all for the tutorial, good luck!"
@@ -137,16 +142,71 @@
 	},
 	"ChallengeGob": {
 		"0": [
+			"Serafina",
+			0,
+			"Home sweet home! And not too late today either. I suppose I should tidy up a bit before bed."
+		],
+		"1": [
+			"Serafina",
+			2,
+			"*CRASH*"
+		],
+		"2": [
+			"Serafina",
+			2,
+			"..?"
+		],
+		"3": [
 			"Gob",
 			0,
-			"Hello..."
+			"Hello."
+		],
+		"4": [
+			"Serafina",
+			3,
+			"E-EEK!!!!!"
+		],
+		"5": [
+			"Gob",
+			0,
+			"Oh, sorry about that. I guess I'm a bit late, aren't I? Name's Gob, I think I reserved your manor for dinner a few hours ago?"
+		],
+		"6": [
+			"Gob",
+			0,
+			"I would have come earlier but I got held up at work. I'm sure you know how that feels!"
+		],
+		"7": [
+			"Gob",
+			0,
+			"...I guess you'll be getting held up right now. Sorry about that."
+		],
+		"8": [
+			"Gob",
+			0,
+			"You got anything sweet? Or filling maybe? I haven't had time to eat all day. I'm starving!"
+		],
+		"9": [
+			"Gob",
+			0,
+			"Hey, and uh, take your time making the food and all that, but I'm sure we'd both like to try to turn in as soon as we can."
+		],
+		"10": [
+			"Serafina",
+			2,
+			"(And here I thought I'd get to go to bed early!)"
+		],
+		"11": [
+			"Serafina",
+			1,
+			"(Although, from what I remember from his reservation, he works for a fairly well-known curse manfacturer... I don't want to get on his bad side...)"
 		]
 	},
 	"ChallengeDoll": {
 		"0": [
-			"Doll",
-			0,
-			"..."
+			"Serafina",
+			2,
+			"(The sun has barely risen... who on earth reserved me this early?)"
 		],
 		"1": [
 			"Doll",
@@ -202,6 +262,38 @@
 			"Serafina",
 			2,
 			"(I must be on my best behavior, lest I draw the lady's wrath...)"
+		]
+	},
+	"ChallengeEnd": {
+		"0": [
+			"Serafina",
+			0,
+			"My first week as a maid has been a huge success!"
+		],
+		"1": [
+			"Serafina",
+			0,
+			"I'm getting reservation requests left and right, I'll have to start being more selective..."
+		],
+		"2": [
+			"Serafina",
+			1,
+			"Hmmm, I wonder who I should serve next..?"
+		],
+		"3": [
+			"None",
+			0,
+			"Thank you for playing Maid Rush Madness!"
+		],
+		"4": [
+			"None",
+			0,
+			"You can replay any of the challenges from the main menu, and even try out endless mode!"
+		],
+		"5": [
+			"None",
+			0,
+			"See you soon!"
 		]
 	}
 }

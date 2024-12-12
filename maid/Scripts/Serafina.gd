@@ -53,7 +53,7 @@ func _physics_process(delta):
 				heldDish = ""
 		
 		# Apply friction
-		velocity.x *= 0.95
+		velocity.x *= 0.9
 		self.velocity = velocity
 		move_and_slide()
 

@@ -7,6 +7,7 @@ extends TextureRect
 @export var ChallengeGob : Texture2D
 @export var ChallengeAnnieAlex : Texture2D
 @export var ChallengeSphene : Texture2D
+@export var ChallengeEnd : Texture2D
 
 # Dictionary to store the textures
 var BGDict : Dictionary
@@ -22,7 +23,8 @@ func init_bg_dict():
 		"ChallengeDoll": ChallengeDoll,
 		"ChallengeGob": ChallengeGob,
 		"ChallengeAnnieAlex": ChallengeAnnieAlex,
-		"ChallengeSphene": ChallengeSphene
+		"ChallengeSphene": ChallengeSphene,
+		"ChallengeEnd": ChallengeEnd
 	}
 
 # Called when the node enters the scene tree for the first time

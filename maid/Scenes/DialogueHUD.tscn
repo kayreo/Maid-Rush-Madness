@@ -27,6 +27,8 @@ ChallengeLetti = ExtResource("5_wp0nl")
 ChallengeDoll = ExtResource("2_pc87u")
 ChallengeGob = ExtResource("6_km3vd")
 ChallengeAnnieAlex = ExtResource("7_6gqkr")
+ChallengeSphene = ExtResource("4_nce0s")
+ChallengeEnd = ExtResource("4_nce0s")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

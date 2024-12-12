@@ -9,6 +9,7 @@ signal ExitGame()
 signal ContinueGame()
 signal ReturnToMenu()
 signal PlayClick()
+signal ReturnComplete()
 
 # Exported variables
 @export var GameWorld : PackedScene
@@ -39,9 +40,9 @@ func init_progress_dict():
 	Progress = [
 		"ChallengeSera",
 		"ChallengeLetti",
-		"ChallengeDoll",
 		"ChallengeGob",
-		"ChallengeAnnieAlex"
+		"ChallengeDoll"
+		# "ChallengeAnnieAlex"
 	]
 
 # Called when the node enters the scene tree for the first time
@@ -62,8 +63,9 @@ func _ready():
 	ContinueGame.connect(_on_continue_game)
 	ReturnToMenu.connect(_on_return)
 	PlayClick.connect(_on_play_click)
+	ReturnComplete.connect(return_complete)
 
-	#BGMusic.play(1.0)  # Start background music
+	BGMusic.play(1.0)  # Start background music
 	init_progress_dict()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame
@@ -159,6 +161,12 @@ func _on_return():
 # Complete the game
 func complete_game():
 	print("Reached end of scenario")
+	tgtChallenge = "ChallengeEnd"
+
+# Start the game
+func return_complete():
+	tgtScreen = "GoBack"
+	Fade.play("FadeIn")
 
 # Handle animation end event
 func _OnAnimationPlayerAnimationFinished(anim_name : String):
@@ -196,6 +204,9 @@ func _OnAnimationPlayerAnimationFinished(anim_name : String):
 					Game.add_child(DiaInst)
 				"Return":
 					$GameWorld.queue_free()
+					MainMenu.show()
+				"GoBack":
+					Game.get_node("DialogueHUD").queue_free()
 					MainMenu.show()
 				_:
 					Credits.hide()

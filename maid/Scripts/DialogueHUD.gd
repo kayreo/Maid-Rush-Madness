@@ -109,7 +109,10 @@ func continue_dialogue():
 # Called when dialogue ends
 func _on_end_dialogue():
 	hide()
-	get_parent().get_parent().emit_signal("BeginGame")
+	if Scenario != "ChallengeEnd":
+		get_parent().get_parent().emit_signal("BeginGame")
+	else:
+		get_parent().get_parent().emit_signal("ReturnComplete")
 
 # Set the scenario for the dialogue
 func _on_set_scenario(name: String):

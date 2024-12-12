@@ -80,6 +80,11 @@ animations = [{
 "name": &"Letti",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"None",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0ti75")
