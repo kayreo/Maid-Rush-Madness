@@ -13,7 +13,7 @@ config_version=5
 config/name="Maid"
 run/main_scene="res://Scenes/GameManager.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [display]
 
@@ -59,4 +59,5 @@ pause={
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.121569, 0.129412, 0.278431, 1)
