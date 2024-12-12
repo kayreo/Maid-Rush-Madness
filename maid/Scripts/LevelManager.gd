@@ -57,7 +57,7 @@ func _ready():
 	dataFile.close()
 
 	Recipes = json.parse_string(foodData) 
-	print("Recipes: ", Recipes)
+	#print("Recipes: ", Recipes)
 	RecipeKeys = Recipes.keys()
 	foodTree = FoodTree.new(Recipes)
 
@@ -118,7 +118,7 @@ func _ready():
 			TimerFill.max_value = 20
 
 	# Pick a random dish
-	print("Recipes for ", CurChallenge, ": ", CurRecipes)
+	#print("Recipes for ", CurChallenge, ": ", CurRecipes)
 	OnPickRandomDish()
 	orderTimer.start()
 	PopulateRandomFoodChoices()
@@ -148,9 +148,9 @@ func _process(delta):
 			PauseScreen.show()
 
 func MergeFood(FoodToMerge):
-	print("Merging food: ", FoodToMerge)
+	#print("Merging food: ", FoodToMerge)
 	var recipe = foodTree.find_recipe(FoodToMerge)
-	print("My recipe: ", recipe);
+	#print("My recipe: ", recipe);
 	if recipe == "Null":
 		recipe = "Slop"
 	player.emit_signal("DishMerged", recipe, Sprites[recipe])
@@ -171,18 +171,18 @@ func OnPlaceDish(dish, dishName):
 	dishes.add_child(newNode)
 	newNode.velocity = Vector2(0, 400)
 	if dishName == tgtRecipe:
-		print("Correct Dish!")
+		#print("Correct Dish!")
 		orderTimer.stop()
 		orderTimer.start()
 		if CurChallenge != "ChallengeSphene":
 			CurRecipes.erase(dishName)
 		if CurRecipes.is_empty():
-			print("No more recipes, game complete")
+			#print("No more recipes, game complete")
 			get_parent().emit_signal("EndGame", 1)
 		else:
 			OnPickRandomDish()
 	else:
-		print("Incorrect dish")
+		#print("Incorrect dish")
 		RemainingIngredients.clear()
 		var recipeIngredients = Recipes[tgtRecipe]
 		for i in range(3):
@@ -244,11 +244,11 @@ func ShowRequest():
 	appearTimer.start()
 
 func EndGame():
-	print("Ending game")
+	#print("Ending game")
 	get_parent().emit_signal("EndGame", 0)
 
 func OnSetScenario(name):
-	print("Tgt challenge is now: ", name)
+	#print("Tgt challenge is now: ", name)
 	CurChallenge = name
 
 func _OnPauseButtonPressed():

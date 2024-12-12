@@ -160,7 +160,7 @@ func _on_return():
 
 # Complete the game
 func complete_game():
-	print("Reached end of scenario")
+#print("Reached end of scenario")
 	tgtChallenge = "ChallengeEnd"
 
 # Start the game

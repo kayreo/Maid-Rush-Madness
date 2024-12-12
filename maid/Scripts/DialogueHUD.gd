@@ -116,7 +116,7 @@ func _on_end_dialogue():
 
 # Set the scenario for the dialogue
 func _on_set_scenario(name: String):
-	print("Target challenge is now: ", name)
+	#print("Target challenge is now: ", name)
 	Scenario = name
 
 # Skip the dialogue
