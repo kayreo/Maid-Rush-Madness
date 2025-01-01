@@ -18,12 +18,16 @@ func _OnLevel2Pressed():
 
 # Level 3 button pressed, emits "GetChallenge" signal with "ChallengeGob"
 func _OnLevel3Pressed():
-    get_parent().emit_signal("GetChallenge", "ChallengeGob")
+    get_parent().emit_signal("GetChallenge", "ChallengeAnnieAlex")
 
 # Level 4 button pressed, emits "GetChallenge" signal with "ChallengeDoll"
 func _OnLevel4Pressed():
-    get_parent().emit_signal("GetChallenge", "ChallengeDoll")
+    get_parent().emit_signal("GetChallenge", "ChallengeGob")
 
 # Level 5 button pressed, emits "GetChallenge" signal with "ChallengeSphene"
 func _OnLevel5Pressed():
+    get_parent().emit_signal("GetChallenge", "ChallengeDoll")
+
+# Level 5 button pressed, emits "GetChallenge" signal with "ChallengeSphene"
+func _OnLevel6Pressed():
     get_parent().emit_signal("GetChallenge", "ChallengeSphene")

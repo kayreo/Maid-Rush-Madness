@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=21 format=3 uid="uid://dbpym26wda1g2"]
+[gd_resource type="SpriteFrames" load_steps=22 format=3 uid="uid://dbpym26wda1g2"]
 
 [ext_resource type="Texture2D" uid="uid://dn61qrjpdhvuf" path="res://Assets/Serafina/seraHealth0.png" id="1_52nli"]
+[ext_resource type="Texture2D" uid="uid://cde82i310uoso" path="res://Assets/NPCs/annieAlex.png" id="1_87idx"]
 [ext_resource type="Texture2D" uid="uid://wbgmgrcadcsk" path="res://Assets/NPCs/doll.png" id="1_kplxs"]
 [ext_resource type="Texture2D" uid="uid://dhdad63tewto3" path="res://Assets/Serafina/seraHealth1.png" id="2_0kikm"]
 [ext_resource type="Texture2D" uid="uid://ctp8r273eslkb" path="res://Assets/NPCs/letti2.png" id="2_u13w0"]
@@ -53,6 +54,14 @@ region = Rect2(1074, 2704, 1074, 676)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_87idx")
+}],
+"loop": true,
+"name": &"AnnieAlex",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_kplxs")

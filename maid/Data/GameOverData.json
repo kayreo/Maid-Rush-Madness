@@ -30,6 +30,18 @@
 			"That was wonderful. I wonder what the dessert menu looks like..."
 		]
 	},
+	"ChallengeAnnieAlex": {
+		"0": [
+			"AnnieAlex",
+			0,
+			"U-uh, you wanna say something, Alex? \n...No."
+		],
+		"1": [
+			"AnnieAlex",
+			0,
+			"That was great! We'll be calling you again! \n...Yes."
+		]
+	},
     "ChallengeGob": {
 		"0": [
 			"Gob",

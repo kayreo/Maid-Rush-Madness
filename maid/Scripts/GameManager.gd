@@ -40,9 +40,9 @@ func init_progress_dict():
 	Progress = [
 		"ChallengeSera",
 		"ChallengeLetti",
+		"ChallengeAnnieAlex",
 		"ChallengeGob",
 		"ChallengeDoll"
-		# "ChallengeAnnieAlex"
 	]
 
 # Called when the node enters the scene tree for the first time

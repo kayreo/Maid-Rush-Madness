@@ -140,6 +140,65 @@
 			"Please take your time serving me! I want to try your very best dishes!"
 		]
 	},
+	"ChallengeAnnieAlex": {
+		"0": [
+			"Serafina",
+			4,
+			"This lake is lovely! My clients must be around here somewhere..."
+		],
+		"1": ["Serafina",
+			1,
+			"Serving two clients once is awfully unusual. And they booked me so late! This better have been worth it."
+		],
+		"2": ["AnnieAlex",
+			0,
+			"Hey, over here!"
+		],
+		"3": ["AnnieAlex",
+			0,
+			"Thanks for coming out. Name's Annie, and this is my brother Alex! Say hi, Alex!"
+		],
+		"4": ["AnnieAlex",
+			0,
+			"...Hello."
+		],
+		"5": ["AnnieAlex",
+			0,
+			"We're out here on vacation. Figured we might as well see the sights before we hit the road again, y'know?"
+		],
+		"6": ["AnnieAlex",
+			0,
+			"We really appreciate you taking our request so last minute. Wouldn't be a vacation without some good eats, right, Alex?"
+		],
+		"7": ["AnnieAlex",
+			0,
+			"...I suppose."
+		],
+		"8": ["AnnieAlex",
+		0,
+		"Perhaps a few savory meals would improve our time here. I admit I am intrigued by the services you advertised."
+		],
+		"9": ["AnnieAlex",
+		0,
+		"It was Annie who requested you. Please do not make me regret her decision."
+		],
+		"10": ["AnnieAlex",
+		0,
+		"Oh, don't mind him! He's just cranky from not eating all day. I'm sure you'll do great!"
+		],
+		"11": ["Serafina",
+		3,
+		"(Who on earth are these people?! Are they just two young no-name wizards..?)"
+		],
+		"12": ["Serafina",
+		1,
+		"(Nevertheless, they were able to pay my late fee. Perhaps they're celebrities from some far-off land.)"
+		],
+		"13": ["Serafina",
+		0,
+		"(If I do well, maybe they can advertise my services in places I've never been!)"
+		]
+	},
 	"ChallengeGob": {
 		"0": [
 			"Serafina",

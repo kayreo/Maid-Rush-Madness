@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://c5nr1726wlfdv"]
 
-[ext_resource type="Texture2D" uid="uid://dliohwwgi68ln" path="res://Assets/Menu/sidebar.png" id="2_jed12"]
-[ext_resource type="Texture2D" uid="uid://cs2ltuixr75sc" path="res://Assets/Menu/splash.png" id="3_0ji02"]
-[ext_resource type="Texture2D" uid="uid://3eydmcbymxvf" path="res://Assets/Menu/logo.png" id="3_5llut"]
-[ext_resource type="Texture2D" uid="uid://behnifmkv3h4p" path="res://Assets/Menu/buttonUnclick.png" id="4_vm2gf"]
-[ext_resource type="Texture2D" uid="uid://boxmwk6mcb10y" path="res://Assets/Menu/buttonHover.png" id="5_dafeo"]
+[ext_resource type="Texture2D" uid="uid://cx78pbkk1aph8" path="res://Assets/Menu/sidebar.png" id="2_jed12"]
+[ext_resource type="Texture2D" uid="uid://c0qhr0rcq7xx" path="res://Assets/Menu/splash.png" id="3_0ji02"]
+[ext_resource type="Texture2D" uid="uid://c04vnsafam5d5" path="res://Assets/Menu/logo.png" id="3_5llut"]
+[ext_resource type="Texture2D" uid="uid://jh3wat1xitps" path="res://Assets/Menu/buttonUnclick.png" id="4_vm2gf"]
+[ext_resource type="Texture2D" uid="uid://bdrsy4srchhpt" path="res://Assets/Menu/buttonHover.png" id="5_dafeo"]
 [ext_resource type="FontFile" uid="uid://7cqcgkjhe7pd" path="res://Assets/Fonts/CherryBombOne-Regular.ttf" id="6_q7pru"]
 
 [sub_resource type="Animation" id="Animation_tbrw2"]

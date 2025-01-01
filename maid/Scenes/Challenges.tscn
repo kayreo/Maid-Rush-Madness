@@ -78,7 +78,7 @@ offset_top = -319.5
 offset_right = 1455.0
 offset_bottom = 455.5
 grow_vertical = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 15
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -116,16 +116,16 @@ theme_override_font_sizes/font_size = 75
 text = "Programming"
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Level2" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
+[node name="Level2" type="TextureButton" parent="VBoxContainer/HBoxContainer6"]
 layout_mode = 2
 texture_normal = ExtResource("3_uia23")
 texture_hover = ExtResource("4_vfhjq")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Level2"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer6/Level2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -143,6 +143,42 @@ theme_override_font_sizes/font_size = 65
 text = "Level 2 (Letti)"
 horizontal_alignment = 1
 
+[node name="Role" type="Label" parent="VBoxContainer/HBoxContainer6"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.396078, 0.741176, 0.882353, 1)
+theme_override_fonts/font = ExtResource("1_ljut6")
+theme_override_font_sizes/font_size = 75
+text = "Serafina & food art"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Level3" type="TextureButton" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("3_uia23")
+texture_hover = ExtResource("4_vfhjq")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Level3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -309.0
+offset_top = -47.5
+offset_right = 310.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_ljut6")
+theme_override_font_sizes/font_size = 55
+text = "Level 2 (Annie & Alex)"
+horizontal_alignment = 1
+
 [node name="Role" type="Label" parent="VBoxContainer/HBoxContainer2"]
 visible = false
 layout_mode = 2
@@ -156,12 +192,12 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Level3" type="TextureButton" parent="VBoxContainer/HBoxContainer3"]
+[node name="Level4" type="TextureButton" parent="VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 texture_normal = ExtResource("3_uia23")
 texture_hover = ExtResource("4_vfhjq")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/Level3"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/Level4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -192,12 +228,12 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Level4" type="TextureButton" parent="VBoxContainer/HBoxContainer4"]
+[node name="Level5" type="TextureButton" parent="VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 texture_normal = ExtResource("3_uia23")
 texture_hover = ExtResource("4_vfhjq")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/Level4"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/Level5"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -228,12 +264,12 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Level5" type="TextureButton" parent="VBoxContainer/HBoxContainer5"]
+[node name="Level6" type="TextureButton" parent="VBoxContainer/HBoxContainer5"]
 layout_mode = 2
 texture_normal = ExtResource("3_uia23")
 texture_hover = ExtResource("4_vfhjq")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5/Level5"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5/Level6"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -287,7 +323,8 @@ text = "Back"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Level1" to="." method="_OnLevel1Pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Level2" to="." method="_OnLevel2Pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer3/Level3" to="." method="_OnLevel3Pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer4/Level4" to="." method="_OnLevel4Pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer5/Level5" to="." method="_OnLevel5Pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer6/Level2" to="." method="_OnLevel2Pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Level3" to="." method="_OnLevel3Pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/Level4" to="." method="_OnLevel4Pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer4/Level5" to="." method="_OnLevel5Pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer5/Level6" to="." method="_OnLevel6Pressed"]
